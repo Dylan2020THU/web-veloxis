@@ -10,3 +10,7 @@ Thumbs.db
 # Local env files
 .env
 .env.local
+
+# Original/raw media exports — keep locally, never ship to the repo
+fig/*-original-size.*
+
