@@ -1,0 +1,359 @@
+/* 基础变量定义 */
+:root {
+    --primary-blue: rgb(6, 126, 249); /* 大川蓝 */
+    --primary-blue-hover: rgb(5, 105, 210);
+    --text-dark: #1a1a1a;
+    --text-light: #ffffff;
+    --bg-light: #f8f9fa;
+    --bg-dark: #121212;
+    --transition-smooth: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* 全局重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 导航栏 - 极简风格 */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+    transition: var(--transition-smooth);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+.logo-img {
+    height: 36px;
+    width: auto;
+    display: block;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.logo:hover .logo-img {
+    transform: scale(1.05);
+    opacity: 0.85;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-blue);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-blue);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 2px;
+    background-color: var(--text-dark);
+}
+
+/* 英雄主视觉区 (Hero) */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    text-align: left;
+    color: var(--text-light);
+    overflow: hidden;
+}
+
+/* 视频背景 - 铺满首屏，居中裁切 */
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* 半透明蒙层 - 保证视频上文字始终清晰可读 */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.7));
+    z-index: -1;
+}
+
+.hero-content {
+    max-width: 900px;
+    padding: 0 60px 100px 60px;
+    animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-content h1 {
+    font-size: 4.5rem;
+    margin-bottom: 20px;
+    letter-spacing: 5px;
+    font-weight: 700;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+/* 通用按钮 - 对角圆角设计 */
+.btn {
+    display: inline-block;
+    padding: 16px 45px;
+    background-color: var(--primary-blue);
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 30px 0 30px 0; /* 核心要求：对角圆角矩形 */
+    transition: var(--transition-smooth);
+    border: 2px solid var(--primary-blue);
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: var(--text-light);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(6, 126, 249, 0.4);
+}
+
+/* 业务板块 (Services) */
+.services-section {
+    padding: 120px 60px;
+    max-width: 1600px;
+    margin: 0 auto;
+    background-color: var(--bg-light);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.section-header h2 {
+    font-size: 2.8rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+/* 等距矩形布局 */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 40px; /* 等距间隙 */
+}
+
+/* 卡片链接包裹层 - 让整张卡片可点击，但不影响原有样式 */
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* 业务卡片 - 对角圆角与悬浮特效 */
+.card {
+    position: relative;
+    height: 450px;
+    border-radius: 50px 0 50px 0; /* 核心要求：对角圆角矩形 */
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #000;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    transition: var(--transition-smooth);
+}
+
+.card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    /* 核心要求：默认暗淡且黑白 */
+    filter: grayscale(100%) brightness(50%); 
+    transition: filter 0.6s ease, transform 0.8s ease;
+}
+
+.card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+    color: white;
+    transition: background 0.6s ease, transform 0.4s ease;
+    transform: translateY(20px);
+}
+
+/* 悬浮交互效果 */
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(6, 126, 249, 0.25); /* 阴影带大川蓝 */
+}
+
+.card:hover .card-bg {
+    /* 核心要求：悬浮时彩色且高亮 */
+    filter: grayscale(0%) brightness(100%); 
+    transform: scale(1.08);
+}
+
+.card:hover .card-content {
+    /* 悬浮时底部渐变融入大川蓝，增强保时捷般的高级感 */
+    background: linear-gradient(to top, rgba(6, 126, 249, 0.95) 0%, rgba(6, 126, 249, 0.4) 60%, transparent 100%);
+    transform: translateY(0);
+}
+
+.card-content h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+    transition: transform 0.4s ease;
+}
+
+.card-content p {
+    font-size: 1.05rem;
+    opacity: 0.8;
+    transition: opacity 0.4s ease;
+}
+
+.card:hover .card-content p {
+    opacity: 1;
+}
+
+/* 页脚 */
+footer {
+    background-color: var(--bg-dark);
+    color: #888;
+    padding: 80px 60px 30px;
+}
+
+.footer-content {
+    max-width: 1600px;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.footer-logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.9rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+    .hero-content { padding: 0 40px 80px 40px; }
+    .hero-content h1 { font-size: 3.5rem; }
+    .grid-container { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .card { height: 380px; }
+}
+
+@media (max-width: 768px) {
+    .navbar { padding: 20px; }
+    .nav-links { display: none; }
+    .menu-toggle { display: flex; }
+    .hero-content { padding: 0 24px 60px 24px; }
+    .hero-content h1 { font-size: 2.5rem; }
+    .services-section { padding: 80px 20px; }
+    .section-header h2 { font-size: 2.2rem; }
+
+    /* 移动端视频降级：隐藏视频，使用静态海报图作为背景，避免移动流量与电量消耗 */
+    .hero-video { display: none; }
+    .hero {
+        background: url('fig/veloxis-web-bg-1.jpg') center/cover no-repeat;
+    }
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="fig/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="fig/favicon.svg" />
+    <link rel="shortcut icon" href="fig/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="fig/apple-touch-icon.png" />
+    <link rel="manifest" href="fig/site.webmanifest" />
+    <title>大川激流 Veloxis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <a href="#home" class="logo">
+            <img src="fig/logo-大川激流-大川蓝.png" alt="大川激流 Logo" class="logo-img">
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">首页</a></li>
+            <li><a href="#services">业务板块</a></li>
+            <li><a href="#about">关于我们</a></li>
+            <li><a href="#contact">加入我们</a></li>
+        </ul>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- 英雄主视觉区 (Hero Section) -->
+    <header id="home" class="hero">
+        <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="fig/veloxis-web-bg-1.jpg">
+            <source src="fig/veloxis-dynamic-bg.mp4" type="video/mp4">
+            您的浏览器不支持视频背景。
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>
+                融入、探索<br>
+                智能时代激流
+            </h1>
+            <!-- <p>以创新驱动发展，用技术塑造未来，为您提供顶尖的智能科技解决方案。</p> -->
+            <a href="#services" class="btn">了解业务</a>
+        </div>
+    </header>
+
+    <!-- 业务板块 (Services Section) -->
+    <section id="services" class="services-section">
+        <div class="section-header">
+            <h2>业务板块</h2>
+            <p>为您提供全方位科技赋能服务</p>
+        </div>
+        
+        <!-- 等距矩形布局 -->
+        <div class="grid-container">
+            <!-- 业务板块 1 - 人工智能学习基地（链接到 roadmap 子模块） -->
+            <a href="roadmap/" class="card-link">
+                <div class="card">
+                    <div class="card-bg" style="background-image: url('fig/ai learning base.jpg');"></div>
+                    <div class="card-content">
+                        <h3>人工智能学习基地</h3>
+                        <p>前沿AI技术沉浸式学习平台</p>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- 业务板块 2 -->
+            <div class="card">
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-content">
+                    <h3>产业智能软件</h3>
+                    <p>用AI赋能产业，让智能更简单</p>
+                </div>
+            </div>
+            
+            <!-- 业务板块 3 -->
+            <div class="card">
+                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-content">
+                    <h3>开发中</h3>
+                    <p>敬请期待</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">大川激流</div>
+            <p>北京市海淀区中关村东路123号</p>
+            <p>邮箱: contact@dachuan-jiliu.com</p>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 北京大川激流科技有限公司. 保留所有权利。</p>
+        </div>
+    </footer>
+</body>
+</html>
