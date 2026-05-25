@@ -1,6 +1,5 @@
 {
   "name": "veloxis-ai-roadmap",
-  "homepage": "https://dylan2020thu.github.io/web-veloxis-ai-roadmap",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -17,9 +16,7 @@
     "lint": "eslint .",
     "sync:site": "node scripts/sync-to-site.mjs",
     "predeploy:site": "npm run build",
-    "deploy:site": "npm run sync:site",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy:site": "npm run sync:site"
   },
   "dependencies": {
     "d3-hierarchy": "^3.1.2",
@@ -41,7 +38,6 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.20",
-    "gh-pages": "^6.3.0",
     "postcss": "^8.4.45",
     "tailwindcss": "^3.4.10",
     "typescript": "^5.5.4",

@@ -14,3 +14,7 @@ Thumbs.db
 # Original/raw media exports — keep locally, never ship to the repo
 fig/*-original-size.*
 
+# Node deps at any level of the monorepo (apps/*/node_modules is also
+# covered by each app's own .gitignore, this is the umbrella rule).
+node_modules/
+

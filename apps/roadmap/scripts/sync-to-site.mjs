@@ -1,24 +1,29 @@
 // Sync the freshly built SPA `dist/` into the marketing site's `roadmap/`
-// sub-directory. This exists because the live www.veloxisai.com is served
-// from the sibling repo `web-veloxis` (its `main` branch root powers
-// GitHub Pages), and `/roadmap/` is just a snapshot of this repo's dist
-// living at `../web-veloxisai/roadmap/`. The previous `gh-pages` deploy
-// flow pushed dist to a branch that nobody consumed, so it was a no-op.
+// sub-directory at the monorepo root. The live www.veloxisai.com is served
+// from this repo's root via GitHub Pages, and `/roadmap/` is just a
+// snapshot of this SPA's dist living at `<repo-root>/roadmap/`.
 //
-// Usage (from this package):
-//     npm run sync:site         # assumes dist/ is up to date
-//     npm run deploy:site       # build + sync
+// Layout (after the monorepo merge):
+//     <repo-root>/                 ← GitHub Pages root, www.veloxisai.com
+//         index.html               ← marketing landing page
+//         roadmap/                 ← snapshot copied by this script
+//         apps/
+//             roadmap/             ← this SPA's source (scripts/, src/, etc.)
+//                 dist/            ← vite build output (input to this script)
 //
-// After syncing you still need to commit and push the marketing repo:
-//     cd ../web-veloxisai
+// Usage (from apps/roadmap):
+//     npm run sync:site            # assumes dist/ is up to date
+//     npm run deploy:site          # build + sync
+//
+// After syncing, commit and push from the repo root:
+//     cd ../..
 //     git add roadmap
 //     git commit -m "chore(roadmap): sync latest build"
 //     git push origin main
 //
-// The script intentionally stops short of touching the marketing repo's
-// git state — it prints a checklist instead, so a stray `git add .` over
-// there never silently sweeps unrelated working-tree changes into the
-// deploy commit.
+// The script intentionally stops short of touching git state — it prints a
+// checklist instead, so a stray `git add .` never silently sweeps unrelated
+// working-tree changes into the deploy commit.
 
 import {
   existsSync,
@@ -32,12 +37,15 @@ import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const repoRoot = resolve(__dirname, "..");
-const distDir = join(repoRoot, "dist");
+const appRoot = resolve(__dirname, "..");
+const distDir = join(appRoot, "dist");
 
-// The marketing repo is expected to be a sibling on disk. If it lives
-// somewhere else, set SITE_ROADMAP_DIR before running.
-const defaultSiteRoadmap = resolve(repoRoot, "..", "web-veloxisai", "roadmap");
+// After the monorepo merge, the marketing root and this app share the same
+// git repo: <repo-root>/roadmap/ is two levels up from apps/roadmap/scripts/.
+// SITE_ROADMAP_DIR override is kept for emergencies (e.g. running the script
+// from an unpacked tarball outside the repo).
+const repoRoot = resolve(appRoot, "..", "..");
+const defaultSiteRoadmap = join(repoRoot, "roadmap");
 const siteRoadmap = process.env.SITE_ROADMAP_DIR
   ? resolve(process.env.SITE_ROADMAP_DIR)
   : defaultSiteRoadmap;
@@ -57,11 +65,8 @@ if (!existsSync(distDir)) {
     `dist/ not found at ${distDir}. Run \`npm run build\` first, or use \`npm run deploy:site\` which builds before syncing.`
   );
 }
-const siteParent = dirname(siteRoadmap);
-if (!existsSync(siteParent)) {
-  die(
-    `Marketing-site repo not found at ${siteParent}. Either checkout it as a sibling of this repo, or set SITE_ROADMAP_DIR to its /roadmap directory.`
-  );
+if (!existsSync(repoRoot)) {
+  die(`Repo root not found at ${repoRoot}. Did you run this from outside the repo?`);
 }
 
 if (!existsSync(siteRoadmap)) {
@@ -103,8 +108,8 @@ fileCount = countFiles(siteRoadmap);
 
 const relDest = relative(process.cwd(), siteRoadmap) || siteRoadmap;
 console.log(`[sync:site] copied ${fileCount} files from dist/ -> ${relDest}`);
-console.log("[sync:site] next steps (run in the marketing repo):");
-console.log(`    cd ${dirname(siteRoadmap)}`);
+console.log("[sync:site] next steps (run from the repo root):");
+console.log(`    cd ${repoRoot}`);
 console.log("    git status   # review the diff");
 console.log("    git add roadmap");
 console.log('    git commit -m "chore(roadmap): sync latest build"');

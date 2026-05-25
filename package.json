@@ -1,0 +1,18 @@
+{
+  "name": "web-veloxis",
+  "version": "0.0.0",
+  "private": true,
+  "description": "大川激流 Veloxis 官网 monorepo: 主站 (静态 HTML) + 业务板块 SPA (apps/*)",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "install:apps": "npm --prefix apps/roadmap install",
+    "dev:roadmap": "npm --prefix apps/roadmap run dev",
+    "build:roadmap": "npm --prefix apps/roadmap run build",
+    "sync:roadmap": "npm --prefix apps/roadmap run sync:site",
+    "deploy:roadmap": "npm --prefix apps/roadmap run deploy:site",
+    "build:all": "npm run build:roadmap",
+    "deploy:all": "npm run deploy:roadmap"
+  }
+}
