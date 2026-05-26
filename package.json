@@ -7,12 +7,16 @@
     "node": ">=18"
   },
   "scripts": {
-    "install:apps": "npm --prefix apps/roadmap install",
+    "install:apps": "npm --prefix apps/roadmap install && npm --prefix apps/industry install",
     "dev:roadmap": "npm --prefix apps/roadmap run dev",
+    "dev:industry": "npm --prefix apps/industry run dev",
     "build:roadmap": "npm --prefix apps/roadmap run build",
+    "build:industry": "npm --prefix apps/industry run build",
     "sync:roadmap": "npm --prefix apps/roadmap run sync:site",
+    "sync:industry": "npm --prefix apps/industry run sync:site",
     "deploy:roadmap": "npm --prefix apps/roadmap run deploy:site",
-    "build:all": "npm run build:roadmap",
-    "deploy:all": "npm run deploy:roadmap"
+    "deploy:industry": "npm --prefix apps/industry run deploy:site",
+    "build:all": "npm run build:roadmap && npm run build:industry",
+    "deploy:all": "npm run deploy:roadmap && npm run deploy:industry"
   }
 }

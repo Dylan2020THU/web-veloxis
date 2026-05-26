@@ -14,8 +14,9 @@
 <body>
     <!-- 导航栏 -->
     <nav class="navbar">
+        <!-- 全站 Logo：fig/logo-cn.png（与 apps/shared/site-brand.ts 一致） -->
         <a href="#home" class="logo">
-            <img src="fig/logo-大川激流-大川蓝.png" alt="大川激流 Logo" class="logo-img">
+            <img src="fig/logo-cn.png" alt="大川激流 Logo" class="logo-img">
         </a>
         <ul class="nav-links">
             <li><a href="#home">首页</a></li>
@@ -56,14 +57,16 @@
         
         <!-- 等距矩形布局 -->
         <div class="grid-container">
-            <!-- 业务板块 1 -->
-            <div class="card">
-                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80');"></div>
-                <div class="card-content">
-                    <h3>产业智能软件</h3>
-                    <p>用AI赋能产业，让智能更简单</p>
+            <!-- 业务板块 1 - 产业智能软件（链接到 industry 子模块） -->
+            <a href="industry/" class="card-link">
+                <div class="card">
+                    <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="card-content">
+                        <h3>产业智能软件</h3>
+                        <p>用AI赋能产业，让智能更简单</p>
+                    </div>
                 </div>
-            </div>
+            </a>
             
             <!-- 业务板块 2 - 人工智能学习基地（链接到 roadmap 子模块） -->
             <a href="roadmap/" class="card-link">
@@ -90,47 +93,10 @@
         </div>
     </section>
 
-    <!-- 关于我们 (About Section) -->
-    <section id="about" class="content-section about-section">
-        <div class="section-header">
-            <h2>关于我们</h2>
-            <p>北京大川激流科技有限公司</p>
-        </div>
-        <div class="content-body">
-            <p>
-                大川激流立足北京中关村，专注于以人工智能技术赋能产业升级与人才培养。
-                我们相信：智能时代的激流不可逆，唯有融入与探索方能立于潮头。
-            </p>
-            <p>
-                公司的使命是让前沿 AI 技术真正服务于产业落地与下一代研究者的成长，
-                让每一次算法的迭代都能转化为可触达的价值。
-            </p>
-        </div>
-    </section>
-
-    <!-- 加入我们 (Contact Section) -->
-    <section id="contact" class="content-section contact-section">
-        <div class="section-header">
-            <h2>加入我们</h2>
-            <p>与志同道合的伙伴并肩前行</p>
-        </div>
-        <div class="content-body">
-            <p>我们正在寻找有热情、有能力的伙伴，与我们共建智能时代的激流。</p>
-            <ul class="contact-roles">
-                <li>AI 算法工程师 / 软件研发工程师</li>
-                <li>产业解决方案专家 / 课程设计师</li>
-                <li>实习生（数学、机器学习、深度学习方向）</li>
-            </ul>
-            <p class="contact-cta">
-                简历投递 ·
-                <a href="mailto:contact@dachuan-jiliu.com">contact@dachuan-jiliu.com</a>
-            </p>
-        </div>
-    </section>
-
     <!-- 页脚 -->
     <footer>
         <div class="footer-content">
+            <a href="#home" class="footer-back-top">返回顶部 ↑</a>
             <div class="footer-logo">大川激流</div>
             <p>北京市海淀区中关村东路123号</p>
             <p>邮箱: contact@dachuan-jiliu.com</p>
@@ -139,5 +105,22 @@
             <p>&copy; 2026 北京大川激流科技有限公司. 保留所有权利。</p>
         </div>
     </footer>
+
+    <!-- 滚动后显示的固定返回顶部按钮 -->
+    <a href="#home" class="back-to-top" id="back-to-top" aria-label="返回顶部" title="返回顶部">
+        <span aria-hidden="true">↑</span>
+    </a>
+
+    <script>
+        (function () {
+            var btn = document.getElementById("back-to-top");
+            if (!btn) return;
+            function onScroll() {
+                btn.classList.toggle("is-visible", window.scrollY > 480);
+            }
+            window.addEventListener("scroll", onScroll, { passive: true });
+            onScroll();
+        })();
+    </script>
 </body>
 </html>

@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --topbar-h: 76px;
+  /* 大川激流 logo 基础几何：左上 + 右下大圆角，右上 + 左下直角 */
+  --veloxis-radius: 48px 0 48px 0;
+  --veloxis-radius-sm: 28px 0 28px 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "PingFang SC",
+    "Microsoft YaHei", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: #f8f9fa;
+}
+
+.veloxis-shape {
+  border-radius: var(--veloxis-radius);
+}
+
+.veloxis-shape-sm {
+  border-radius: var(--veloxis-radius-sm);
+}

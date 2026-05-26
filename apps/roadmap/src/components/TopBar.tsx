@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-
-const LOGO = import.meta.env.BASE_URL + "brand/logo-cn.png";
+import { SITE_LOGO_ALT, SITE_LOGO_SRC } from "../../../shared/site-brand";
 
 // The roadmap SPA is mounted at /roadmap/. Top-bar nav links should lead back
 // to the main marketing site (the anchors live at /#home, /#services, etc.),
@@ -47,8 +46,8 @@ export function TopBar() {
           className="flex items-center transition-transform duration-300 hover:scale-[1.03]"
         >
           <img
-            src={LOGO}
-            alt="大川激流 Logo"
+            src={SITE_LOGO_SRC}
+            alt={SITE_LOGO_ALT}
             className="block h-9 w-auto select-none transition-opacity duration-300 hover:opacity-85"
             draggable={false}
           />

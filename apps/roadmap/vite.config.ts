@@ -1,6 +1,9 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "node:path";
+// Shared dev middleware (plain .mjs — no TS types)
+// @ts-expect-error untyped ESM helper
+import { serveRootFig } from "../shared/vite-serve-root-fig.mjs";
 
 // The roadmap site is now mounted as a sub-path of the company site
 // (https://www.veloxisai.com/roadmap/), so the default base is "/roadmap/".
@@ -10,7 +13,7 @@ const base = process.env.VITE_BASE ?? "/roadmap/";
 
 export default defineConfig({
   base,
-  plugins: [react()],
+  plugins: [react(), serveRootFig(__dirname)],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
