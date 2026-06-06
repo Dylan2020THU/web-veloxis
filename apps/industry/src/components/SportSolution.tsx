@@ -1,6 +1,7 @@
-import { Fragment, useMemo, type ReactNode } from "react";
+import { Fragment, useMemo, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { motion as m } from "framer-motion";
+import { ContactModal } from "./ContactModal";
 
 /** public/ 下资源 → 带 BASE_URL 的完整 URL（适配 /industry/ 子路径部署） */
 function asset(path: string) {
@@ -249,6 +250,9 @@ function LoopLine({ stages, dark }: { stages: string[]; dark?: boolean }) {
 }
 
 export function SportSolution({ config }: { config: SportSolutionConfig }) {
+  const [bookingOpen, setBookingOpen] = useState(false);
+  const openBooking = () => setBookingOpen(true);
+
   return (
     <main
       className="bg-[#f8f9fa] text-brand-ink"
@@ -309,12 +313,13 @@ export function SportSolution({ config }: { config: SportSolutionConfig }) {
             transition={{ ...fadeUp.transition, delay: 0.18 }}
             className="mt-10 flex flex-wrap items-center gap-4"
           >
-            <a
-              href="/#contact"
+            <button
+              type="button"
+              onClick={openBooking}
               className="veloxis-shape-sm bg-brand-blue px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-brand-blue-hover hover:shadow-[0_16px_32px_-12px_rgba(6,126,253,0.6)]"
             >
               预约现场演示
-            </a>
+            </button>
             <button
               type="button"
               onClick={() =>
@@ -569,12 +574,13 @@ export function SportSolution({ config }: { config: SportSolutionConfig }) {
             transition={{ ...fadeUp.transition, delay: 0.16 }}
             className="mt-10 flex flex-wrap items-center justify-center gap-4"
           >
-            <a
-              href="/#contact"
+            <button
+              type="button"
+              onClick={openBooking}
               className="veloxis-shape-sm bg-white px-8 py-3.5 text-sm font-semibold text-brand-blue transition-transform duration-300 hover:scale-[1.03]"
             >
               预约现场演示
-            </a>
+            </button>
             <Link
               to="/"
               className="veloxis-shape-sm border border-white/40 px-8 py-3.5 text-sm font-semibold text-white transition-colors duration-300 hover:bg-white/10"
@@ -584,6 +590,12 @@ export function SportSolution({ config }: { config: SportSolutionConfig }) {
           </m.div>
         </div>
       </section>
+
+      <ContactModal
+        open={bookingOpen}
+        onClose={() => setBookingOpen(false)}
+        context={config.brand}
+      />
     </main>
   );
 }
