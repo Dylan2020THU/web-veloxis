@@ -11,6 +11,11 @@ export type Sport = {
    * 例：video/swimming-1.mp4 → apps/industry/public/video/swimming-1.mp4
    */
   video?: string;
+  /**
+   * 可选解决方案详情页路由（HashRouter 路径，如 "/billiards"）。
+   * 设置后该板块卡片可点击跳转到对应详情页。
+   */
+  route?: string;
 };
 
 export const SPORTS: Sport[] = [
@@ -23,6 +28,7 @@ export const SPORTS: Sport[] = [
       "会员训练数据分析与可视化，提升泳馆运营智能化水平。",
     video: "video/swimming-1.mp4",
     image: "video/swimming-1-cover.png",
+    route: "/swimming",
   },
   {
     id: "workout",
@@ -33,6 +39,7 @@ export const SPORTS: Sport[] = [
       "会员训练数据分析与可视化，提升健身馆运营智能化水平。",
     video: "video/workout-1.mp4",
     image: "video/workout-1-cover.png",
+    route: "/workout",
   },
   {
     id: "billiards",
@@ -43,6 +50,7 @@ export const SPORTS: Sport[] = [
       "会员数据分析与可视化，助教库运维，提升台球馆运营智能化水平。",
     video: "video/billiards-1.mp4",
     image: "video/billiards-1-cover.png",
+    route: "/billiards",
   },
   {
     id: "climbing",
@@ -53,6 +61,7 @@ export const SPORTS: Sport[] = [
       "会员训练数据分析与可视化，提升攀岩馆运营智能化水平。",
     video: "video/climbing-1.mp4",
     image: "video/climbing-1-cover.png",
+    route: "/climbing",
   },
   {
     id: "golf",
@@ -63,7 +72,8 @@ export const SPORTS: Sport[] = [
       "会员训练数据分析与可视化，提升高尔夫馆运营智能化水平。",
     video: "video/golf-1.mp4",
     image: "video/golf-1-cover.png",
-  },  
+    route: "/golf",
+  },
   {
     id: "tennis",
     name: "网球",
@@ -73,6 +83,7 @@ export const SPORTS: Sport[] = [
       "会员训练数据分析与可视化，提升网球馆运营智能化水平。",
     video: "video/tennis-1.mp4",
     image: "video/tennis-1-cover.png",
+    route: "/tennis",
   },
   {
     id: "badminton",
@@ -83,5 +94,6 @@ export const SPORTS: Sport[] = [
       "会员训练数据分析与可视化，提升羽毛球馆运营智能化水平。",
     video: "video/badminton-1.mp4",
     image: "video/badminton-1-cover.png",
+    route: "/badminton",
   },
 ];

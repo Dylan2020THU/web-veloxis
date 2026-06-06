@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { motion as m } from "framer-motion";
 import type { Sport } from "../data/sports";
 import type { PanelMotion } from "../lib/panelMotion";
@@ -182,6 +183,14 @@ export function SportPanel({
           →
         </span>
       </div>
+
+      {sport.route && (
+        <Link
+          to={sport.route}
+          aria-label={`查看${sport.name}解决方案`}
+          className="absolute inset-0 z-10 focus:outline-none"
+        />
+      )}
     </m.article>
   );
 }
