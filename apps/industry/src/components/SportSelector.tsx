@@ -1,64 +1,34 @@
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import { SportPanel } from "./SportPanel";
-import { SPORTS } from "../data/sports";
-import { computePanelMotion } from "../lib/panelMotion";
+import { SPORTS, type Sport } from "../data/sports";
+import { scrollToSection } from "../lib/navigation";
 
 export function SportSelector() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [columns, setColumns] = useState<1 | 2>(2);
+  const [selected, setSelected] = useState<Sport | null>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 640px)");
-    const sync = () => setColumns(mq.matches ? 2 : 1);
-    sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
-  }, []);
+  function openSport(sport: Sport) {
+    setSelected(sport);
+    dialogRef.current?.showModal();
+  }
 
   return (
-    <section className="px-5 py-10 md:px-10 md:py-14 lg:px-16 lg:py-16">
-      <header className="mb-10 md:mb-14">
-        <p className="mb-3 text-sm font-medium tracking-[0.25em] text-brand-blue">
-          智能体育
-        </p>
-        <h1 className="max-w-3xl text-2xl font-bold tracking-tight text-brand-ink md:text-4xl lg:text-[2.75rem] lg:leading-tight">
-          您的智能体育管理方案，从这里开始
-        </h1>
-        <p className="mt-4 max-w-2xl text-sm text-gray-500 md:text-base">
-          七大运动垂直场景，探索 AI 赋能会员管理与运营。
-        </p>
-      </header>
-
-      <div
-        className="mx-auto grid max-w-[1280px] grid-cols-1 gap-4 overflow-visible sm:grid-cols-2 sm:gap-5 lg:gap-6"
-        onMouseLeave={() => setHoveredIndex(null)}
-      >
-        {SPORTS.map((sport, index) => {
-          const isLoneLast =
-            index === SPORTS.length - 1 && SPORTS.length % 2 === 1;
-          const motionState = computePanelMotion(
-            index,
-            hoveredIndex,
-            SPORTS.length,
-            columns
-          );
-
-          return (
-            <SportPanel
-              key={sport.id}
-              sport={sport}
-              motionState={motionState}
-              isActive={hoveredIndex === index}
-              onHoverStart={() => setHoveredIndex(index)}
-              className={
-                isLoneLast
-                  ? "sm:col-span-2 sm:mx-auto sm:w-full sm:max-w-[calc((100%-1.25rem)/2)] lg:max-w-[calc((100%-1.5rem)/2)]"
-                  : undefined
-              }
-            />
-          );
-        })}
+    <section id="series" className="series-section section-space" aria-labelledby="series-title">
+      <div className="series-heading"><div><p className="eyebrow">强化系列 · 让热爱有迹可循</p><h2 id="series-title">不同的热爱，<br />同样值得被记录。</h2></div><p>从水里到山间，从球场到训练场。<br />找到你的运动，认识你的大档案。</p></div>
+      <div className="sport-grid">
+        {SPORTS.map((sport, index) => <SportPanel key={sport.id} sport={sport} index={index} onSelect={() => openSport(sport)} />)}
+        <article className="sport-invitation"><span className="invitation-mark" aria-hidden="true">↗</span><p>不止一种运动，<br />不止一种可能。</p><span>你的下一份热爱，也值得一份档案。</span><a href="mailto:zhanghx8.thaa@vip.163.com">一起探索更多可能 <span aria-hidden="true">↗</span></a></article>
       </div>
+      <p className="series-note">七大运动方向，共同构建强化系列的运动档案愿景。各产品开放进度，以正式发布为准。</p>
+      <dialog ref={dialogRef} className="sport-dialog" aria-labelledby="sport-dialog-title" onClose={() => setSelected(null)} onClick={(event) => { if (event.target === event.currentTarget) dialogRef.current?.close(); }}>
+        {selected && <>
+          <form method="dialog"><button className="dialog-close" aria-label="关闭运动详情" autoFocus>×</button></form>
+          <div className="dialog-layout">
+            <div className="dialog-media"><video key={selected.id} src={`${import.meta.env.BASE_URL}${selected.video}`} poster={`${import.meta.env.BASE_URL}${selected.image}`} controls playsInline muted preload="none" aria-label={`${selected.name}运动场景视频`} /></div>
+            <div className="dialog-copy"><p className="eyebrow">强化系列 / {selected.nameEn}</p><h2 id="sport-dialog-title">{selected.name}，<br />每一份热爱都有迹可循。</h2><p>{selected.description}</p><h3>让这些瞬间，成为你的积累。</h3><ul>{selected.archiveItems.map(item => <li key={item}>{item}</li>)}</ul><p className="quiet-note">以上为运动档案方向介绍，实际功能与开放时间以正式发布为准。</p>{selected.id === "billiards" && <button className="button-blue" onClick={() => { dialogRef.current?.close(); scrollToSection("product"); }}>查看强化印记台球界面 <span aria-hidden="true">↗</span></button>}</div>
+          </div>
+        </>}
+      </dialog>
     </section>
   );
 }

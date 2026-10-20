@@ -1,126 +1,41 @@
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+﻿import { useEffect, useState } from "react";
 import { SITE_LOGO_ALT, SITE_LOGO_SRC } from "../../../shared/site-brand";
-const HOME_ROOT = "/";
+import { scrollToSection } from "../lib/navigation";
+import { useNavigate } from "react-router-dom";
 
-const NAV_LINKS = [
-  { label: "首页", href: `${HOME_ROOT}#home` },
-  { label: "业务板块", href: `${HOME_ROOT}#services` },
-  { label: "关于我们", href: `${HOME_ROOT}#about` },
-  { label: "加入我们", href: `${HOME_ROOT}#contact` },
-];
+const NAV_LINKS = [{ label: "运动大档案", id: "archive" }, { label: "强化系列", id: "series" }, { label: "产品一瞥", id: "product" }, { label: "我们的愿景", id: "vision" }];
 
 export function TopBar() {
   const [open, setOpen] = useState(false);
-
+  const navigate = useNavigate();
+  function goToSection(id: string) {
+    setOpen(false);
+    if (document.getElementById(id)) {
+      scrollToSection(id);
+    } else {
+      navigate("/");
+      requestAnimationFrame(() => scrollToSection(id));
+    }
+  }
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
-    const onResize = () => {
-      if (window.innerWidth >= 768) setOpen(false);
-    };
-    window.addEventListener("keydown", onKey);
-    window.addEventListener("resize", onResize);
-    return () => {
-      window.removeEventListener("keydown", onKey);
-      window.removeEventListener("resize", onResize);
-    };
-  }, []);
-
+    if (!open) return;
+    const closeOnEscape = (event: KeyboardEvent) => { if (event.key === "Escape") { setOpen(false); document.getElementById("sports-menu-toggle")?.focus(); } };
+    const closeOnResize = () => { if (window.innerWidth >= 768) setOpen(false); };
+    window.addEventListener("keydown", closeOnEscape);
+    window.addEventListener("resize", closeOnResize);
+    return () => { window.removeEventListener("keydown", closeOnEscape); window.removeEventListener("resize", closeOnResize); };
+  }, [open]);
   return (
-    <>
-      <header className="fixed inset-x-0 top-0 z-50 flex h-[var(--topbar-h)] items-center justify-between bg-white/95 px-[60px] shadow-[0_1px_0_rgba(0,0,0,0.05)] backdrop-blur max-md:px-5">
-        <a
-          href={HOME_ROOT}
-          aria-label="返回大川激流首页"
-          className="flex items-center transition-transform duration-300 hover:scale-[1.03]"
-        >
-          <img
-            src={SITE_LOGO_SRC}
-            alt={SITE_LOGO_ALT}
-            className="block h-9 w-auto select-none transition-opacity duration-300 hover:opacity-85"
-            draggable={false}
-          />
-        </a>
-
-        <ul className="flex list-none items-center gap-10 max-md:hidden">
-          {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="group relative text-[15px] font-medium text-brand-ink transition-colors duration-300 hover:text-brand-blue"
-              >
-                {link.label}
-                <span className="pointer-events-none absolute -bottom-1.5 left-0 h-0.5 w-0 bg-brand-blue transition-all duration-300 group-hover:w-full" />
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        <button
-          type="button"
-          aria-label={open ? "关闭菜单" : "打开菜单"}
-          aria-expanded={open}
-          onClick={() => setOpen((o) => !o)}
-          className="relative hidden h-7 w-7 cursor-pointer flex-col items-center justify-center gap-[5px] bg-transparent max-md:flex"
-        >
-          <span
-            className={`block h-0.5 w-6 bg-brand-ink transition-transform duration-300 ${
-              open ? "translate-y-[7px] rotate-45" : ""
-            }`}
-          />
-          <span
-            className={`block h-0.5 w-6 bg-brand-ink transition-opacity duration-300 ${
-              open ? "opacity-0" : "opacity-100"
-            }`}
-          />
-          <span
-            className={`block h-0.5 w-6 bg-brand-ink transition-transform duration-300 ${
-              open ? "-translate-y-[7px] -rotate-45" : ""
-            }`}
-          />
-        </button>
-      </header>
-
-      <AnimatePresence>
-        {open && (
-          <>
-            <motion.div
-              key="drawer-backdrop"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.18 }}
-              onClick={() => setOpen(false)}
-              className="fixed inset-x-0 top-[var(--topbar-h)] bottom-0 z-40 bg-black/30 md:hidden"
-              aria-hidden="true"
-            />
-            <motion.nav
-              key="drawer-panel"
-              initial={{ y: -12, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -12, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 320, damping: 30 }}
-              className="fixed inset-x-0 top-[var(--topbar-h)] z-40 border-t border-black/5 bg-white/98 shadow-[0_8px_24px_-16px_rgba(0,0,0,0.2)] backdrop-blur md:hidden"
-            >
-              <ul className="flex list-none flex-col gap-0 px-6 py-3">
-                {NAV_LINKS.map((link) => (
-                  <li key={link.href}>
-                    <a
-                      href={link.href}
-                      onClick={() => setOpen(false)}
-                      className="block py-3 text-[16px] font-medium text-brand-ink transition-colors hover:text-brand-blue"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </motion.nav>
-          </>
-        )}
-      </AnimatePresence>
-    </>
+    <header className="sports-topbar">
+      <div className="topbar-inner">
+        <a className="sports-brand" href="/" aria-label="返回大川激流首页"><img src={SITE_LOGO_SRC} alt={SITE_LOGO_ALT} /><span>智能体育</span></a>
+        <button id="sports-menu-toggle" className="sports-menu-toggle" aria-expanded={open} aria-controls="sports-navigation" aria-label={open ? "关闭菜单" : "打开菜单"} onClick={() => setOpen(!open)}><span aria-hidden="true">{open ? "×" : "☰"}</span></button>
+        <nav id="sports-navigation" aria-label="智能体育导航" className={open ? "sports-nav is-open" : "sports-nav"}>
+          {NAV_LINKS.map(link => <button key={link.id} onClick={() => goToSection(link.id)}>{link.label}</button>)}
+          <a href="/">返回官网 <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+      {open && <button className="menu-backdrop" aria-label="收起导航菜单" onClick={() => setOpen(false)} />}
+    </header>
   );
 }
