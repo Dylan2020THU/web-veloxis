@@ -532,3 +532,9 @@ footer {
         height: 44px;
     }
 }
+/* About the company */
+.about-section{scroll-margin-top:96px}
+.about-section .section-header{margin-bottom:40px}
+.about-section .section-header p{color:var(--primary-blue)}
+.about-section .content-body{max-width:900px;text-align:left;line-height:2.1;color:#4a4a4a}
+.about-section .about-mission{font-weight:600;color:var(--text-dark)}
