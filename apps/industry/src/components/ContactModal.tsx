@@ -37,7 +37,7 @@ const DEFAULT_INTENTS = [
   "其他",
 ];
 
-const DEFAULT_EMAIL = "contact@dachuan-jiliu.com";
+const DEFAULT_EMAIL = "dylanzhang@veloxisai.com";
 
 type FormState = {
   firstName: string;

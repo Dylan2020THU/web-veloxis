@@ -63,7 +63,7 @@ export default function Home() {
         <div className="product-phones"><figure className="product-phone phone-back"><img src={`${import.meta.env.BASE_URL}images/billiards-record.png`} alt="强化印记台球微信小程序：记录一次训练界面" width="230" height="633" loading="lazy" /><figcaption>记录当下</figcaption></figure><figure className="product-phone phone-front"><img src={`${import.meta.env.BASE_URL}images/billiards-archive.png`} alt="强化印记台球微信小程序：训练印记图界面" width="230" height="633" loading="lazy" /><figcaption>看见积累</figcaption></figure></div>
       </section>
 
-      <section id="vision" className="vision-section"><p className="eyebrow">属于每一个运动者的未来</p><h2>让运动留下的，<br />不止汗水。</h2><p>还有一份不断生长的档案，<br />和一个不断被强化的自己。</p><button className="button-blue" onClick={() => scrollToSection("series")}>找到你的热爱 <span aria-hidden="true">↗</span></button><a className="text-link" href="mailto:zhanghx8.thaa@vip.163.com">与我们一起开创 <span aria-hidden="true">›</span></a></section>
+      <section id="vision" className="vision-section"><p className="eyebrow">属于每一个运动者的未来</p><h2>让运动留下的，<br />不止汗水。</h2><p>还有一份不断生长的档案，<br />和一个不断被强化的自己。</p><button className="button-blue" onClick={() => scrollToSection("series")}>找到你的热爱 <span aria-hidden="true">↗</span></button><a className="text-link" href="mailto:dylanzhang@veloxisai.com">与我们一起开创 <span aria-hidden="true">›</span></a></section>
       <footer className="sports-footer"><div><a href="/">大川激流 <span>VELOXIS</span></a><p>融入、探索智能时代激流。</p></div><p>本页档案概念及运动场景用于品牌理念展示，具体功能以各产品正式开放版本为准。</p><div className="footer-line"><span>© 2026 北京大川激流科技有限公司</span><button onClick={() => scrollToSection("sports-home")}>返回顶部 ↑</button></div></footer>
     </main>
   );

@@ -17,7 +17,7 @@ export function SportSelector() {
       <div className="series-heading"><div><p className="eyebrow">强化系列 · 让热爱有迹可循</p><h2 id="series-title">不同的热爱，<br />同样值得被记录。</h2></div><p>从水里到山间，从球场到训练场。<br />找到你的运动，认识你的大档案。</p></div>
       <div className="sport-grid">
         {SPORTS.map((sport, index) => <SportPanel key={sport.id} sport={sport} index={index} onSelect={() => openSport(sport)} />)}
-        <article className="sport-invitation"><span className="invitation-mark" aria-hidden="true">↗</span><p>不止一种运动，<br />不止一种可能。</p><span>你的下一份热爱，也值得一份档案。</span><a href="mailto:zhanghx8.thaa@vip.163.com">一起探索更多可能 <span aria-hidden="true">↗</span></a></article>
+        <article className="sport-invitation"><span className="invitation-mark" aria-hidden="true">↗</span><p>不止一种运动，<br />不止一种可能。</p><span>你的下一份热爱，也值得一份档案。</span><a href="mailto:dylanzhang@veloxisai.com">一起探索更多可能 <span aria-hidden="true">↗</span></a></article>
       </div>
       <p className="series-note">七大运动方向，共同构建强化系列的运动档案愿景。各产品开放进度，以正式发布为准。</p>
       <dialog ref={dialogRef} className="sport-dialog" aria-labelledby="sport-dialog-title" onClose={() => setSelected(null)} onClick={(event) => { if (event.target === event.currentTarget) dialogRef.current?.close(); }}>

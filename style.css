@@ -313,6 +313,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
+    object-fit: cover;
     background-size: cover;
     background-position: center;
     /* 核心要求：默认暗淡且黑白 */
@@ -521,7 +522,7 @@ footer {
     /* 移动端视频降级：隐藏视频，使用静态海报图作为背景，避免移动流量与电量消耗 */
     .hero-video { display: none; }
     .hero {
-        background: url('fig/veloxis-web-bg-1.jpg') center/cover no-repeat;
+        background: url('fig/hero.webp') center/cover no-repeat;
     }
 
     .back-to-top {
