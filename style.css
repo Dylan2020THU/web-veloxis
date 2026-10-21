@@ -538,3 +538,10 @@ footer {
 .about-section .section-header p{color:var(--primary-blue)}
 .about-section .content-body{max-width:900px;text-align:left;line-height:2.1;color:#4a4a4a}
 .about-section .about-mission{font-weight:600;color:var(--text-dark)}
+
+/* Standalone company page */
+.about-page .about-section{padding-top:160px;min-height:70vh}
+.about-page .section-header h1{font-size:2.8rem;margin-bottom:15px;line-height:1.4}
+.about-page .nav-links [aria-current="page"]{color:var(--primary-blue)}
+.about-home-link{display:none}
+@media(max-width:768px){.about-page .about-section{padding-top:120px}.about-page .section-header h1{font-size:2.2rem}.about-home-link{display:inline-flex;align-items:center;min-height:44px;color:var(--primary-blue);text-decoration:none;font-size:14px;white-space:nowrap}.about-page .logo-img{max-width:55vw;height:auto;max-height:36px}}
