@@ -1,0 +1,3775 @@
+{
+  "sectorRelations": [
+    {
+      "id": "chips-for-ai",
+      "fromSectorId": "semiconductors",
+      "toSectorId": "ai",
+      "type": "technology-supply",
+      "title": "计算芯片 → AI 训练与推理",
+      "summary": "GPU 等计算芯片为 AI 模型训练与推理提供运算能力。NVIDIA 的 Blackwell 技术说明展示了这一应用路径；此处表达技术作用，不表示所有 AI 系统采用同一芯片，也不推断具体企业间的采购关系。",
+      "componentIds": ["ai-accelerator"],
+      "sources": [{"title": "NVIDIA Blackwell 平台技术说明", "url": "https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing/", "checkedAt": "2026-10-20", "locator": "Blackwell’s six revolutionary technologies", "evidenceNote": "官方说明将 Blackwell 的计算与互连技术用于 AI 训练及大模型推理。"}]
+    },
+    {
+      "id": "ai-for-robotics",
+      "fromSectorId": "ai",
+      "toSectorId": "robotics",
+      "type": "application-support",
+      "title": "边缘 AI → 机器人感知与计算",
+      "summary": "边缘 AI 平台可在机器人本地处理传感信息和视觉任务。Jetson 官方资料说明了其面向机器人与自主机器的计算用途；这是一条可核验的应用路径，不代表每种机器人都依赖 AI。",
+      "componentIds": ["robot-sensing", "robot-control"],
+      "sources": [{"title": "NVIDIA Jetson 嵌入式计算平台", "url": "https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/", "checkedAt": "2026-10-20", "locator": "The Ideal Software for Robotics and Generative AI at the Edge / Powering Robots and Other Autonomous Machines", "evidenceNote": "产品资料将实时传感处理、视觉 AI 与机器人能力列为 Jetson 的应用。"}]
+    },
+    {
+      "id": "ai-for-biology",
+      "fromSectorId": "ai",
+      "toSectorId": "biotechnology",
+      "type": "application-support",
+      "title": "生成式 AI → 药物发现研究",
+      "summary": "生成式 AI 模型可以用于计算药物发现中的分子和蛋白质研究。BioNeMo 框架提供相关模型与开发工具；这属于研究方法支持，不等于已获得临床疗效或商业成功。",
+      "componentIds": [],
+      "sources": [{"title": "NVIDIA BioNeMo Framework 2.0", "url": "https://docs.nvidia.com/bionemo-framework/2.0/", "checkedAt": "2026-10-20", "locator": "BioNeMo Framework / Overview", "evidenceNote": "官方文档将框架定义为用于计算药物发现的工具、库与模型集合。"}]
+    },
+    {
+      "id": "chips-for-solar",
+      "fromSectorId": "semiconductors",
+      "toSectorId": "new-energy",
+      "type": "technology-supply",
+      "title": "集成电路 → 光伏逆变控制",
+      "summary": "光伏逆变器通过测量、控制和功率变换环节将发电侧接入电力系统。TI 的组串逆变器方案展示了集成电路的应用；该连接限定于光伏逆变环节，不概括全部新能源技术。",
+      "componentIds": ["pv-inverter-grid"],
+      "sources": [{"title": "TI 组串式逆变器设计资源", "url": "https://www.ti.com/solution/string-inverter", "checkedAt": "2026-10-20", "locator": "Overview / Design requirements", "evidenceNote": "官方方案明确说明集成电路用于组串式光伏逆变器，并列出测量、通信和监控要求。"}]
+    },
+    {
+      "id": "chips-for-space",
+      "fromSectorId": "semiconductors",
+      "toSectorId": "aerospace",
+      "type": "technology-supply",
+      "title": "抗辐射 FPGA → 航天电子",
+      "summary": "部分航天电子系统采用抗辐射 FPGA 承担逻辑和信号处理任务。Microchip 的 RTAX 产品资料展示此类芯片的航天用途；不由此推断本站代表运载器的具体供应商或器件型号。",
+      "componentIds": [],
+      "sources": [{"title": "Microchip RTAX2000D 航天 FPGA", "url": "https://www.microchip.com/en-us/product/rtax2000d", "checkedAt": "2026-10-20", "locator": "RTAX-DSP radiation-tolerant FPGAs / Overview", "evidenceNote": "官方产品介绍明确面向 space-flight 系统，列出抗辐射 FPGA 的航天应用。"}]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "ai",
+      "parentId": null,
+      "label": "人工智能",
+      "labelEn": "ARTIFICIAL INTELLIGENCE",
+      "color": "#067ef9",
+      "summary": "利用数据、算法与计算系统完成识别、生成和辅助决策。",
+      "sources": [
+        {
+          "title": "IBM · 人工智能",
+          "url": "https://www.ibm.com/think/topics/artificial-intelligence",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "ai-models",
+      "parentId": "ai",
+      "label": "基础模型",
+      "color": "#067ef9",
+      "summary": "以大规模数据训练的模型，为语言理解、生成和下游任务提供基础。",
+      "sources": [
+        {
+          "title": "IBM · 人工智能",
+          "url": "https://www.ibm.com/think/topics/large-language-models",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "ai-llm",
+      "parentId": "ai-models",
+      "label": "大语言模型",
+      "color": "#067ef9",
+      "summary": "学习语言数据中的统计规律，用于理解和生成自然语言。",
+      "sources": [
+        {
+          "title": "IBM · 人工智能",
+          "url": "https://www.ibm.com/think/topics/large-language-models",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "ai-vision",
+      "parentId": "ai",
+      "label": "计算机视觉",
+      "color": "#067ef9",
+      "summary": "让计算系统从图像与视频中提取信息。",
+      "sources": [
+        {
+          "title": "IBM · 人工智能",
+          "url": "https://www.ibm.com/think/topics/artificial-intelligence",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "ai-image-recognition",
+      "parentId": "ai-vision",
+      "label": "图像识别",
+      "color": "#067ef9",
+      "summary": "识别图像中的对象或类别，为检测与分析提供输入。",
+      "sources": [
+        {
+          "title": "IBM · 人工智能",
+          "url": "https://www.ibm.com/think/topics/artificial-intelligence",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "ai-agents",
+      "parentId": "ai",
+      "label": "智能体",
+      "color": "#067ef9",
+      "summary": "围绕任务目标组织模型、工具和执行步骤。",
+      "sources": [
+        {
+          "title": "IBM · 人工智能",
+          "url": "https://www.ibm.com/think/topics/artificial-intelligence",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "ai-tool-use",
+      "parentId": "ai-agents",
+      "label": "工具调用",
+      "color": "#067ef9",
+      "summary": "通过外部工具完成检索、计算和操作等具体任务。",
+      "sources": [
+        {
+          "title": "IBM · 人工智能",
+          "url": "https://www.ibm.com/think/topics/artificial-intelligence",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "semiconductors",
+      "parentId": null,
+      "label": "半导体",
+      "labelEn": "SEMICONDUCTORS",
+      "color": "#7562cc",
+      "summary": "支撑信息处理与存储的核心器件及其制造技术。",
+      "sources": [
+        {
+          "title": "ASML · Microchips",
+          "url": "https://www.asml.com/en/technology/all-about-microchips/microchip-basics",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "semi-logic",
+      "parentId": "semiconductors",
+      "label": "逻辑芯片",
+      "color": "#7562cc",
+      "summary": "执行计算、判断和控制等逻辑操作。",
+      "sources": [
+        {
+          "title": "ASML · Microchips",
+          "url": "https://www.asml.com/en/technology/all-about-microchips/microchip-basics",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "semi-transistors",
+      "parentId": "semi-logic",
+      "label": "晶体管",
+      "color": "#7562cc",
+      "summary": "作为芯片中的基本开关，组合形成逻辑电路。",
+      "sources": [
+        {
+          "title": "ASML · Microchips",
+          "url": "https://www.asml.com/en/technology/all-about-microchips/microchip-basics",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "semi-memory",
+      "parentId": "semiconductors",
+      "label": "存储芯片",
+      "color": "#7562cc",
+      "summary": "承担数据和程序的存储功能。",
+      "sources": [
+        {
+          "title": "ASML · Microchips",
+          "url": "https://www.asml.com/en/technology/all-about-microchips/microchip-basics",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "semi-dram",
+      "parentId": "semi-memory",
+      "label": "DRAM",
+      "color": "#7562cc",
+      "summary": "需要周期刷新以保持数据的动态随机存储器。",
+      "sources": [
+        {
+          "title": "ASML · Microchips",
+          "url": "https://www.asml.com/en/technology/all-about-microchips/microchip-basics",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "semi-manufacturing",
+      "parentId": "semiconductors",
+      "label": "芯片制造",
+      "color": "#7562cc",
+      "summary": "通过多道工序在晶圆上构建微型电路。",
+      "sources": [
+        {
+          "title": "ASML · Microchips",
+          "url": "https://www.asml.com/en/technology/all-about-microchips/how-microchips-are-made",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "semi-lithography",
+      "parentId": "semi-manufacturing",
+      "label": "光刻",
+      "color": "#7562cc",
+      "summary": "将电路图案转移到晶圆感光层的制造步骤。",
+      "sources": [
+        {
+          "title": "ASML · Microchips",
+          "url": "https://www.asml.com/en/technology/all-about-microchips/how-microchips-are-made",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "robotics",
+      "parentId": null,
+      "label": "机器人",
+      "labelEn": "ROBOTICS",
+      "color": "#d78c37",
+      "summary": "将感知、控制与执行结合，在工业及服务场景完成任务。",
+      "sources": [
+        {
+          "title": "IFR · Robotics",
+          "url": "https://ifr.org/service-robots",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "robot-industrial",
+      "parentId": "robotics",
+      "label": "工业机器人",
+      "color": "#d78c37",
+      "summary": "用于制造等工业场景的自动化作业设备。",
+      "sources": [
+        {
+          "title": "IFR · Robotics",
+          "url": "https://ifr.org/industrial-robots",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "robot-multi-axis",
+      "parentId": "robot-industrial",
+      "label": "多轴机械臂",
+      "color": "#d78c37",
+      "summary": "通过多个运动轴协同完成定位、搬运和加工。",
+      "sources": [
+        {
+          "title": "IFR · Robotics",
+          "url": "https://ifr.org/industrial-robots",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "robot-service",
+      "parentId": "robotics",
+      "label": "服务机器人",
+      "color": "#d78c37",
+      "summary": "在工业自动化以外的场景提供辅助服务。",
+      "sources": [
+        {
+          "title": "IFR · Robotics",
+          "url": "https://ifr.org/service-robots",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "robot-sensing",
+      "parentId": "robot-service",
+      "label": "环境感知",
+      "color": "#d78c37",
+      "summary": "用传感器获取环境信息，为运动和任务决策提供依据。",
+      "sources": [
+        {
+          "title": "IFR · Robotics",
+          "url": "https://ifr.org/service-robots",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "robot-medical",
+      "parentId": "robotics",
+      "label": "医疗机器人",
+      "color": "#d78c37",
+      "summary": "服务于诊疗、康复等医疗任务的机器人系统。",
+      "sources": [
+        {
+          "title": "IFR · Robotics",
+          "url": "https://ifr.org/service-robots",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "robot-teleoperation",
+      "parentId": "robot-medical",
+      "label": "遥操作",
+      "color": "#d78c37",
+      "summary": "由操作人员远程控制机器人执行动作。",
+      "sources": [
+        {
+          "title": "IFR · Robotics",
+          "url": "https://ifr.org/service-robots",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "new-energy",
+      "parentId": null,
+      "label": "新能源",
+      "labelEn": "NEW ENERGY",
+      "color": "#24a28e",
+      "summary": "围绕可再生能源利用与能量存储的技术系统。",
+      "sources": [
+        {
+          "title": "U.S. DOE · Energy",
+          "url": "https://www.energy.gov/energy-storage",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "energy-solar",
+      "parentId": "new-energy",
+      "label": "光伏发电",
+      "color": "#24a28e",
+      "summary": "利用光伏器件将太阳光转换为电能。",
+      "sources": [
+        {
+          "title": "U.S. DOE · Energy",
+          "url": "https://www.energy.gov/cmei/systems/how-does-solar-work",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "energy-pv-cells",
+      "parentId": "energy-solar",
+      "label": "光伏电池",
+      "color": "#24a28e",
+      "summary": "吸收光能并产生电流的半导体器件。",
+      "sources": [
+        {
+          "title": "U.S. DOE · Energy",
+          "url": "https://www.energy.gov/cmei/systems/how-does-solar-work",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "energy-wind",
+      "parentId": "new-energy",
+      "label": "风力发电",
+      "color": "#24a28e",
+      "summary": "利用风的动能驱动发电设备。",
+      "sources": [
+        {
+          "title": "U.S. DOE · Energy",
+          "url": "https://www.energy.gov/cmei/systems/how-do-wind-turbines-work",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "energy-wind-turbines",
+      "parentId": "energy-wind",
+      "label": "风力机",
+      "color": "#24a28e",
+      "summary": "通过叶片、传动及发电系统将风能转化为电能。",
+      "sources": [
+        {
+          "title": "U.S. DOE · Energy",
+          "url": "https://www.energy.gov/cmei/systems/how-do-wind-turbines-work",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "energy-storage",
+      "parentId": "new-energy",
+      "label": "储能系统",
+      "color": "#24a28e",
+      "summary": "在不同时点之间存储、转换与释放能量。",
+      "sources": [
+        {
+          "title": "U.S. DOE · Energy",
+          "url": "https://www.energy.gov/energy-storage",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "energy-pumped-storage",
+      "parentId": "energy-storage",
+      "label": "抽水蓄能",
+      "color": "#24a28e",
+      "summary": "利用高低水位间的势能实现电力储存与释放。",
+      "sources": [
+        {
+          "title": "U.S. DOE · Energy",
+          "url": "https://www.energy.gov/energy-storage",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "biotechnology",
+      "parentId": null,
+      "label": "生物科技",
+      "labelEn": "BIOTECHNOLOGY",
+      "color": "#d06d8c",
+      "summary": "研究与改造生物系统，为检测、治疗和制造提供技术基础。",
+      "sources": [
+        {
+          "title": "NIH · 生物技术",
+          "url": "https://www.nibib.nih.gov/science-education/science-topics/synthetic-biology",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "bio-sequencing",
+      "parentId": "biotechnology",
+      "label": "基因测序",
+      "color": "#d06d8c",
+      "summary": "确定 DNA 中碱基排列顺序的技术。",
+      "sources": [
+        {
+          "title": "NIH · 生物技术",
+          "url": "https://www.genome.gov/about-genomics/fact-sheets/DNA-Sequencing-Fact-Sheet",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "bio-nanopore",
+      "parentId": "bio-sequencing",
+      "label": "纳米孔测序",
+      "color": "#d06d8c",
+      "summary": "通过分子经过纳米孔时的信号变化读取序列信息。",
+      "sources": [
+        {
+          "title": "NIH · 生物技术",
+          "url": "https://www.genome.gov/about-genomics/fact-sheets/DNA-Sequencing-Fact-Sheet",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "bio-editing",
+      "parentId": "biotechnology",
+      "label": "基因编辑",
+      "color": "#d06d8c",
+      "summary": "在目标位置对遗传物质进行特定改变。",
+      "sources": [
+        {
+          "title": "NIH · 生物技术",
+          "url": "https://www.genome.gov/about-genomics/policy-issues/what-is-Genome-Editing",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "bio-crispr",
+      "parentId": "bio-editing",
+      "label": "CRISPR",
+      "color": "#d06d8c",
+      "summary": "利用引导序列将编辑工具定位到目标遗传序列。",
+      "sources": [
+        {
+          "title": "NIH · 生物技术",
+          "url": "https://www.genome.gov/about-genomics/policy-issues/what-is-Genome-Editing",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "bio-synthetic",
+      "parentId": "biotechnology",
+      "label": "合成生物学",
+      "color": "#d06d8c",
+      "summary": "结合工程方法设计与构建生物功能。",
+      "sources": [
+        {
+          "title": "NIH · 生物技术",
+          "url": "https://www.nibib.nih.gov/science-education/science-topics/synthetic-biology",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "bio-circuits",
+      "parentId": "bio-synthetic",
+      "label": "合成生物回路",
+      "color": "#d06d8c",
+      "summary": "组合生物元件，构建具有预定功能的调控系统。",
+      "sources": [
+        {
+          "title": "NIH · 生物技术",
+          "url": "https://www.nibib.nih.gov/science-education/science-topics/synthetic-biology",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "aerospace",
+      "parentId": null,
+      "label": "空天科技",
+      "labelEn": "AEROSPACE",
+      "color": "#547b9e",
+      "summary": "覆盖航空、卫星观测及空间运载的技术体系。",
+      "sources": [
+        {
+          "title": "NASA · 空天技术",
+          "url": "https://www.nasa.gov/aeronautics/",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "aero-aviation",
+      "parentId": "aerospace",
+      "label": "航空技术",
+      "color": "#547b9e",
+      "summary": "研究飞行器的气动、结构和运行能力。",
+      "sources": [
+        {
+          "title": "NASA · 空天技术",
+          "url": "https://www.nasa.gov/aeronautics/",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "aero-wind-tunnel",
+      "parentId": "aero-aviation",
+      "label": "风洞试验",
+      "color": "#547b9e",
+      "summary": "在可控气流中测量模型或部件的空气动力学表现。",
+      "sources": [
+        {
+          "title": "NASA · 空天技术",
+          "url": "https://www.nasa.gov/aeronautics/",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "aero-observation",
+      "parentId": "aerospace",
+      "label": "卫星观测",
+      "color": "#547b9e",
+      "summary": "利用空间平台获取地球及环境信息。",
+      "sources": [
+        {
+          "title": "NASA · 空天技术",
+          "url": "https://science.nasa.gov/earth/earth-observatory/",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "aero-imaging",
+      "parentId": "aero-observation",
+      "label": "卫星成像",
+      "color": "#547b9e",
+      "summary": "使用星载传感器获取地表与大气的影像数据。",
+      "sources": [
+        {
+          "title": "NASA · 空天技术",
+          "url": "https://science.nasa.gov/earth/earth-observatory/",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "aero-launch",
+      "parentId": "aerospace",
+      "label": "运载系统",
+      "color": "#547b9e",
+      "summary": "将载荷送入目标轨道或空间位置。",
+      "sources": [
+        {
+          "title": "NASA · 空天技术",
+          "url": "https://spaceplace.nasa.gov/launching-into-space/en/",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": "aero-propulsion",
+      "parentId": "aero-launch",
+      "label": "火箭推进",
+      "color": "#547b9e",
+      "summary": "通过高速排出物质产生推力，驱动运载器运动。",
+      "sources": [
+        {
+          "title": "NASA · 空天技术",
+          "url": "https://spaceplace.nasa.gov/launching-into-space/en/",
+          "checkedAt": "2026-10-18"
+        }
+      ]
+    }
+  ],
+  "reports": [],
+  "companies": [
+    {
+      "id": "lenovo",
+      "name": "联想集团",
+      "region": "china",
+      "countryOrRegion": "中国香港",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "HKEX",
+            "ticker": "00992"
+          }
+        ],
+        "asOf": "2026-10-19",
+        "sources": [
+          {
+            "title": "联想集团：股票资料",
+            "url": "https://investor.lenovo.com/en/ir/stockinfo.php",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "联想 ThinkSystem SR675 V3 / SR675i V3 产品指南",
+          "url": "https://lenovopress.lenovo.com/lp1611-thinksystem-sr675-v3-server",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "联想集团：股票资料",
+          "url": "https://investor.lenovo.com/en/ir/stockinfo.php",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "dell",
+      "name": "Dell Technologies",
+      "region": "overseas",
+      "countryOrRegion": "美国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "NYSE",
+            "ticker": "DELL"
+          }
+        ],
+        "asOf": "2026-02-26",
+        "sources": [
+          {
+            "title": "Dell Technologies 2026 财年业绩公告",
+            "url": "https://investors.delltechnologies.com/news-events/press-releases/detail/93/dell-technologies-delivers-fourth-quarter-and-full-year-fiscal-2026-results",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "Dell PowerEdge AI 服务器产品组合",
+          "url": "https://www.dell.com/en-us/shop/servers/sf/poweredge-ai-servers",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Dell Technologies 2026 财年业绩公告",
+          "url": "https://investors.delltechnologies.com/news-events/press-releases/detail/93/dell-technologies-delivers-fourth-quarter-and-full-year-fiscal-2026-results",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "huawei",
+      "name": "华为（华为投资控股）",
+      "region": "china",
+      "countryOrRegion": "中国",
+      "listing": {
+        "status": "unlisted",
+        "securities": [],
+        "asOf": "2026-10-19",
+        "sources": [
+          {
+            "title": "华为公司事实：公司主体及员工持股说明",
+            "url": "https://www.huawei.com/en/media-center/company-facts/",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "华为昇腾：Atlas 人工智能计算解决方案",
+          "url": "https://e.huawei.com/cn/products/computing/ascend",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "华为公司事实：公司主体及员工持股说明",
+          "url": "https://www.huawei.com/en/media-center/company-facts/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "nvidia",
+      "name": "NVIDIA",
+      "region": "overseas",
+      "countryOrRegion": "美国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "NASDAQ",
+            "ticker": "NVDA"
+          }
+        ],
+        "asOf": "2026-10-19",
+        "sources": [
+          {
+            "title": "NVIDIA 投资者常见问题：交易市场及代码",
+            "url": "https://investor.nvidia.com/investor-resources/faqs/",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "NVIDIA H100 Tensor Core GPU 产品页",
+          "url": "https://www.nvidia.com/en-us/data-center/h100/",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "NVIDIA 投资者常见问题：交易市场及代码",
+          "url": "https://investor.nvidia.com/investor-resources/faqs/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "innolight",
+      "name": "中际旭创",
+      "region": "china",
+      "countryOrRegion": "中国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "SZSE",
+            "ticker": "300308"
+          },
+          {
+            "market": "HKEX",
+            "ticker": "03308"
+          }
+        ],
+        "asOf": "2026-10-19",
+        "sources": [
+          {
+            "title": "中际旭创：深市及港股股票代码",
+            "url": "https://www.zj-innolight.com/en/",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "中际旭创：公司及光互联产品介绍",
+          "url": "https://www.zj-innolight.com/en/about.html",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "中际旭创：深市及港股股票代码",
+          "url": "https://www.zj-innolight.com/en/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "coherent",
+      "name": "Coherent",
+      "region": "overseas",
+      "countryOrRegion": "美国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "NYSE",
+            "ticker": "COHR"
+          }
+        ],
+        "asOf": "2026-08-12",
+        "sources": [
+          {
+            "title": "Coherent 2026 财年业绩公告",
+            "url": "https://www.coherent.com/news/press-releases/fourth-quarter-and-fiscal-year-2026-results",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "Coherent 数据中心光互联产品",
+          "url": "https://www.coherent.com/communications/datacom/datacenter",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Coherent 2026 财年业绩公告",
+          "url": "https://www.coherent.com/news/press-releases/fourth-quarter-and-fiscal-year-2026-results",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "sugon-data-energy",
+      "name": "曙光数创",
+      "region": "china",
+      "countryOrRegion": "中国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "BSE",
+            "ticker": "920808"
+          }
+        ],
+        "asOf": "2026-08-25",
+        "sources": [
+          {
+            "title": "曙光数创 2026 半年度报告",
+            "url": "https://static.cninfo.com.cn/finalpage/2026-08-25/1225507628.PDF",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "曙光数创 2026 半年度报告摘要：C7000 产品及控股股东",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-08-25/1225507629.PDF",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "曙光数创 2026 半年度报告",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-08-25/1225507628.PDF",
+          "checkedAt": "2026-10-19"
+        }
+      ],
+      "parentCompanyId": "sugon-beijing"
+    },
+    {
+      "id": "sugon-beijing",
+      "name": "曙光信息产业（北京）有限公司",
+      "region": "china",
+      "countryOrRegion": "中国",
+      "listing": null,
+      "sources": [
+        {
+          "title": "曙光数创 2026 半年度报告摘要：C7000 产品及控股股东",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-08-25/1225507629.PDF",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "vertiv",
+      "name": "Vertiv Holdings",
+      "region": "overseas",
+      "countryOrRegion": "美国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "NYSE",
+            "ticker": "VRT"
+          }
+        ],
+        "asOf": "2026-07-29",
+        "sources": [
+          {
+            "title": "Vertiv 2026 年第二季度业绩公告（SEC 公司提交件）",
+            "url": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026050323/q22026exhibit991vrt07292026.htm",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "Vertiv CoolChip CDU 100 产品页",
+          "url": "https://go.vertiv.com/CoolChip-CDU-100",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Vertiv 扩充 CoolChip CDU 液冷产品组合",
+          "url": "https://investors.vertiv.com/news/news-details/2024/Vertiv-Expands-its-Global-Liquid-Cooling-Portfolio-with-the-Announcement-of-Two-New-High-Capacity-Coolant-Distribution-Units-to-Support-AI-Applications/default.aspx",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Vertiv 2026 年第二季度业绩公告（SEC 公司提交件）",
+          "url": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026050323/q22026exhibit991vrt07292026.htm",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "loongson",
+      "name": "龙芯中科",
+      "region": "china",
+      "countryOrRegion": "中国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "SSE",
+            "ticker": "688047"
+          }
+        ],
+        "asOf": "2026-10-19",
+        "sources": [
+          {
+            "title": "龙芯中科：投资者关系及证券代码",
+            "url": "https://www.loongson.cn/system/tzz",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "龙芯 3C6000 产品参数与手册",
+          "url": "https://loongson.cn/product/show?id=41",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "龙芯中科：投资者关系及证券代码",
+          "url": "https://www.loongson.cn/system/tzz",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "amd",
+      "name": "AMD",
+      "region": "overseas",
+      "countryOrRegion": "美国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "NASDAQ",
+            "ticker": "AMD"
+          }
+        ],
+        "asOf": "2026-10-19",
+        "sources": [
+          {
+            "title": "AMD 投资者关系：Nasdaq 股票资料",
+            "url": "https://ir.amd.com/?page=1",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "AMD EPYC 9005 系列服务器 CPU",
+          "url": "https://www.amd.com/en/products/processors/server/epyc/9005-series.html",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "AMD 投资者关系：Nasdaq 股票资料",
+          "url": "https://ir.amd.com/?page=1",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "gigadevice",
+      "name": "兆易创新",
+      "region": "china",
+      "countryOrRegion": "中国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "SSE",
+            "ticker": "603986"
+          },
+          {
+            "market": "HKEX",
+            "ticker": "03986"
+          }
+        ],
+        "asOf": "2026-10-12",
+        "sources": [
+          {
+            "title": "兆易创新：公司简介及上海证券交易所代码",
+            "url": "https://www.gigadevice.com/about/company-profile",
+            "checkedAt": "2026-10-19"
+          },
+          {
+            "title": "兆易创新官方新闻：A 股与 H 股代码",
+            "url": "https://www.gigadevice.com.cn/about/news-and-event/news",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "兆易创新：利基型 DDR4 产品",
+          "url": "https://www.gigadevice.com.cn/product/dram/ddr4",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "兆易创新：公司简介及上海证券交易所代码",
+          "url": "https://www.gigadevice.com/about/company-profile",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "micron",
+      "name": "Micron Technology",
+      "region": "overseas",
+      "countryOrRegion": "美国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "NASDAQ",
+            "ticker": "MU"
+          }
+        ],
+        "asOf": "2026-10-19",
+        "sources": [
+          {
+            "title": "Micron 季度业绩与 Nasdaq 代码",
+            "url": "https://investors.micron.com/financials/quarterly-results/default.aspx",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "Micron DDR5 SDRAM 产品",
+          "url": "https://www.micron.com/products/memory/dram-components/ddr5-sdram",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Micron 季度业绩与 Nasdaq 代码",
+          "url": "https://investors.micron.com/financials/quarterly-results/default.aspx",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "jcet",
+      "name": "长电科技（JCET）",
+      "region": "china",
+      "countryOrRegion": "中国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "SSE",
+            "ticker": "600584"
+          }
+        ],
+        "asOf": "2026-08-20",
+        "sources": [
+          {
+            "title": "长电科技发布 2026 半年业绩（公司发布稿）",
+            "url": "https://tools.prnewswire.com/en-us/live/20813/release/20260820EN30595",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "长电科技 2024 年一季度发布稿：XDFOI 量产及 HPC / HBM 应用",
+          "url": "https://www.prnewswire.co.uk/news-releases/jcet-q1-2024-revenue-and-net-profit-achieve-double-digit-year-on-year-growth-302126079.html",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "长电科技发布 2026 半年业绩（公司发布稿）",
+          "url": "https://tools.prnewswire.com/en-us/live/20813/release/20260820EN30595",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "amkor",
+      "name": "Amkor Technology",
+      "region": "overseas",
+      "countryOrRegion": "美国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "NASDAQ",
+            "ticker": "AMKR"
+          }
+        ],
+        "asOf": "2026-10-19",
+        "sources": [
+          {
+            "title": "Amkor 投资者常见问题：Nasdaq / AMKR",
+            "url": "https://ir.amkor.com/shareholder-services/investor-faqs",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "Amkor Flip Chip 封装技术",
+          "url": "https://amkor.com/technology/flip-chip/",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Amkor 投资者常见问题：Nasdaq / AMKR",
+          "url": "https://ir.amkor.com/shareholder-services/investor-faqs",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "shennan-circuits",
+      "name": "深南电路",
+      "region": "china",
+      "countryOrRegion": "中国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "SZSE",
+            "ticker": "002916"
+          }
+        ],
+        "asOf": "2026-10-13",
+        "sources": [
+          {
+            "title": "深南电路 2026 年向特定对象发行股票募集说明书",
+            "url": "https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-10-13/577f5075-439e-4aa9-867f-6f69bc779fbb.PDF",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "深南电路：封装基板产品及应用",
+          "url": "https://www.scc.com.cn/scc/cpjs/SUB/index.html",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "深南电路 2026 年向特定对象发行股票募集说明书",
+          "url": "https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-10-13/577f5075-439e-4aa9-867f-6f69bc779fbb.PDF",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "ibiden",
+      "name": "IBIDEN（揖斐电）",
+      "region": "overseas",
+      "countryOrRegion": "日本",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "TSE",
+            "ticker": "4062"
+          },
+          {
+            "market": "名古屋证券交易所",
+            "ticker": "4062"
+          }
+        ],
+        "asOf": "2026-10-01",
+        "sources": [
+          {
+            "title": "IBIDEN 股票基本信息（2026-10-01）",
+            "url": "https://www.ibiden.co.jp/ir/stock/stock-basick-data/",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "IBIDEN Flip Chip IC 封装基板",
+          "url": "https://www.ibiden.com/product/electronics/merchandise/fliptippkg/",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "IBIDEN 股票基本信息（2026-10-01）",
+          "url": "https://www.ibiden.co.jp/ir/stock/stock-basick-data/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "estun",
+      "name": "埃斯顿",
+      "region": "china",
+      "countryOrRegion": "中国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "深圳证券交易所",
+            "ticker": "002747"
+          },
+          {
+            "market": "香港交易所",
+            "ticker": "02715"
+          }
+        ],
+        "asOf": "2026-10-19",
+        "sources": [
+          {
+            "title": "埃斯顿：公司简介与 A/H 股代码",
+            "url": "https://www.estun.com/about-us/",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "埃斯顿：公司简介与 A/H 股代码",
+          "url": "https://www.estun.com/about-us/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "fanuc",
+      "name": "发那科（FANUC）",
+      "region": "overseas",
+      "countryOrRegion": "日本",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "东京证券交易所",
+            "ticker": "6954"
+          }
+        ],
+        "asOf": "2026-04-24",
+        "sources": [
+          {
+            "title": "FANUC：2026 年股票注销公告（6954）",
+            "url": "https://www.fanuc.co.jp/en/ir/announce_other/pdf/2026/notice20260424-03_e.pdf",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "FANUC：2026 年股票注销公告（6954）",
+          "url": "https://www.fanuc.co.jp/en/ir/announce_other/pdf/2026/notice20260424-03_e.pdf",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "FANUC：大型工业机器人 R-2000/E 系列",
+          "url": "https://www.fanuc.co.jp/en/product/robot/f_r_large.html",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "leaderdrive",
+      "name": "绿的谐波",
+      "region": "china",
+      "countryOrRegion": "中国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "上海证券交易所科创板",
+            "ticker": "688017"
+          }
+        ],
+        "asOf": "2026-10-19",
+        "sources": [
+          {
+            "title": "绿的谐波：上交所投资者关系信息（688017）",
+            "url": "https://open.sseinfo.com/ir2/indexkcb?language=zh_CN&stockCode=688017",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "绿的谐波：上交所投资者关系信息（688017）",
+          "url": "https://open.sseinfo.com/ir2/indexkcb?language=zh_CN&stockCode=688017",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Leaderdrive：谐波减速器产品系列",
+          "url": "https://www.leaderdrive.com/product/list-6-1.html",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "harmonic-drive-systems",
+      "name": "Harmonic Drive Systems",
+      "region": "overseas",
+      "countryOrRegion": "日本",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "东京证券交易所",
+            "ticker": "6324"
+          }
+        ],
+        "asOf": "2026-10-19",
+        "sources": [
+          {
+            "title": "Harmonic Drive Systems：股票基本信息",
+            "url": "https://www.hds.co.jp/ir/stock/information/",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "Harmonic Drive Systems：股票基本信息",
+          "url": "https://www.hds.co.jp/ir/stock/information/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "inovance",
+      "name": "汇川技术",
+      "region": "china",
+      "countryOrRegion": "中国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "深圳证券交易所",
+            "ticker": "300124"
+          }
+        ],
+        "asOf": "2026-03-06",
+        "sources": [
+          {
+            "title": "汇川技术：储能业务宣传册与公司上市身份",
+            "url": "https://portal-file.inovance.com/owfile/ProdDoc/CY/19120532-CY/A02/19120532-CY_A02_Inovance%20Energy%20Storage%20Solutions_EN_20260306_Web.pdf?response-content-disposition=attachment%3Bfilename%3D%2219120532-CY_A02_Inovance+Energy+Storage+Solutions_EN_20260306_Web.pdf%22",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "汇川技术：储能业务宣传册与公司上市身份",
+          "url": "https://portal-file.inovance.com/owfile/ProdDoc/CY/19120532-CY/A02/19120532-CY_A02_Inovance%20Energy%20Storage%20Solutions_EN_20260306_Web.pdf?response-content-disposition=attachment%3Bfilename%3D%2219120532-CY_A02_Inovance+Energy+Storage+Solutions_EN_20260306_Web.pdf%22",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "汇川技术：SV660 通用交流伺服驱动器",
+          "url": "https://www.inovance.com/global/content/details_815_403229.html",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "yaskawa",
+      "name": "安川电机（Yaskawa）",
+      "region": "overseas",
+      "countryOrRegion": "日本",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "东京证券交易所",
+            "ticker": "6506"
+          }
+        ],
+        "asOf": "2026-10-19",
+        "sources": [
+          {
+            "title": "安川电机：股票信息",
+            "url": "https://www.yaskawa-global.com/ir/stocks/information",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "安川电机：公司资料",
+          "url": "https://www.yaskawa-global.com/company/profile/data",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "安川电机：股票信息",
+          "url": "https://www.yaskawa-global.com/ir/stocks/information",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "hikrobot",
+      "name": "海康机器人",
+      "region": "china",
+      "countryOrRegion": "中国",
+      "listing": null,
+      "sources": [
+        {
+          "title": "海康机器人：机器视觉与机器人产品",
+          "url": "https://www.hikrobotics.com/cn/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "cognex",
+      "name": "康耐视（Cognex）",
+      "region": "overseas",
+      "countryOrRegion": "美国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "Nasdaq",
+            "ticker": "CGNX"
+          }
+        ],
+        "asOf": "2026-10-19",
+        "sources": [
+          {
+            "title": "Cognex：投资者常见问题与 Nasdaq 代码",
+            "url": "https://investor.cognex.com/resources/faqs/default.aspx",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "Cognex：投资者常见问题与 Nasdaq 代码",
+          "url": "https://investor.cognex.com/resources/faqs/default.aspx",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "tongwei",
+      "name": "通威股份",
+      "region": "china",
+      "countryOrRegion": "中国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "上海证券交易所",
+            "ticker": "600438"
+          }
+        ],
+        "asOf": "2026-10-19",
+        "sources": [
+          {
+            "title": "通威股份：上海证券交易所公司信息",
+            "url": "https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=600438",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "通威股份：上海证券交易所公司信息",
+          "url": "https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=600438",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "通威股份：高效太阳能电池产品与业务主体",
+          "url": "https://www.tongwei.cn/cell.html",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "通威股份：TNC 组件技术白皮书目录与业务主体",
+          "url": "https://www.tongwei.cn/download.html?typeid=36",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "hanwha-solutions",
+      "name": "Hanwha Solutions（Qcells 部门）",
+      "region": "overseas",
+      "countryOrRegion": "韩国",
+      "listing": null,
+      "sources": [
+        {
+          "title": "韩华集团：Hanwha Solutions Qcells 部门",
+          "url": "https://www.hanwha.com/companies/hanwha-solutions-qcells-division.do",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "arctech",
+      "name": "中信博（Arctech）",
+      "region": "china",
+      "countryOrRegion": "中国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "上海证券交易所科创板",
+            "ticker": "688408"
+          }
+        ],
+        "asOf": "2026-10-19",
+        "sources": [
+          {
+            "title": "中信博：公司概览与科创板代码",
+            "url": "https://en.arctechsolar.com/company-overview/",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "中信博：公司概览与科创板代码",
+          "url": "https://en.arctechsolar.com/company-overview/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "nextpower",
+      "name": "Nextpower（原 Nextracker）",
+      "region": "overseas",
+      "countryOrRegion": "美国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "Nasdaq",
+            "ticker": "NXT"
+          }
+        ],
+        "asOf": "2025-11-12",
+        "sources": [
+          {
+            "title": "Nextpower：更名公告、Nasdaq 代码及累计交付规模",
+            "url": "https://nextpower.com/post/press-release/nextracker-rebrands-as-nextpower-integrated-power-technology-innovator?locale=en-US",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "Nextpower：更名公告、Nasdaq 代码及累计交付规模",
+          "url": "https://nextpower.com/post/press-release/nextracker-rebrands-as-nextpower-integrated-power-technology-innovator?locale=en-US",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "SEC：Nextracker 更名为 Nextpower 的 8-K 公告",
+          "url": "https://www.sec.gov/Archives/edgar/data/1852131/000185213125000069/nxt-20251112.htm",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "sungrow",
+      "name": "阳光电源",
+      "region": "china",
+      "countryOrRegion": "中国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "深圳证券交易所",
+            "ticker": "300274"
+          }
+        ],
+        "asOf": "2026-10-19",
+        "sources": [
+          {
+            "title": "阳光电源：投资者关系与 300274.SZ",
+            "url": "https://www.sungrowpower.com/en/about-us/investor",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "阳光电源：投资者关系与 300274.SZ",
+          "url": "https://www.sungrowpower.com/en/about-us/investor",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "sma",
+      "name": "SMA Solar Technology",
+      "region": "overseas",
+      "countryOrRegion": "德国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "法兰克福证券交易所",
+            "ticker": "S92"
+          }
+        ],
+        "asOf": "2026-10-19",
+        "sources": [
+          {
+            "title": "SMA Solar Technology：股票信息",
+            "url": "https://www.sma.de/en/investor-relations/share",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "SMA Solar Technology：股票信息",
+          "url": "https://www.sma.de/en/investor-relations/share",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "mgi-tech",
+      "name": "华大智造（深圳华大智造科技股份有限公司）",
+      "region": "china",
+      "countryOrRegion": "中国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "上海证券交易所科创板",
+            "ticker": "688114"
+          }
+        ],
+        "asOf": "2026-06-30",
+        "sources": [
+          {
+            "title": "华大智造：2026 年半年度报告（公司及股票资料）",
+            "url": "https://static.cninfo.com.cn/finalpage/2026-08-22/1225493542.PDF",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "华大智造：2026 年半年度报告（公司及股票资料）",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-08-22/1225493542.PDF",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "illumina",
+      "name": "Illumina, Inc.",
+      "region": "overseas",
+      "countryOrRegion": "美国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "NASDAQ",
+            "ticker": "ILMN"
+          }
+        ],
+        "asOf": "2026-02-23",
+        "sources": [
+          {
+            "title": "Illumina：2026 年 NovaSeq X 产品路线公告（公司及股票代码）",
+            "url": "https://investor.illumina.com/news-releases/news-release-details/illumina-unveils-roadmap-groundbreaking-novaseq-x-advancements",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "Illumina：2026 年 NovaSeq X 产品路线公告（公司及股票代码）",
+          "url": "https://investor.illumina.com/news-releases/news-release-details/illumina-unveils-roadmap-groundbreaking-novaseq-x-advancements",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "landspace",
+      "name": "蓝箭航天空间科技股份有限公司",
+      "region": "china",
+      "countryOrRegion": "中国",
+      "listing": null,
+      "sources": [
+        {
+          "title": "蓝箭航天：公司简介",
+          "url": "https://www.landspace.com/index.html",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "蓝箭航天：招股说明书申报稿，大直径超薄壁贮箱技术（1-1-241）",
+          "url": "https://static.sse.com.cn/stock/disclosure/announcement/c/202512/002174_20251231_1QK0.pdf",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "rocket-lab",
+      "name": "Rocket Lab Corporation",
+      "region": "overseas",
+      "countryOrRegion": "美国",
+      "listing": {
+        "status": "listed",
+        "securities": [
+          {
+            "market": "NASDAQ",
+            "ticker": "RKLB"
+          }
+        ],
+        "asOf": "2026-08-10",
+        "sources": [
+          {
+            "title": "Rocket Lab：2026 年第二季度业绩公告（公司及股票代码）",
+            "url": "https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-announces-second-quarter-2026-financial-results-posts",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "title": "Rocket Lab：2026 年第二季度业绩公告（公司及股票代码）",
+          "url": "https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-announces-second-quarter-2026-financial-results-posts",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Rocket Lab：Electron 产品",
+          "url": "https://rocketlabcorp.com/launch/electron/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    }
+  ],
+  "companyLinks": [
+    {
+      "componentId": "ai-server",
+      "companyId": "lenovo",
+      "role": "以 ThinkSystem 产品承载 GPU 加速计算、AI 推理及数据中心工作负载。",
+      "products": [
+        "ThinkSystem SR675 V3",
+        "ThinkSystem SR675i V3"
+      ],
+      "sources": [
+        {
+          "title": "联想 ThinkSystem SR675 V3 / SR675i V3 产品指南",
+          "url": "https://lenovopress.lenovo.com/lp1611-thinksystem-sr675-v3-server",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "ai-server",
+      "companyId": "dell",
+      "role": "提供支持 GPU 加速与机架级部署的 PowerEdge AI 服务器。",
+      "products": [
+        "PowerEdge XE 系列 AI 服务器"
+      ],
+      "sources": [
+        {
+          "title": "Dell PowerEdge AI 服务器产品组合",
+          "url": "https://www.dell.com/en-us/shop/servers/sf/poweredge-ai-servers",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "ai-accelerator",
+      "companyId": "huawei",
+      "role": "华为集团的昇腾 AI 处理器与 Atlas 计算产品用于训练、推理等 AI 计算环节。",
+      "products": [
+        "昇腾 AI 处理器",
+        "Atlas AI 加速模块与板卡"
+      ],
+      "sources": [
+        {
+          "title": "华为昇腾：Atlas 人工智能计算解决方案",
+          "url": "https://e.huawei.com/cn/products/computing/ascend",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "ai-accelerator",
+      "companyId": "nvidia",
+      "role": "提供数据中心 Tensor Core GPU，用于 AI 模型训练、推理及高性能计算加速。",
+      "products": [
+        "H100 Tensor Core GPU"
+      ],
+      "sources": [
+        {
+          "title": "NVIDIA H100 Tensor Core GPU 产品页",
+          "url": "https://www.nvidia.com/en-us/data-center/h100/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "ai-optical",
+      "companyId": "innolight",
+      "role": "提供面向 AI 与云基础设施的高速光收发模块，用于光互联链路。",
+      "products": [
+        "高速光收发模块（10G 至 1.6T 产品组合）"
+      ],
+      "sources": [
+        {
+          "title": "中际旭创：公司及光互联产品介绍",
+          "url": "https://www.zj-innolight.com/en/about.html",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "ai-optical",
+      "companyId": "coherent",
+      "role": "提供 AI 数据中心的光收发模块与有源光缆，覆盖机内、机架及集群间互联。",
+      "products": [
+        "数据中心光收发模块",
+        "有源光缆"
+      ],
+      "sources": [
+        {
+          "title": "Coherent 数据中心光互联产品",
+          "url": "https://www.coherent.com/communications/datacom/datacenter",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "ai-cooling",
+      "companyId": "sugon-data-energy",
+      "role": "提供冷板、分液与换热单元组成的冷板液冷系统，移走服务器主要发热器件的热量。",
+      "products": [
+        "C7000 系列冷板液冷解决方案",
+        "液冷冷板套件",
+        "液冷换热单元"
+      ],
+      "sources": [
+        {
+          "title": "曙光数创 2026 半年度报告摘要：C7000 产品及控股股东",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-08-25/1225507629.PDF",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "ai-cooling",
+      "companyId": "vertiv",
+      "role": "提供冷却液分配单元，为芯片直接液冷回路提供换热与温控。",
+      "products": [
+        "CoolChip CDU 100",
+        "CoolChip CDU 冷却液分配单元"
+      ],
+      "sources": [
+        {
+          "title": "Vertiv CoolChip CDU 100 产品页",
+          "url": "https://go.vertiv.com/CoolChip-CDU-100",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Vertiv 扩充 CoolChip CDU 液冷产品组合",
+          "url": "https://investors.vertiv.com/news/news-details/2024/Vertiv-Expands-its-Global-Liquid-Cooling-Portfolio-with-the-Announcement-of-Two-New-High-Capacity-Coolant-Distribution-Units-to-Support-AI-Applications/default.aspx",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "semi-logic-component",
+      "companyId": "loongson",
+      "role": "设计通用 CPU，执行计算模组中的指令、运算与内存访问。",
+      "products": [
+        "龙芯 3C6000 系列 CPU"
+      ],
+      "sources": [
+        {
+          "title": "龙芯 3C6000 产品参数与手册",
+          "url": "https://loongson.cn/product/show?id=41",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "semi-logic-component",
+      "companyId": "amd",
+      "role": "提供 EPYC 服务器 CPU，作为计算系统的通用逻辑运算与主机处理器。",
+      "products": [
+        "EPYC 9005 系列 CPU"
+      ],
+      "sources": [
+        {
+          "title": "AMD EPYC 9005 系列服务器 CPU",
+          "url": "https://www.amd.com/en/products/processors/server/epyc/9005-series.html",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "semi-memory-component",
+      "companyId": "gigadevice",
+      "role": "提供 DDR4 DRAM 器件，作为计算与嵌入式系统的易失性工作存储。",
+      "products": [
+        "利基型 DDR4 DRAM"
+      ],
+      "sources": [
+        {
+          "title": "兆易创新：利基型 DDR4 产品",
+          "url": "https://www.gigadevice.com.cn/product/dram/ddr4",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "semi-memory-component",
+      "companyId": "micron",
+      "role": "提供 DDR5 SDRAM 器件，为计算系统提供数据和指令的工作存储。",
+      "products": [
+        "DDR5 SDRAM"
+      ],
+      "sources": [
+        {
+          "title": "Micron DDR5 SDRAM 产品",
+          "url": "https://www.micron.com/products/memory/dram-components/ddr5-sdram",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "semi-package",
+      "companyId": "jcet",
+      "role": "提供多芯片异构集成和高密度互连封装技术，连接逻辑、存储等芯片单元。",
+      "products": [
+        "XDFOI 多维异构先进封装"
+      ],
+      "sources": [
+        {
+          "title": "长电科技 2024 年一季度发布稿：XDFOI 量产及 HPC / HBM 应用",
+          "url": "https://www.prnewswire.co.uk/news-releases/jcet-q1-2024-revenue-and-net-profit-achieve-double-digit-year-on-year-growth-302126079.html",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "semi-package",
+      "companyId": "amkor",
+      "role": "提供倒装芯片封装工艺与封装方案，实现芯片到封装载体的电气互连。",
+      "products": [
+        "Flip Chip in Package",
+        "Flip Chip BGA"
+      ],
+      "sources": [
+        {
+          "title": "Amkor Flip Chip 封装技术",
+          "url": "https://amkor.com/technology/flip-chip/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "semi-substrate",
+      "companyId": "shennan-circuits",
+      "role": "提供芯片封装基板，支持处理器及存储芯片的封装互连。",
+      "products": [
+        "FC-CSP 封装基板",
+        "Memory-eMMC / eMCP 封装基板"
+      ],
+      "sources": [
+        {
+          "title": "深南电路：封装基板产品及应用",
+          "url": "https://www.scc.com.cn/scc/cpjs/SUB/index.html",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "semi-substrate",
+      "companyId": "ibiden",
+      "role": "提供 IC 封装基板，面向 PC、数据中心处理器和 AI GPU 的互连需求。",
+      "products": [
+        "Flip Chip IC Package Substrates"
+      ],
+      "sources": [
+        {
+          "title": "IBIDEN Flip Chip IC 封装基板",
+          "url": "https://www.ibiden.com/product/electronics/merchandise/fliptippkg/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "robot-body",
+      "companyId": "estun",
+      "role": "提供完成搬运、焊接与装配等动作的工业机器人整机；此处表示本体业务关联。",
+      "products": [
+        "ER 系列工业机器人"
+      ],
+      "sources": [
+        {
+          "title": "埃斯顿：ER 系列工业机器人",
+          "url": "https://www.estun.com/ercpfz/",
+          "checkedAt": "2026-10-19"
+        }
+      ],
+      "leadership": {
+        "type": "market-position",
+        "statement": "公司官网引用 MIR 数据称，2025 年其中国工业机器人市场份额为 10.6%，居当年中国市场销量首位；该表述为公司披露口径。",
+        "period": "2025 年中国工业机器人市场；公司引用 MIR 数据",
+        "sources": [
+          {
+            "title": "埃斯顿：公司简介与 A/H 股代码",
+            "url": "https://www.estun.com/about-us/",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      }
+    },
+    {
+      "componentId": "robot-body",
+      "companyId": "fanuc",
+      "role": "提供多关节工业机器人整机，R-2000 系列覆盖搬运、装配和点焊等工艺。",
+      "products": [
+        "R-2000/E 系列六轴机器人"
+      ],
+      "sources": [
+        {
+          "title": "FANUC：大型工业机器人 R-2000/E 系列",
+          "url": "https://www.fanuc.co.jp/en/product/robot/f_r_large.html",
+          "checkedAt": "2026-10-19"
+        }
+      ],
+      "leadership": {
+        "type": "commercial-scale",
+        "statement": "公司在 2025 年 12 月的换代发布中披露，R-2000 系列全球累计出货超过 35 万台。",
+        "period": "截至 2025 年 12 月产品换代发布时",
+        "sources": [
+          {
+            "title": "FANUC：R-2000 系列换代发布与累计出货量",
+            "url": "https://www.fanuc.co.jp/en/product/new_product/2025/202512_robot_r2000.html",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      }
+    },
+    {
+      "componentId": "robot-transmission",
+      "companyId": "leaderdrive",
+      "role": "提供由柔轮、刚轮、波发生器等构成的谐波减速器，用于精密传动；并不表示与图中其他厂商存在配套关系。",
+      "products": [
+        "LCS(G) 高转矩杯型谐波减速器",
+        "LHS(G) 帽型谐波减速器"
+      ],
+      "sources": [
+        {
+          "title": "Leaderdrive：谐波减速器产品系列",
+          "url": "https://www.leaderdrive.com/product/list-6-1.html",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "robot-transmission",
+      "companyId": "harmonic-drive-systems",
+      "role": "提供精密谐波减速器；官网展示六轴机器人与协作机器人等应用。",
+      "products": [
+        "CSG 系列杯型高转矩减速器"
+      ],
+      "sources": [
+        {
+          "title": "Harmonic Drive Systems：CSG 杯型高转矩减速器",
+          "url": "https://www.hds.co.jp/english/products/detail.html?pdid=01hd01_csg-2a",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Harmonic Drive Systems：六轴机器人等应用",
+          "url": "https://www.hds.co.jp/products/applications/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "robot-drive",
+      "companyId": "inovance",
+      "role": "提供交流伺服驱动器，接收控制指令并调节电机运动；关联表示驱动层产品能力，不承诺适配本示意图中的任一整机。",
+      "products": [
+        "SV660 通用交流伺服驱动器"
+      ],
+      "sources": [
+        {
+          "title": "汇川技术：SV660 通用交流伺服驱动器",
+          "url": "https://www.inovance.com/global/content/details_815_403229.html",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "robot-drive",
+      "companyId": "yaskawa",
+      "role": "提供伺服放大器与旋转伺服电机，构成运动驱动链；具体机械臂型号仍需单独选型。",
+      "products": [
+        "Sigma-7 SERVOPACK",
+        "Sigma-7 旋转伺服电机"
+      ],
+      "sources": [
+        {
+          "title": "Yaskawa：Sigma-7 伺服驱动器与电机",
+          "url": "https://www.yaskawa.com/products/motion/sigma-7-servo-products/",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "安川电机：公司资料",
+          "url": "https://www.yaskawa-global.com/company/profile/data",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "robot-sensing",
+      "companyId": "hikrobot",
+      "role": "提供机器人视觉引导平台，通过视觉流程与位姿校正支持机器人定位和抓取。",
+      "products": [
+        "机器人视觉引导平台"
+      ],
+      "sources": [
+        {
+          "title": "海康机器人：机器人视觉引导平台官方手册",
+          "url": "https://pinfo.hikrobotics.com/hkws/unzip/20251112184605_88194_doc/index.html",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "海康机器人：机器视觉与机器人产品",
+          "url": "https://www.hikrobotics.com/cn/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "robot-sensing",
+      "companyId": "cognex",
+      "role": "提供 3D 机器视觉系统，用于目标定位与机器人抓放引导。",
+      "products": [
+        "3D-A5000 视觉系统",
+        "3D 机器人引导"
+      ],
+      "sources": [
+        {
+          "title": "Cognex：3D 机器视觉与机器人引导",
+          "url": "https://www.cognex.com/products/machine-vision/3d-laser-profilers",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "robot-control",
+      "companyId": "estun",
+      "role": "提供机器人控制柜，承担机器人控制与通信集成；示意对应控制系统层。",
+      "products": [
+        "ERC3-C1 系列机器人控制柜"
+      ],
+      "sources": [
+        {
+          "title": "埃斯顿：ERC3-C1 系列机器人控制柜手册",
+          "url": "https://en.estun.com/static/upload/file/20241113/1731462904426335.pdf",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "robot-control",
+      "companyId": "fanuc",
+      "role": "提供机器人控制器及示教编程入口，用于机器人运动和作业控制。",
+      "products": [
+        "R-50iA 控制器",
+        "R-30iB Plus 控制器"
+      ],
+      "sources": [
+        {
+          "title": "FANUC：机器人控制器产品",
+          "url": "https://www.fanuc.eu/uk-en/robot-controller",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "pv-cell",
+      "companyId": "tongwei",
+      "role": "通威股份的高效电池业务由通威太阳能等业务主体开展；电池片负责光电转换。证券代码属于通威股份，不是子公司的代码。",
+      "products": [
+        "TNC-M10 双面电池",
+        "TNC-G12R 双面电池"
+      ],
+      "sources": [
+        {
+          "title": "通威股份：高效太阳能电池产品与业务主体",
+          "url": "https://www.tongwei.cn/cell.html",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "pv-cell",
+      "companyId": "hanwha-solutions",
+      "role": "Hanwha Solutions 的 Qcells 部门研发和生产光伏电池，以 Q.ANTUM NEO 等技术进行光电转换。",
+      "products": [
+        "Q.ANTUM NEO N 型电池"
+      ],
+      "sources": [
+        {
+          "title": "韩华集团：Hanwha Solutions Qcells 部门",
+          "url": "https://www.hanwha.com/companies/hanwha-solutions-qcells-division.do",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Qcells：Q.ANTUM NEO 电池技术",
+          "url": "https://us.qcells.com/energy-harvesting-technology/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "pv-module",
+      "companyId": "tongwei",
+      "role": "通威股份的组件业务由通威太阳能科技等业务主体开展，将电池与封装结构组合成发电组件。",
+      "products": [
+        "TNC 3.0-G12R-66 组件",
+        "TNC 3.0-G12-66 组件"
+      ],
+      "sources": [
+        {
+          "title": "通威股份：TNC 组件技术白皮书目录与业务主体",
+          "url": "https://www.tongwei.cn/download.html?typeid=36",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "通威：TNC 3.0 组件性能与型号",
+          "url": "https://www.tongwei.com/news/detail/170136.html",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "pv-module",
+      "companyId": "hanwha-solutions",
+      "role": "Hanwha Solutions 的 Qcells 部门提供光伏组件；本图展示电池封装后的组件层。",
+      "products": [
+        "Q.TRON BLK M-G2+ 光伏组件"
+      ],
+      "sources": [
+        {
+          "title": "韩华集团：Hanwha Solutions Qcells 部门",
+          "url": "https://www.hanwha.com/companies/hanwha-solutions-qcells-division.do",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Qcells：Q.TRON BLK M-G2+ 光伏组件",
+          "url": "https://us.qcells.com/q-tron-blk-m-g2/",
+          "checkedAt": "2026-10-19"
+        }
+      ],
+      "leadership": {
+        "type": "commercial-scale",
+        "statement": "Qcells 在 2026 年 6 月公告中披露，Cartersville 组件装配已达当时满产状态，每日生产约 16,700 块组件；不将后续规划产能视为已实现。",
+        "period": "2026 年 6 月 9 日公告披露的产线状态",
+        "sources": [
+          {
+            "title": "Qcells：2026 年 6 月美国电池产线投产公告",
+            "url": "https://us.qcells.com/blog/qcells-begins-solar-cell-manufacturing-at-americas-first-and-only-vertically-integrated-solar-factory-in-cartersville-georgia/",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      }
+    },
+    {
+      "componentId": "pv-mount",
+      "companyId": "arctech",
+      "role": "提供支撑光伏组件并调整朝向的跟踪支架，产品覆盖单轴及复杂地形场景。",
+      "products": [
+        "SkyLine II 单轴跟踪系统",
+        "SkyLine II All-Terrain"
+      ],
+      "sources": [
+        {
+          "title": "中信博：SkyLine II 单轴跟踪支架",
+          "url": "https://en.arctechsolar.com/skyline-ii-series/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "pv-mount",
+      "companyId": "nextpower",
+      "role": "提供 NX Horizon 太阳能跟踪支架。公司已由 Nextracker 更名 Nextpower，旧产品资料沿用当时名称。",
+      "products": [
+        "NX Horizon 智能太阳能跟踪系统"
+      ],
+      "sources": [
+        {
+          "title": "Nextracker/Nextpower：NX Horizon 跟踪系统规格书",
+          "url": "https://info.nextracker.com/hubfs/Datasheets/nxt_nx_horizon_datasheet_2022.pdf",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Nextpower：更名公告、Nasdaq 代码及累计交付规模",
+          "url": "https://nextpower.com/post/press-release/nextracker-rebrands-as-nextpower-integrated-power-technology-innovator?locale=en-US",
+          "checkedAt": "2026-10-19"
+        }
+      ],
+      "leadership": {
+        "type": "commercial-scale",
+        "statement": "公司在 2025 年 11 月更名公告中披露，其系统全球累计交付规模超过 150 GW；此为公司口径，不等同于当年销量。",
+        "period": "截至 2025 年 11 月 12 日公告时的累计交付",
+        "sources": [
+          {
+            "title": "Nextpower：更名公告、Nasdaq 代码及累计交付规模",
+            "url": "https://nextpower.com/post/press-release/nextracker-rebrands-as-nextpower-integrated-power-technology-innovator?locale=en-US",
+            "checkedAt": "2026-10-19"
+          }
+        ]
+      }
+    },
+    {
+      "componentId": "pv-inverter-grid",
+      "companyId": "sungrow",
+      "role": "提供光伏组串逆变器，把组件输出的直流电转换为可并网交流电，并支持电网运行要求。",
+      "products": [
+        "SG350HX 组串逆变器"
+      ],
+      "sources": [
+        {
+          "title": "阳光电源：SG350HX 组串逆变器规格书",
+          "url": "https://en.sungrowpower.com/upload/file/20210707/DS_20210629_SG350HX_V1.1.pdf",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "pv-inverter-grid",
+      "companyId": "sma",
+      "role": "提供 PEAK3 光伏逆变器，并通过 Data Manager M 实现电站监测、控制及并网参数管理。",
+      "products": [
+        "Sunny Highpower PEAK3",
+        "Data Manager M"
+      ],
+      "sources": [
+        {
+          "title": "SMA：Sunny Highpower PEAK3 与并网管理",
+          "url": "https://www.sma-america.com/products/solarinverters/sunny-highpower-peak3",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "bio-sample",
+      "companyId": "mgi-tech",
+      "role": "以自动化设备执行测序文库制备和文库转换，衔接上游样本与测序流程。",
+      "products": [
+        "MGISP-100 自动样本制备系统",
+        "MGIEasy Universal Library Conversion Kit"
+      ],
+      "sources": [
+        {
+          "title": "MGI：MGISP-100 自动文库制备与转换",
+          "url": "https://en.mgitech.cn/News/info/id/324",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "bio-sample",
+      "companyId": "illumina",
+      "role": "提供 DNA 文库制备试剂，通过片段化、接头添加及纯化形成可上机文库。",
+      "products": [
+        "Illumina DNA Prep"
+      ],
+      "sources": [
+        {
+          "title": "Illumina：DNA Prep 文库制备工作原理",
+          "url": "https://support-docs.illumina.com/LP/IlluminaDNAPrep/Content/LP/Illumina_DNA/DNA-Prep/Overview_IDP.htm",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "bio-sequencer",
+      "companyId": "mgi-tech",
+      "role": "提供基于 DNBSEQ 技术的测序装置；G99 支持双芯片运行和测序数据输出。",
+      "products": [
+        "DNBSEQ-G99"
+      ],
+      "sources": [
+        {
+          "title": "MGI：DNBSEQ-G99 测序仪及自研光学设备",
+          "url": "https://en.mgitech.cn/News/info/id/340",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "bio-sequencer",
+      "companyId": "illumina",
+      "role": "提供集成测序化学、流动槽和运行控制的高通量测序系统。",
+      "products": [
+        "NovaSeq X",
+        "NovaSeq X Plus"
+      ],
+      "sources": [
+        {
+          "title": "Illumina：NovaSeq X 系统概览",
+          "url": "https://support-docs.illumina.com/IN/NovaSeqX/Content/SystemOverview.htm",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "bio-signal",
+      "companyId": "mgi-tech",
+      "role": "在测序系统内集成光学成像能力；官方资料展示激光、高分辨率相机，并披露 G99 的自研光学设备。",
+      "products": [
+        "DNBSEQ 光学成像系统",
+        "DNBSEQ-G99 自研光学设备"
+      ],
+      "sources": [
+        {
+          "title": "MGI：测序实验室方案（激光与高分辨率相机示意）",
+          "url": "https://en.mgitech.cn/Uploads/Temp/picture/20191016/5da6d33c61c81.pdf",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "MGI：DNBSEQ-G99 测序仪及自研光学设备",
+          "url": "https://en.mgitech.cn/News/info/id/340",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "bio-signal",
+      "companyId": "illumina",
+      "role": "利用蓝、绿双通道采集测序簇图像，并由 RTA4 将图像信号转换为碱基和质量评分。",
+      "products": [
+        "NovaSeq X 双通道成像系统",
+        "Real-Time Analysis 4（RTA4）"
+      ],
+      "sources": [
+        {
+          "title": "Illumina：NovaSeq X 双通道成像与测序分析",
+          "url": "https://support-docs.illumina.com/IN/NovaSeqX/Content/SequencingOverview.htm",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "bio-analysis",
+      "companyId": "mgi-tech",
+      "role": "提供测序数据管理和生物信息分析平台；ZTRON Pro 支持全基因组分析流程。",
+      "products": [
+        "ZTRON Pro",
+        "ZLIMS Pro"
+      ],
+      "sources": [
+        {
+          "title": "MGI：ZTRON Lite / Pro 功能说明",
+          "url": "https://global-mgitech.com/faqs/ztron-faq/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "bio-analysis",
+      "companyId": "illumina",
+      "role": "提供测序二级分析软件，支持序列比对等分析流程及本地或云端部署。",
+      "products": [
+        "DRAGEN Bio-IT Platform",
+        "DRAGEN 二级分析软件"
+      ],
+      "sources": [
+        {
+          "title": "Illumina：DRAGEN 分析软件及支持功能",
+          "url": "https://www.illumina.com/products/by-type/informatics-products/dragen-secondary-analysis/order.html",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Illumina：NovaSeq X 双通道成像与测序分析",
+          "url": "https://support-docs.illumina.com/IN/NovaSeqX/Content/SequencingOverview.htm",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "launch-propulsion",
+      "companyId": "landspace",
+      "role": "研制液氧甲烷发动机，为自有朱雀系列运载火箭提供动力。",
+      "products": [
+        "天鹊 TQ-12A",
+        "朱雀三号天鹊系列动力系统"
+      ],
+      "sources": [
+        {
+          "title": "蓝箭航天：朱雀系列火箭与天鹊发动机",
+          "url": "https://www.landspace.com/product.html?mao=1",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "launch-propulsion",
+      "companyId": "rocket-lab",
+      "role": "集团为 Electron 自研制造 Rutherford 发动机，采用电泵输送液氧与煤油。",
+      "products": [
+        "Rutherford 海平面发动机",
+        "Rutherford 真空发动机"
+      ],
+      "sources": [
+        {
+          "title": "Rocket Lab：Electron 载荷用户指南（整箭、贮箱、结构、航电与整流罩）",
+          "url": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Rocket Lab：Electron 产品",
+          "url": "https://rocketlabcorp.com/launch/electron/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "launch-tanks",
+      "companyId": "landspace",
+      "role": "披露朱雀三号超薄壁不锈钢贮箱的结构设计与激光焊接技术，承担推进剂储存结构的研制。",
+      "products": [
+        "朱雀三号不锈钢推进剂贮箱"
+      ],
+      "sources": [
+        {
+          "title": "蓝箭航天：招股说明书申报稿，大直径超薄壁贮箱技术（1-1-241）",
+          "url": "https://static.sse.com.cn/stock/disclosure/announcement/c/202512/002174_20251231_1QK0.pdf",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "launch-tanks",
+      "companyId": "rocket-lab",
+      "role": "集团内部制造 Electron 碳复合材料推进剂贮箱，一、二级采用共底贮箱。",
+      "products": [
+        "Electron 液氧 / 煤油共底贮箱"
+      ],
+      "sources": [
+        {
+          "title": "Rocket Lab：Electron 载荷用户指南（整箭、贮箱、结构、航电与整流罩）",
+          "url": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "launch-structure",
+      "companyId": "landspace",
+      "role": "拥有液体运载火箭结构系统研制能力；朱雀三号采用不锈钢箭体。",
+      "products": [
+        "朱雀三号不锈钢箭体",
+        "运载火箭结构系统"
+      ],
+      "sources": [
+        {
+          "title": "蓝箭航天：技术路线与结构系统研制能力",
+          "url": "https://www.landspace.com/wisdom.html?mao=1",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "蓝箭航天：朱雀系列火箭与天鹊发动机",
+          "url": "https://www.landspace.com/product.html?mao=1",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "launch-structure",
+      "companyId": "rocket-lab",
+      "role": "集团制造 Electron 碳复合材料箭体及相关承力结构。",
+      "products": [
+        "Electron 碳复合材料箭体结构"
+      ],
+      "sources": [
+        {
+          "title": "Rocket Lab：Electron 载荷用户指南（整箭、贮箱、结构、航电与整流罩）",
+          "url": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Rocket Lab：Electron 产品",
+          "url": "https://rocketlabcorp.com/launch/electron/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "launch-avionics",
+      "companyId": "landspace",
+      "role": "在朱雀三号试验箭上开展箭载航电设备与联合制导控制验证。",
+      "products": [
+        "朱雀三号箭载航电设备",
+        "可重复使用火箭制导控制系统"
+      ],
+      "sources": [
+        {
+          "title": "蓝箭航天：2024 年十公里级垂直起降飞行试验及航电验证",
+          "url": "https://www.landspace.com/news-detail.html?itemid=57",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "launch-avionics",
+      "companyId": "rocket-lab",
+      "role": "集团自研、组装与测试飞行计算机和航电系统，使用 FPGA 计算节点。",
+      "products": [
+        "Electron 飞行计算机",
+        "Electron 航电系统"
+      ],
+      "sources": [
+        {
+          "title": "Rocket Lab：Electron 载荷用户指南（整箭、贮箱、结构、航电与整流罩）",
+          "url": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "launch-payload",
+      "companyId": "landspace",
+      "role": "在朱雀系列整箭中集成整流罩，为任务载荷提供包络空间；此处代表整箭集成能力。",
+      "products": [
+        "朱雀三号整流罩",
+        "朱雀二号改进型整流罩"
+      ],
+      "sources": [
+        {
+          "title": "蓝箭航天：朱雀系列火箭与天鹊发动机",
+          "url": "https://www.landspace.com/product.html?mao=1",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "componentId": "launch-payload",
+      "companyId": "rocket-lab",
+      "role": "集团 Electron 使用复合材料分瓣式整流罩，为载荷提供防护和环境控制。",
+      "products": [
+        "Electron 载荷整流罩"
+      ],
+      "sources": [
+        {
+          "title": "Rocket Lab：Electron 载荷用户指南（整箭、贮箱、结构、航电与整流罩）",
+          "url": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    }
+  ],
+  "systems": [
+    {
+      "id": "ai-compute",
+      "nodeId": "ai",
+      "title": "算力中心",
+      "scope": "从计算节点、加速芯片到高速互联与散热，理解 AI 算力基础设施。基础模型与智能体仍在完整赛道中浏览。",
+      "diagramAsset": "assets/system-ai.png",
+      "sources": [
+        {
+          "title": "联想 ThinkSystem SR675 V3 / SR675i V3 产品指南",
+          "url": "https://lenovopress.lenovo.com/lp1611-thinksystem-sr675-v3-server",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "华为昇腾：Atlas 人工智能计算解决方案",
+          "url": "https://e.huawei.com/cn/products/computing/ascend",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "中际旭创：公司及光互联产品介绍",
+          "url": "https://www.zj-innolight.com/en/about.html",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "曙光数创 2026 半年度报告摘要：C7000 产品及控股股东",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-08-25/1225507629.PDF",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "semiconductor-module",
+      "nodeId": "semiconductors",
+      "title": "计算模组",
+      "scope": "逻辑、存储、封装与基板构成代表性计算模组。制造和光刻属于相关流程，不是装配零件。",
+      "diagramAsset": "assets/system-semiconductors.png",
+      "sources": [
+        {
+          "title": "龙芯 3C6000 产品参数与手册",
+          "url": "https://loongson.cn/product/show?id=41",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "兆易创新：利基型 DDR4 产品",
+          "url": "https://www.gigadevice.com.cn/product/dram/ddr4",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "长电科技 2024 年一季度发布稿：XDFOI 量产及 HPC / HBM 应用",
+          "url": "https://www.prnewswire.co.uk/news-releases/jcet-q1-2024-revenue-and-net-profit-achieve-double-digit-year-on-year-growth-302126079.html",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "深南电路：封装基板产品及应用",
+          "url": "https://www.scc.com.cn/scc/cpjs/SUB/index.html",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "industrial-arm",
+      "nodeId": "robotics",
+      "title": "工业机械臂系统",
+      "scope": "机械结构与传动、驱动、感知及控制协同。服务和医疗机器人仍是并列赛道。",
+      "diagramAsset": "assets/system-robotics.png",
+      "sources": [
+        {
+          "title": "埃斯顿：ER 系列工业机器人",
+          "url": "https://www.estun.com/ercpfz/",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Leaderdrive：谐波减速器产品系列",
+          "url": "https://www.leaderdrive.com/product/list-6-1.html",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "汇川技术：SV660 通用交流伺服驱动器",
+          "url": "https://www.inovance.com/global/content/details_815_403229.html",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "海康机器人：机器人视觉引导平台官方手册",
+          "url": "https://pinfo.hikrobotics.com/hkws/unzip/20251112184605_88194_doc/index.html",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "埃斯顿：ERC3-C1 系列机器人控制柜手册",
+          "url": "https://en.estun.com/static/upload/file/20241113/1731462904426335.pdf",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "photovoltaic-system",
+      "nodeId": "new-energy",
+      "title": "光伏发电系统",
+      "scope": "从电池到组件、安装结构与电力转换。风电和储能保留独立入口。",
+      "diagramAsset": "assets/system-new-energy.png",
+      "sources": [
+        {
+          "title": "通威股份：高效太阳能电池产品与业务主体",
+          "url": "https://www.tongwei.cn/cell.html",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "通威股份：TNC 组件技术白皮书目录与业务主体",
+          "url": "https://www.tongwei.cn/download.html?typeid=36",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "中信博：SkyLine II 单轴跟踪支架",
+          "url": "https://en.arctechsolar.com/skyline-ii-series/",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "阳光电源：SG350HX 组串逆变器规格书",
+          "url": "https://en.sungrowpower.com/upload/file/20210707/DS_20210629_SG350HX_V1.1.pdf",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "sequencing-workstation",
+      "nodeId": "biotechnology",
+      "title": "测序工作站",
+      "scope": "以光学检测路线示意样本处理、测序、信号采集与分析工作流。纳米孔等其他路线仍在完整赛道中浏览。",
+      "diagramAsset": "assets/system-biotechnology.png",
+      "sources": [
+        {
+          "title": "MGI：MGISP-100 自动文库制备与转换",
+          "url": "https://en.mgitech.cn/News/info/id/324",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "MGI：DNBSEQ-G99 测序仪及自研光学设备",
+          "url": "https://en.mgitech.cn/News/info/id/340",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "MGI：测序实验室方案（激光与高分辨率相机示意）",
+          "url": "https://en.mgitech.cn/Uploads/Temp/picture/20191016/5da6d33c61c81.pdf",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "MGI：ZTRON Lite / Pro 功能说明",
+          "url": "https://global-mgitech.com/faqs/ztron-faq/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "launch-vehicle",
+      "nodeId": "aerospace",
+      "title": "运载火箭系统",
+      "scope": "推进、贮箱、结构、航电与载荷舱构成代表性发射系统。图示不对应某一厂商型号。",
+      "diagramAsset": "assets/system-aerospace.png",
+      "sources": [
+        {
+          "title": "蓝箭航天：朱雀系列火箭与天鹊发动机",
+          "url": "https://www.landspace.com/product.html?mao=1",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "蓝箭航天：招股说明书申报稿，大直径超薄壁贮箱技术（1-1-241）",
+          "url": "https://static.sse.com.cn/stock/disclosure/announcement/c/202512/002174_20251231_1QK0.pdf",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "蓝箭航天：技术路线与结构系统研制能力",
+          "url": "https://www.landspace.com/wisdom.html?mao=1",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "蓝箭航天：2024 年十公里级垂直起降飞行试验及航电验证",
+          "url": "https://www.landspace.com/news-detail.html?itemid=57",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "id": "ai-server",
+      "systemId": "ai-compute",
+      "title": "服务器",
+      "summary": "承载计算、存储与高速连接的计算节点。",
+      "role": "将加速器与内存、网络和供电组织成可运行的计算系统。",
+      "kind": "physical",
+      "nodeIds": [
+        "ai"
+      ],
+      "sources": [
+        {
+          "title": "联想 ThinkSystem SR675 V3 / SR675i V3 产品指南",
+          "url": "https://lenovopress.lenovo.com/lp1611-thinksystem-sr675-v3-server",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Dell PowerEdge AI 服务器产品组合",
+          "url": "https://www.dell.com/en-us/shop/servers/sf/poweredge-ai-servers",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "ai-accelerator",
+      "systemId": "ai-compute",
+      "title": "AI 加速芯片",
+      "summary": "面向训练与推理的并行计算器件。",
+      "role": "执行密集张量运算，配合存储和互联支撑模型工作负载。",
+      "kind": "physical",
+      "nodeIds": [
+        "ai"
+      ],
+      "sources": [
+        {
+          "title": "华为昇腾：Atlas 人工智能计算解决方案",
+          "url": "https://e.huawei.com/cn/products/computing/ascend",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "NVIDIA H100 Tensor Core GPU 产品页",
+          "url": "https://www.nvidia.com/en-us/data-center/h100/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "ai-optical",
+      "systemId": "ai-compute",
+      "title": "光互联",
+      "summary": "在计算节点间传输数据的光通信器件。",
+      "role": "以光电转换和高速链路连接分布式计算资源。",
+      "kind": "physical",
+      "nodeIds": [
+        "ai"
+      ],
+      "sources": [
+        {
+          "title": "中际旭创：公司及光互联产品介绍",
+          "url": "https://www.zj-innolight.com/en/about.html",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Coherent 数据中心光互联产品",
+          "url": "https://www.coherent.com/communications/datacom/datacenter",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "ai-cooling",
+      "systemId": "ai-compute",
+      "title": "液冷",
+      "summary": "通过冷板、流体与换热装置带走热量。",
+      "role": "支持高功率密度计算设备的热管理；图示为冷板路线。",
+      "kind": "physical",
+      "nodeIds": [
+        "ai"
+      ],
+      "sources": [
+        {
+          "title": "曙光数创 2026 半年度报告摘要：C7000 产品及控股股东",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-08-25/1225507629.PDF",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Vertiv CoolChip CDU 100 产品页",
+          "url": "https://go.vertiv.com/CoolChip-CDU-100",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "semi-logic-component",
+      "systemId": "semiconductor-module",
+      "title": "逻辑芯片",
+      "summary": "执行指令与计算的集成电路。",
+      "role": "提供系统的运算和控制能力。",
+      "kind": "physical",
+      "nodeIds": [
+        "semi-logic",
+        "semi-transistors"
+      ],
+      "sources": [
+        {
+          "title": "龙芯 3C6000 产品参数与手册",
+          "url": "https://loongson.cn/product/show?id=41",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "AMD EPYC 9005 系列服务器 CPU",
+          "url": "https://www.amd.com/en/products/processors/server/epyc/9005-series.html",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "semi-memory-component",
+      "systemId": "semiconductor-module",
+      "title": "存储",
+      "summary": "保存运行数据与程序的存储器件。",
+      "role": "向计算单元提供数据，容量、带宽与延迟影响系统表现。",
+      "kind": "physical",
+      "nodeIds": [
+        "semi-memory",
+        "semi-dram"
+      ],
+      "sources": [
+        {
+          "title": "兆易创新：利基型 DDR4 产品",
+          "url": "https://www.gigadevice.com.cn/product/dram/ddr4",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Micron DDR5 SDRAM 产品",
+          "url": "https://www.micron.com/products/memory/dram-components/ddr5-sdram",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "semi-package",
+      "systemId": "semiconductor-module",
+      "title": "封装",
+      "summary": "连接、保护芯片并提供电气与热通路。",
+      "role": "将裸芯片与系统接口结合；示意图不限定具体封装工艺。",
+      "kind": "physical",
+      "nodeIds": [
+        "semiconductors"
+      ],
+      "sources": [
+        {
+          "title": "长电科技 2024 年一季度发布稿：XDFOI 量产及 HPC / HBM 应用",
+          "url": "https://www.prnewswire.co.uk/news-releases/jcet-q1-2024-revenue-and-net-profit-achieve-double-digit-year-on-year-growth-302126079.html",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Amkor Flip Chip 封装技术",
+          "url": "https://amkor.com/technology/flip-chip/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "semi-substrate",
+      "systemId": "semiconductor-module",
+      "title": "基板",
+      "summary": "承载芯片封装及电气连接的基础载体。",
+      "role": "将细间距连接引出至系统，支持信号与电源分配。",
+      "kind": "physical",
+      "nodeIds": [
+        "semiconductors"
+      ],
+      "sources": [
+        {
+          "title": "深南电路：封装基板产品及应用",
+          "url": "https://www.scc.com.cn/scc/cpjs/SUB/index.html",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "IBIDEN Flip Chip IC 封装基板",
+          "url": "https://www.ibiden.com/product/electronics/merchandise/fliptippkg/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "robot-body",
+      "systemId": "industrial-arm",
+      "title": "机械本体",
+      "summary": "承载运动链条的连杆、关节与底座。",
+      "role": "决定作业空间及承载结构；图中其他模块按功能分组。",
+      "kind": "physical",
+      "nodeIds": [
+        "robot-industrial",
+        "robot-multi-axis"
+      ],
+      "sources": [
+        {
+          "title": "埃斯顿：ER 系列工业机器人",
+          "url": "https://www.estun.com/ercpfz/",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "FANUC：大型工业机器人 R-2000/E 系列",
+          "url": "https://www.fanuc.co.jp/en/product/robot/f_r_large.html",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "robot-transmission",
+      "systemId": "industrial-arm",
+      "title": "关节传动",
+      "summary": "将电机运动转换为关节输出的精密机构。",
+      "role": "减速和传递转矩，影响运动精度与刚度。",
+      "kind": "physical",
+      "nodeIds": [
+        "robot-industrial"
+      ],
+      "sources": [
+        {
+          "title": "Leaderdrive：谐波减速器产品系列",
+          "url": "https://www.leaderdrive.com/product/list-6-1.html",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Harmonic Drive Systems：CSG 杯型高转矩减速器",
+          "url": "https://www.hds.co.jp/english/products/detail.html?pdid=01hd01_csg-2a",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "robot-drive",
+      "systemId": "industrial-arm",
+      "title": "伺服驱动",
+      "summary": "电机与驱动器将控制指令转化为运动。",
+      "role": "形成受控的位置、速度和转矩输出。",
+      "kind": "physical",
+      "nodeIds": [
+        "robot-industrial"
+      ],
+      "sources": [
+        {
+          "title": "汇川技术：SV660 通用交流伺服驱动器",
+          "url": "https://www.inovance.com/global/content/details_815_403229.html",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Yaskawa：Sigma-7 伺服驱动器与电机",
+          "url": "https://www.yaskawa.com/products/motion/sigma-7-servo-products/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "robot-sensing",
+      "systemId": "industrial-arm",
+      "title": "感知",
+      "summary": "获取视觉、位置或力等环境和设备信息。",
+      "role": "为定位、识别与闭环控制提供输入。",
+      "kind": "physical",
+      "nodeIds": [
+        "robot-sensing"
+      ],
+      "sources": [
+        {
+          "title": "海康机器人：机器人视觉引导平台官方手册",
+          "url": "https://pinfo.hikrobotics.com/hkws/unzip/20251112184605_88194_doc/index.html",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "海康机器人：机器视觉与机器人产品",
+          "url": "https://www.hikrobotics.com/cn/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "robot-control",
+      "systemId": "industrial-arm",
+      "title": "控制",
+      "summary": "执行运动规划与设备协调的控制系统。",
+      "role": "协调多轴运动、任务程序及设备接口。",
+      "kind": "functional",
+      "nodeIds": [
+        "robot-industrial",
+        "robot-multi-axis"
+      ],
+      "sources": [
+        {
+          "title": "埃斯顿：ERC3-C1 系列机器人控制柜手册",
+          "url": "https://en.estun.com/static/upload/file/20241113/1731462904426335.pdf",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "FANUC：机器人控制器产品",
+          "url": "https://www.fanuc.eu/uk-en/robot-controller",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "pv-cell",
+      "systemId": "photovoltaic-system",
+      "title": "光伏电池",
+      "summary": "将入射光转化为电能的基本单元。",
+      "role": "提供光电转换能力；材料和工艺路线各有差异。",
+      "kind": "physical",
+      "nodeIds": [
+        "energy-pv-cells"
+      ],
+      "sources": [
+        {
+          "title": "通威股份：高效太阳能电池产品与业务主体",
+          "url": "https://www.tongwei.cn/cell.html",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "韩华集团：Hanwha Solutions Qcells 部门",
+          "url": "https://www.hanwha.com/companies/hanwha-solutions-qcells-division.do",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "pv-module",
+      "systemId": "photovoltaic-system",
+      "title": "光伏组件",
+      "summary": "将电池互联并封装成可部署的发电单元。",
+      "role": "提供电气输出及户外环境防护。",
+      "kind": "physical",
+      "nodeIds": [
+        "energy-solar"
+      ],
+      "sources": [
+        {
+          "title": "通威股份：TNC 组件技术白皮书目录与业务主体",
+          "url": "https://www.tongwei.cn/download.html?typeid=36",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "通威：TNC 3.0 组件性能与型号",
+          "url": "https://www.tongwei.com/news/detail/170136.html",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "pv-mount",
+      "systemId": "photovoltaic-system",
+      "title": "安装支架",
+      "summary": "固定或调整光伏组件位置的结构。",
+      "role": "支撑组件并匹配安装环境；固定与跟踪结构均属于该环节。",
+      "kind": "physical",
+      "nodeIds": [
+        "energy-solar"
+      ],
+      "sources": [
+        {
+          "title": "中信博：SkyLine II 单轴跟踪支架",
+          "url": "https://en.arctechsolar.com/skyline-ii-series/",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Nextracker/Nextpower：NX Horizon 跟踪系统规格书",
+          "url": "https://info.nextracker.com/hubfs/Datasheets/nxt_nx_horizon_datasheet_2022.pdf",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "pv-inverter-grid",
+      "systemId": "photovoltaic-system",
+      "title": "逆变与并网",
+      "summary": "将直流发电转换并接入交流系统。",
+      "role": "承担电能变换、控制及并网接口功能。",
+      "kind": "physical",
+      "nodeIds": [
+        "energy-solar"
+      ],
+      "sources": [
+        {
+          "title": "阳光电源：SG350HX 组串逆变器规格书",
+          "url": "https://en.sungrowpower.com/upload/file/20210707/DS_20210629_SG350HX_V1.1.pdf",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "SMA：Sunny Highpower PEAK3 与并网管理",
+          "url": "https://www.sma-america.com/products/solarinverters/sunny-highpower-peak3",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "bio-sample",
+      "systemId": "sequencing-workstation",
+      "title": "样本处理",
+      "summary": "处理样本并准备适于测序的材料。",
+      "role": "组织移液、纯化及文库准备等前处理步骤。",
+      "kind": "physical",
+      "nodeIds": [
+        "bio-sequencing"
+      ],
+      "sources": [
+        {
+          "title": "MGI：MGISP-100 自动文库制备与转换",
+          "url": "https://en.mgitech.cn/News/info/id/324",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Illumina：DNA Prep 文库制备工作原理",
+          "url": "https://support-docs.illumina.com/LP/IlluminaDNAPrep/Content/LP/Illumina_DNA/DNA-Prep/Overview_IDP.htm",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "bio-sequencer",
+      "systemId": "sequencing-workstation",
+      "title": "测序装置",
+      "summary": "执行测序反应与流体等控制的设备。",
+      "role": "按具体技术路线读取生物分子的序列信息。",
+      "kind": "physical",
+      "nodeIds": [
+        "bio-sequencing"
+      ],
+      "sources": [
+        {
+          "title": "MGI：DNBSEQ-G99 测序仪及自研光学设备",
+          "url": "https://en.mgitech.cn/News/info/id/340",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Illumina：NovaSeq X 系统概览",
+          "url": "https://support-docs.illumina.com/IN/NovaSeqX/Content/SystemOverview.htm",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "bio-signal",
+      "systemId": "sequencing-workstation",
+      "title": "信号采集",
+      "summary": "获取测序过程产生的可测信号。",
+      "role": "本图示意光学检测；不同技术路线的传感架构不同。",
+      "kind": "physical",
+      "nodeIds": [
+        "bio-sequencing"
+      ],
+      "sources": [
+        {
+          "title": "MGI：测序实验室方案（激光与高分辨率相机示意）",
+          "url": "https://en.mgitech.cn/Uploads/Temp/picture/20191016/5da6d33c61c81.pdf",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "MGI：DNBSEQ-G99 测序仪及自研光学设备",
+          "url": "https://en.mgitech.cn/News/info/id/340",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "bio-analysis",
+      "systemId": "sequencing-workstation",
+      "title": "数据分析",
+      "summary": "把原始信号与读段转化为可用分析结果。",
+      "role": "组织碱基识别、比对和下游分析，是软件功能模块。",
+      "kind": "functional",
+      "nodeIds": [
+        "bio-sequencing"
+      ],
+      "sources": [
+        {
+          "title": "MGI：ZTRON Lite / Pro 功能说明",
+          "url": "https://global-mgitech.com/faqs/ztron-faq/",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Illumina：DRAGEN 分析软件及支持功能",
+          "url": "https://www.illumina.com/products/by-type/informatics-products/dragen-secondary-analysis/order.html",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "launch-propulsion",
+      "systemId": "launch-vehicle",
+      "title": "推进",
+      "summary": "产生推力的发动机及配套系统。",
+      "role": "以推进剂供给、能量转换和喷管形成运载动力。",
+      "kind": "physical",
+      "nodeIds": [
+        "aero-launch",
+        "aero-propulsion"
+      ],
+      "sources": [
+        {
+          "title": "蓝箭航天：朱雀系列火箭与天鹊发动机",
+          "url": "https://www.landspace.com/product.html?mao=1",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Rocket Lab：Electron 载荷用户指南（整箭、贮箱、结构、航电与整流罩）",
+          "url": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "launch-tanks",
+      "systemId": "launch-vehicle",
+      "title": "贮箱",
+      "summary": "储存并供给推进剂的容器。",
+      "role": "满足压力、结构及热环境要求，服务推进系统。",
+      "kind": "physical",
+      "nodeIds": [
+        "aero-launch"
+      ],
+      "sources": [
+        {
+          "title": "蓝箭航天：招股说明书申报稿，大直径超薄壁贮箱技术（1-1-241）",
+          "url": "https://static.sse.com.cn/stock/disclosure/announcement/c/202512/002174_20251231_1QK0.pdf",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Rocket Lab：Electron 载荷用户指南（整箭、贮箱、结构、航电与整流罩）",
+          "url": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "launch-structure",
+      "systemId": "launch-vehicle",
+      "title": "结构",
+      "summary": "承受载荷并连接火箭各系统的结构。",
+      "role": "包含箭体壳段及连接结构，与贮箱功能相关但不混为同一部件。",
+      "kind": "physical",
+      "nodeIds": [
+        "aero-launch"
+      ],
+      "sources": [
+        {
+          "title": "蓝箭航天：技术路线与结构系统研制能力",
+          "url": "https://www.landspace.com/wisdom.html?mao=1",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "蓝箭航天：朱雀系列火箭与天鹊发动机",
+          "url": "https://www.landspace.com/product.html?mao=1",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "launch-avionics",
+      "systemId": "launch-vehicle",
+      "title": "航电",
+      "summary": "飞行计算、传感、通信及控制电子设备。",
+      "role": "获取状态、执行制导控制并传递飞行信息。",
+      "kind": "functional",
+      "nodeIds": [
+        "aero-launch"
+      ],
+      "sources": [
+        {
+          "title": "蓝箭航天：2024 年十公里级垂直起降飞行试验及航电验证",
+          "url": "https://www.landspace.com/news-detail.html?itemid=57",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Rocket Lab：Electron 载荷用户指南（整箭、贮箱、结构、航电与整流罩）",
+          "url": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "launch-payload",
+      "systemId": "launch-vehicle",
+      "title": "载荷舱",
+      "summary": "容纳、保护并连接有效载荷的区域。",
+      "role": "整流罩及载荷适配结构服务有效载荷；卫星业务不是火箭零件。",
+      "kind": "physical",
+      "nodeIds": [
+        "aero-launch"
+      ],
+      "sources": [
+        {
+          "title": "蓝箭航天：朱雀系列火箭与天鹊发动机",
+          "url": "https://www.landspace.com/product.html?mao=1",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "Rocket Lab：Electron 载荷用户指南（整箭、贮箱、结构、航电与整流罩）",
+          "url": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    }
+  ],
+  "instruments": [
+    {
+      "id": "SZSE:stock:300308",
+      "kind": "stock",
+      "market": "SZSE",
+      "code": "300308",
+      "name": "中际旭创",
+      "unit": "CNY",
+      "companyId": "innolight",
+      "sources": [
+        {
+          "title": "中际旭创：深市及港股股票代码",
+          "url": "https://www.zj-innolight.com/en/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "BSE:stock:920808",
+      "kind": "stock",
+      "market": "BSE",
+      "code": "920808",
+      "name": "曙光数创",
+      "unit": "CNY",
+      "companyId": "sugon-data-energy",
+      "sources": [
+        {
+          "title": "曙光数创 2026 半年度报告",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-08-25/1225507628.PDF",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "SSE:stock:688047",
+      "kind": "stock",
+      "market": "SSE",
+      "code": "688047",
+      "name": "龙芯中科",
+      "unit": "CNY",
+      "companyId": "loongson",
+      "sources": [
+        {
+          "title": "龙芯中科：投资者关系及证券代码",
+          "url": "https://www.loongson.cn/system/tzz",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "SSE:stock:603986",
+      "kind": "stock",
+      "market": "SSE",
+      "code": "603986",
+      "name": "兆易创新",
+      "unit": "CNY",
+      "companyId": "gigadevice",
+      "sources": [
+        {
+          "title": "兆易创新：公司简介及上海证券交易所代码",
+          "url": "https://www.gigadevice.com/about/company-profile",
+          "checkedAt": "2026-10-19"
+        },
+        {
+          "title": "兆易创新官方新闻：A 股与 H 股代码",
+          "url": "https://www.gigadevice.com.cn/about/news-and-event/news",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "SSE:stock:600584",
+      "kind": "stock",
+      "market": "SSE",
+      "code": "600584",
+      "name": "长电科技（JCET）",
+      "unit": "CNY",
+      "companyId": "jcet",
+      "sources": [
+        {
+          "title": "长电科技发布 2026 半年业绩（公司发布稿）",
+          "url": "https://tools.prnewswire.com/en-us/live/20813/release/20260820EN30595",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "SZSE:stock:002916",
+      "kind": "stock",
+      "market": "SZSE",
+      "code": "002916",
+      "name": "深南电路",
+      "unit": "CNY",
+      "companyId": "shennan-circuits",
+      "sources": [
+        {
+          "title": "深南电路 2026 年向特定对象发行股票募集说明书",
+          "url": "https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-10-13/577f5075-439e-4aa9-867f-6f69bc779fbb.PDF",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "SZSE:stock:002747",
+      "kind": "stock",
+      "market": "SZSE",
+      "code": "002747",
+      "name": "埃斯顿",
+      "unit": "CNY",
+      "companyId": "estun",
+      "sources": [
+        {
+          "title": "埃斯顿：公司简介与 A/H 股代码",
+          "url": "https://www.estun.com/about-us/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "SSE:stock:688017",
+      "kind": "stock",
+      "market": "SSE",
+      "code": "688017",
+      "name": "绿的谐波",
+      "unit": "CNY",
+      "companyId": "leaderdrive",
+      "sources": [
+        {
+          "title": "绿的谐波：上交所投资者关系信息（688017）",
+          "url": "https://open.sseinfo.com/ir2/indexkcb?language=zh_CN&stockCode=688017",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "SZSE:stock:300124",
+      "kind": "stock",
+      "market": "SZSE",
+      "code": "300124",
+      "name": "汇川技术",
+      "unit": "CNY",
+      "companyId": "inovance",
+      "sources": [
+        {
+          "title": "汇川技术：储能业务宣传册与公司上市身份",
+          "url": "https://portal-file.inovance.com/owfile/ProdDoc/CY/19120532-CY/A02/19120532-CY_A02_Inovance%20Energy%20Storage%20Solutions_EN_20260306_Web.pdf?response-content-disposition=attachment%3Bfilename%3D%2219120532-CY_A02_Inovance+Energy+Storage+Solutions_EN_20260306_Web.pdf%22",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "SSE:stock:600438",
+      "kind": "stock",
+      "market": "SSE",
+      "code": "600438",
+      "name": "通威股份",
+      "unit": "CNY",
+      "companyId": "tongwei",
+      "sources": [
+        {
+          "title": "通威股份：上海证券交易所公司信息",
+          "url": "https://www.sse.com.cn/assortment/stock/list/info/company/index.shtml?COMPANY_CODE=600438",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "SSE:stock:688408",
+      "kind": "stock",
+      "market": "SSE",
+      "code": "688408",
+      "name": "中信博（Arctech）",
+      "unit": "CNY",
+      "companyId": "arctech",
+      "sources": [
+        {
+          "title": "中信博：公司概览与科创板代码",
+          "url": "https://en.arctechsolar.com/company-overview/",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "SZSE:stock:300274",
+      "kind": "stock",
+      "market": "SZSE",
+      "code": "300274",
+      "name": "阳光电源",
+      "unit": "CNY",
+      "companyId": "sungrow",
+      "sources": [
+        {
+          "title": "阳光电源：投资者关系与 300274.SZ",
+          "url": "https://www.sungrowpower.com/en/about-us/investor",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "SSE:stock:688114",
+      "kind": "stock",
+      "market": "SSE",
+      "code": "688114",
+      "name": "华大智造（深圳华大智造科技股份有限公司）",
+      "unit": "CNY",
+      "companyId": "mgi-tech",
+      "sources": [
+        {
+          "title": "华大智造：2026 年半年度报告（公司及股票资料）",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-08-22/1225493542.PDF",
+          "checkedAt": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "id": "SSE:index:000001",
+      "kind": "index",
+      "market": "SSE",
+      "code": "000001",
+      "name": "上证指数",
+      "unit": "points",
+      "companyId": null,
+      "sources": [
+        {
+          "title": "上海证券交易所：上证综合指数编制方案",
+          "url": "https://www.sse.com.cn/market/sseindex/indexlist/indexdetails/indexmethods/c1/000001_000001hbook_CN.pdf",
+          "checkedAt": "2026-10-20"
+        }
+      ]
+    },
+    {
+      "id": "SZSE:index:399001",
+      "kind": "index",
+      "market": "SZSE",
+      "code": "399001",
+      "name": "深证成指",
+      "unit": "points",
+      "companyId": null,
+      "sources": [
+        {
+          "title": "国证指数：深证成份指数编制方案",
+          "url": "https://www.cnindex.com.cn/docs/gz_399001.pdf",
+          "checkedAt": "2026-10-20"
+        }
+      ]
+    },
+    {
+      "id": "BSE:index:899050",
+      "kind": "index",
+      "market": "BSE",
+      "code": "899050",
+      "name": "北证50",
+      "unit": "points",
+      "companyId": null,
+      "sources": [
+        {
+          "title": "中证指数：北证50成份指数编制方案",
+          "url": "https://oss-ch.csindex.com.cn/static/html/csindex/public/uploads/indices/detail/files/zh_CN/899050_Index_Methodology_cn.pdf",
+          "checkedAt": "2026-10-20"
+        }
+      ]
+    },
+    {
+      "id": "SSE:index:000688",
+      "kind": "index",
+      "market": "SSE",
+      "code": "000688",
+      "name": "科创50",
+      "unit": "points",
+      "companyId": null,
+      "sources": [
+        {
+          "title": "中证指数：上证科创板50成份指数编制方案",
+          "url": "https://oss-ch.csindex.com.cn/static/html/csindex/public/uploads/indices/detail/files/zh_CN/000688_Index_Methodology_cn.pdf",
+          "checkedAt": "2026-10-20"
+        }
+      ]
+    }
+  ],
+  "researchNotes": []
+}
