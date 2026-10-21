@@ -92,6 +92,7 @@ footer{display:flex;gap:20px;justify-content:space-between;color:#889cac;font-si
 
 /* A-share reference indices */
 #market-strip{display:block;padding-bottom:24px}
+#atlas[data-loading]{visibility:hidden}.research-loading{position:fixed;top:35vh;left:16px;right:16px;text-align:center;color:#64748b;font-size:14px;pointer-events:none}.research-loading[hidden]{display:none}
 .market-heading{display:flex;align-items:baseline;gap:18px;margin:0 0 16px}
 .market-heading h2{font-size:18px;font-weight:600;margin:0;color:#263c54}
 .market-heading>span{font-size:12px;color:#7b8999}

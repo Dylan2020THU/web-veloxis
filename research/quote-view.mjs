@@ -11,6 +11,7 @@ export function trendSegments(trend,now){
  const segments=[];let previous=null;for(const p of trend.points){if(!Number.isFinite(p.atMs)||p.atMs>now+5000||date(p.atMs)!==trend.tradeDate||!Number.isFinite(p.price)||p.price<0||(previous&&p.atMs<=previous.atMs))return [];if(!previous||p.atMs-previous.atMs>trend.intervalSeconds*1000)segments.push([]);segments.at(-1).push(p);previous=p;}return segments;
 }
 export function createQuoteView(host,{apiOrigin,instrumentIds,labels={},descriptions={},pollInterval=10000,intraday=false,fetchImpl=globalThis.fetch,clock={now:Date.now,setTimeout:(fn,ms)=>globalThis.setTimeout(fn,ms),clearTimeout:id=>globalThis.clearTimeout(id)},document=globalThis.document}){
+ let resolveReady;const ready=new Promise(resolve=>resolveReady=resolve);
  const origin=validateQuoteOrigin(apiOrigin),quotes=new Map();let active=false,generation=0,ageTimer,quotePoll,trendPoll,trend=null;
  const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
  const number=(value,suffix='')=>Number.isFinite(value)?value.toLocaleString('zh-CN',{minimumFractionDigits:2,maximumFractionDigits:2})+suffix:'—';
@@ -37,12 +38,12 @@ export function createQuoteView(host,{apiOrigin,instrumentIds,labels={},descript
   }return {start(){failures=0;tick();},stop(){run++;clock.clearTimeout(timer);clock.clearTimeout(timeout);controller?.abort();}};
  }
  function resume(){if(!active||!origin||document.hidden)return;
-  quotePoll=poll(async signal=>{const result=await request('/api/research/quotes?ids='+encodeURIComponent(instrumentIds.join(',')),signal);if(!Array.isArray(result.quotes))throw Error('Invalid quotes');return ()=>{for(const id of instrumentIds){const q=result.quotes.find(q=>q.instrumentId===id);if(q&&[q.last,q.changePct,q.amountCny,q.volumeShares].every(n=>n===null||Number.isFinite(n)))quotes.set(id,q);else if(quotes.has(id))quotes.set(id,{...quotes.get(id),state:'delayed',issue:'source-unavailable'});}};},pollInterval,()=>{for(const [id,q]of quotes)quotes.set(id,{...q,state:q.state==='closed'||q.state==='halted'?q.state:'delayed',issue:'source-unavailable'});});quotePoll.start();
+  quotePoll=poll(async signal=>{const result=await request('/api/research/quotes?ids='+encodeURIComponent(instrumentIds.join(',')),signal);if(!Array.isArray(result.quotes))throw Error('Invalid quotes');return ()=>{resolveReady();for(const id of instrumentIds){const q=result.quotes.find(q=>q.instrumentId===id);if(q&&[q.last,q.changePct,q.amountCny,q.volumeShares].every(n=>n===null||Number.isFinite(n)))quotes.set(id,q);else if(quotes.has(id))quotes.set(id,{...quotes.get(id),state:'delayed',issue:'source-unavailable'});}};},pollInterval,()=>{resolveReady();for(const [id,q]of quotes)quotes.set(id,{...q,state:q.state==='closed'||q.state==='halted'?q.state:'delayed',issue:'source-unavailable'});});quotePoll.start();
   if(intraday&&instrumentIds.length===1){trendPoll=poll(async signal=>{const result=await request('/api/research/intraday?instrumentId='+encodeURIComponent(instrumentIds[0]),signal);if(result.instrumentId!==instrumentIds[0])throw Error('Wrong trend');return ()=>{trend=result;};},60000,()=>{if(trend)trend={...trend,issue:'source-unavailable'};});trendPoll.start();}
   function age(){if(!active||document.hidden)return;render();ageTimer=clock.setTimeout(age,1000);}age();
  }
  function pause(){generation++;quotePoll?.stop();trendPoll?.stop();clock.clearTimeout(ageTimer);}
  function visibility(){pause();if(!document.hidden)resume();}
- document.addEventListener('visibilitychange',visibility);render();
- return {start(){if(active)return;active=true;resume();},stop(){active=false;pause();},destroy(){active=false;pause();document.removeEventListener('visibilitychange',visibility);}};
+ document.addEventListener('visibilitychange',visibility);render();if(!origin)resolveReady();
+ return {ready,start(){if(active)return;active=true;resume();},stop(){active=false;pause();},destroy(){active=false;pause();document.removeEventListener('visibilitychange',visibility);}};
 }

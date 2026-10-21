@@ -1,5 +1,5 @@
 import {reduceMap,visibleNodes,memberUrl} from './map-state.mjs';
-import {createPanoramaView} from './panorama-view.mjs';
+import {createPanoramaView} from './panorama-view.mjs?v=20261021-coordinated';
 import {normalizeAtlasSnapshot,validAtlasCamera} from './atlas-snapshot.mjs';
 import {createRelationPanel} from './relation-panel.mjs';
 import {createTechIcon,sectorColors} from './tech-icons.mjs';
@@ -130,5 +130,5 @@ let active=false,preserved=null,actionId=0,focusAbort=null,selectedRelationId=nu
     else{if(atlas.selectedSectorId)closeSystem(false);render(false);}
     returnTrigger=value.returnTrigger;lastFocus=value.lastFocus;view.restoreCamera(value.overview.camera);selectRelation(value.overview.selectedRelationId);return true;
   }
-  return {snapshot,restore,activate(){active=true;host.inert=false;view.setActive(!atlas.selectedSectorId);if(preserved){view.restoreCamera(preserved.overview.camera);preserved=null;}},deactivate(){cancelNavigation();preserved=snapshot();active=false;host.inert=true;if($('.map-shell').classList.contains('immersive'))$('#immersive').click();view.setActive(false);return preserved;},openContext,destroy(){cancelNavigation();active=false;document.removeEventListener('keydown',onKeyDown);systemView.clear();relationPanel.destroy();view.destroy();}};
+  return {ready:view.ready,snapshot,restore,activate(){active=true;host.inert=false;view.setActive(!atlas.selectedSectorId);if(preserved){view.restoreCamera(preserved.overview.camera);preserved=null;}},deactivate(){cancelNavigation();preserved=snapshot();active=false;host.inert=true;if($('.map-shell').classList.contains('immersive'))$('#immersive').click();view.setActive(false);return preserved;},openContext,destroy(){cancelNavigation();active=false;document.removeEventListener('keydown',onKeyDown);systemView.clear();relationPanel.destroy();view.destroy();}};
 }
