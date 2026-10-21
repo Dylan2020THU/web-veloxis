@@ -1,7 +1,11 @@
 .careers-cover{margin:0;background:#071c37}
 .cover-entries{display:flex;justify-content:center;gap:36px;padding:24px;box-sizing:border-box;width:min(100%,800px)}
-.cover-entries a{flex:1;min-width:0;max-width:min(220px,calc((100svh - 140px)*.435185));aspect-ratio:658/1512;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 4px;border:2px solid rgb(26,12,249);border-radius:29% 0 29% 0 / 12.6% 0 12.6% 0;background:transparent;color:rgb(26,12,249);text-decoration:none;font-size:26px;font-weight:600;transition:background .2s,color .2s}
-.cover-entries a:hover,.cover-entries a:focus-visible{background:rgb(26,12,249);color:#fff}
+.cover-entries a{flex:1;min-width:0;max-width:min(220px,calc((100svh - 140px)*.435185));aspect-ratio:658/1512;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 4px;border:2px solid rgb(26,12,249);border-radius:29% 0 29% 0 / 12.6% 0 12.6% 0;background:transparent;color:rgb(26,12,249);text-decoration:none;font-size:26px;font-weight:600;transform:translateX(var(--entry-shift,0px)) scale(.8);transition:background .2s,color .2s,transform .55s cubic-bezier(.22,1,.36,1);transition-delay:0s,0s,var(--entry-delay,0s)}
+.cover-entries a:hover,.cover-entries a:focus-visible{background:rgb(26,12,249);color:#fff;transform:scale(1)}
+.cover-entries:has(a:nth-child(1):is(:hover,:focus-visible)) a:nth-child(2),.cover-entries:has(a:nth-child(2):is(:hover,:focus-visible)) a:nth-child(3){--entry-shift:14px}
+.cover-entries:has(a:nth-child(1):is(:hover,:focus-visible)) a:nth-child(3){--entry-shift:22px;--entry-delay:.06s}
+.cover-entries:has(a:nth-child(3):is(:hover,:focus-visible)) a:nth-child(2),.cover-entries:has(a:nth-child(2):is(:hover,:focus-visible)) a:nth-child(1){--entry-shift:-14px}
+.cover-entries:has(a:nth-child(3):is(:hover,:focus-visible)) a:nth-child(1){--entry-shift:-22px;--entry-delay:.06s}
 .cover-entries a:focus-visible{outline:3px solid #fff;outline-offset:6px}
 .careers-page{background:#fff;color:#192c43}
 .careers-page .navbar{position:sticky;top:0;padding:20px 40px;gap:24px}
