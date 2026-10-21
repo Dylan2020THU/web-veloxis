@@ -1,5 +1,27 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>加入我们 · 大川激流 Veloxis</title><link rel="icon" href="../fig/favicon.svg"><link rel="stylesheet" href="careers.css?v=20261021-cover"></head>
-<body class="careers-cover"><main class="cover-entries" aria-label="选择招聘类型"><a href="internship/">实习生</a><a href="campus/">校园招聘</a><a href="social/">社会招聘</a></main></body>
+<head>
+ <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+ <title>加入我们 · 大川激流 Veloxis</title><link rel="icon" href="../fig/favicon.svg">
+ <link rel="preload" as="image" href="../fig/hero.webp" fetchpriority="high">
+ <link rel="stylesheet" href="../style.css?v=20261021-about-page">
+ <link rel="stylesheet" href="careers.css?v=20261021-video-cover">
+ <script src="../home-media.js" defer></script>
+</head>
+<body class="careers-cover">
+ <nav class="navbar" aria-label="主导航">
+  <a href="../#home" class="logo"><img src="../fig/logo-cn.webp" alt="大川激流 Logo" class="logo-img"></a>
+  <ul class="nav-links" id="cover-navigation"><li><a href="../#home">首页</a></li><li><a href="../#services">业务板块</a></li><li><a href="../about/">关于我们</a></li><li><a href="./" aria-current="page">加入我们</a></li></ul>
+  <button class="menu-toggle" type="button" aria-label="展开导航" aria-expanded="false" aria-controls="cover-navigation"><span></span><span></span><span></span></button>
+ </nav>
+ <main class="hero cover-hero" aria-label="选择招聘类型">
+  <video class="hero-video" muted loop playsinline preload="none" poster="../fig/hero.webp" aria-hidden="true"><source data-src="../fig/veloxis-dynamic-bg.mp4" type="video/mp4"></video>
+  <div class="hero-overlay"></div>
+  <div class="cover-entries"><a href="internship/">实习生</a><a href="campus/">校园招聘</a><a href="social/">社会招聘</a></div>
+ </main>
+ <script>
+  const menu=document.querySelector('.menu-toggle');
+  menu.addEventListener('click',()=>{const expanded=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(expanded));menu.setAttribute('aria-label',expanded?'收起导航':'展开导航');document.querySelector('#cover-navigation').classList.toggle('is-open',expanded);});
+ </script>
+</body>
 </html>
