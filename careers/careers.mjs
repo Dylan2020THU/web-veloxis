@@ -25,7 +25,7 @@ if(typeof document!=='undefined'){
   $('#empty-description').textContent=jobs.length?'请尝试其他关键词，或清除筛选条件查看全部职位。':'当前暂无公开招聘职位。欢迎关注后续更新，或通过官方邮箱了解未来的加入机会。';
   for(const job of result){
    const card=el('details',undefined,'job-card panel'),summary=el('summary');
-   summary.append(el('h3',job.title),el('p',[job.recruitment,job.category,job.location||'地点待沟通'].filter(Boolean).join(' · '),'job-meta'));
+   summary.append(el('h3',job.title),el('p',[job.location||'地点待沟通',job.recruitment,job.category].filter(Boolean).join(' · '),'job-meta'));
    const apply=el('a','邮件申请 ↗','careers-button');apply.href='mailto:dylanzhang@veloxisai.com?subject='+encodeURIComponent('应聘：'+job.recruitment+' · '+job.title);
    card.append(summary,el('p',job.description,'job-description'),apply);$('#jobs-list').append(card);
   }

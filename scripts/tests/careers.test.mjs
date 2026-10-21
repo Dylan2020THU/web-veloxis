@@ -23,3 +23,18 @@ test('location, employment type and function combine rather than overwrite one a
  assert.equal(filterJobs(jobs,{location:'上海',type:'实习',category:'教学'}).length,1);
  assert.equal(filterJobs(jobs,{}).length,2);
 });
+
+test('published roles include design and modeling in each channel with hardware in Shenzhen',async()=>{
+ const {readFile}=await import('node:fs/promises');
+ const published=JSON.parse(await readFile(new URL('../../careers/jobs.json',import.meta.url),'utf8'));
+ for(const recruitment of ['实习生','校园招聘','社会招聘']){
+  const group=published.filter(job=>job.recruitment===recruitment);
+  assert.equal(group.length,12);
+  assert.ok(group.some(job=>job.title.includes('UI 设计')));
+  assert.ok(group.some(job=>job.title.includes('场景模型')));
+ }
+ for(const job of published){
+  assert.equal(job.location,['智能硬件','机器人与物联网'].includes(job.category)?'深圳':'北京');
+  assert.ok(!job.description.includes('工作地点、薪酬'));
+ }
+});
