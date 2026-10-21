@@ -36,4 +36,4 @@ try{
   const found=[...data.nodes.filter(n=>(n.label+' '+n.summary).toLowerCase().includes(q)).map(n=>({title:n.label,page:'tracks',id:n.id})),...queryCompanies(index,{q}).map(c=>({title:c.name,page:'companies',id:c.id})),...data.reports.filter(r=>(r.title+' '+r.summary).toLowerCase().includes(q)).map(r=>({title:r.title,page:'reports',id:r.id}))];
   for(const item of found.slice(0,25)){const a=el('a',item.title);a.href=formatRoute(item);a.onclick=()=>$('#public-search').close();results.append(a);}if(!found.length)results.append(el('p','没有匹配的公开资料。'));
  };
-}catch(error){$('#load-error').hidden=false;console.error('Research portal could not load:',error.message);}
+}catch(error){$('#atlas-loading').hidden=true;$('#map-canvas').setAttribute('aria-busy','false');$('#load-error').hidden=false;console.error('Research portal could not load:',error.message);}

@@ -51,6 +51,7 @@ footer{display:flex;gap:20px;justify-content:space-between;color:#889cac;font-si
 #map[hidden],#minimap[hidden],#atlas-3d-canvas[hidden],#atlas-labels[hidden],#island-navigator[hidden]{display:none!important}
 .atlas-fallback{position:absolute;z-index:5;top:43%;left:50%;width:min(320px,90%);transform:translateX(-50%);padding:20px;background:#102636;border:1px solid #506e81;border-radius:10px;text-align:center;color:#d6e5ed}
 .atlas-fallback[hidden]{display:none}.atlas-fallback p{font-size:13px;line-height:1.8}.atlas-fallback button{min-height:44px;padding:8px 20px;background:#e2c99c;border-radius:5px;color:#122534}
+.atlas-loading{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;color:#b7cad9;font-size:14px;letter-spacing:.06em}.atlas-loading[hidden],#minimap-panel[hidden]{display:none!important}
 #island-navigator{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
 #island-navigator button{min-width:44px;min-height:44px;padding:3px 0;font-size:9px;color:#c5d7e3;border-top:2px solid var(--sector);background:#1b324388}
 #relation-panel{position:absolute;right:0;top:0;bottom:0;width:270px;z-index:4;background:#fff;color:#26384b;padding:28px 22px;overflow:auto;border-left:1px solid #dce4ed}

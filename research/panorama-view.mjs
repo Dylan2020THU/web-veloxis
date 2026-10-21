@@ -1,7 +1,7 @@
 import {createMapView} from './map-view.mjs';
 import {validAtlasCamera} from './atlas-snapshot.mjs';
 export function createPanoramaView({root,data,onSelectNode,onToggleNode,onPreviewSector,onSelectRelation,onPreviewRelation,onClearRelation,onModeChange=()=>{}}){
- const host=root.querySelector('#map-canvas'),svg=root.querySelector('#map'),mini=root.querySelector('#minimap'),miniHost=root.querySelector('#minimap-panel');
+ const host=root.querySelector('#map-canvas'),svg=root.querySelector('#map'),mini=root.querySelector('#minimap'),miniHost=root.querySelector('#minimap-panel'),loading=root.querySelector('#atlas-loading');
  const notice=document.createElement('div');notice.className='atlas-fallback';notice.hidden=true;
  const text=document.createElement('p');text.textContent='三维视图暂不可用，仍可继续浏览全部研究内容。';
  const fallback=document.createElement('button');fallback.id='use-2d-map';fallback.textContent='使用二维地图';notice.append(text,fallback);host.append(notice);
@@ -12,17 +12,20 @@ export function createPanoramaView({root,data,onSelectNode,onToggleNode,onPrevie
  host.setAttribute('aria-label','交互式三维产业全景');
  root.querySelector('.interaction-hint span:last-child').textContent='拖动旋转 · Shift 拖动平移 · 滚轮缩放';
  for(const n of data.nodes.filter(n=>!n.parentId)){const b=document.createElement('button');b.textContent=n.label;b.setAttribute('aria-label','定位'+n.label+'视角');b.dataset.locateSector=n.id;b.style.setProperty('--sector',n.color);b.onclick=()=>view?.focus(n.id);navigator.append(b);}
- function fail(){if(destroyed||mode==='2d')return;clearTimeout(timer);view?.setActive(false);notice.hidden=false;}
+ function finishLoading(){if(loading)loading.hidden=true;host.setAttribute('aria-busy','false');}
+ function fail(){if(destroyed||mode==='2d')return;clearTimeout(timer);view?.setActive(false);finishLoading();miniHost.hidden=true;notice.hidden=false;}
  async function start(){
   if(started||destroyed)return;started=true;timer=setTimeout(fail,8000);
   try{const {createAtlas3DView}=await import('./atlas-3d-view.mjs');if(destroyed||mode==='2d')return;
    view=createAtlas3DView({host,data,onSelectNode,onPreviewSector,onSelectRelation,onPreviewRelation,onClearRelation,onUnavailable:fail});clearTimeout(timer);notice.hidden=true;
    view.setActive(active);view.draw(state,refit);view.setSectorState(sectorState);view.setRelationState(relationState);if(pendingCamera?.kind==='3d')view.restoreCamera(pendingCamera);pendingCamera=null;
+   finishLoading();miniHost.hidden=false;
   }catch{fail();}
  }
  fallback.onclick=()=>{
   if(mode==='2d'||destroyed)return;clearTimeout(timer);view?.destroy();view=null;mode='2d';pendingCamera=null;host.dataset.mode='2d';host.tabIndex=0;notice.hidden=true;
   host.querySelector('#atlas-3d-canvas')?.setAttribute('hidden','');host.querySelector('#atlas-labels')?.setAttribute('hidden','');svg.removeAttribute('hidden');mini.removeAttribute('hidden');navigator.hidden=true;
+  const image=mini.querySelector('image');if(image?.dataset.src)image.setAttribute('href',image.dataset.src);finishLoading();miniHost.hidden=false;
   host.setAttribute('aria-label','二维产业全景，方向键平移，加减号缩放');root.querySelector('.interaction-hint span:last-child').textContent='拖动平移 · 滚轮 / 双指缩放 · 点击探索';
   view=createMapView(data.nodes,onSelectNode,onToggleNode,{onPreviewSector});view.draw(state,true);view.setSectorState(sectorState);view.setActive(active);onModeChange('2d');host.focus({preventScroll:true});
  };
