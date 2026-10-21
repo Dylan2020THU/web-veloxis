@@ -1,10 +1,11 @@
+import {INDEX_GROUPS,createIndexFetch} from './index-feed.mjs';
 import {validateData,memberUrl} from './map-state.mjs';
 import {buildResearchIndex,queryCompanies} from './research-data.mjs';
 import {createPortalRouter,formatRoute} from './portal-router.mjs';
 import {createAtlasController} from './atlas-controller.mjs';
 import {renderResearchPage} from './research-views.mjs';
 import {createTechIcon,sectorColors} from './tech-icons.mjs';
-import {createQuoteView} from './quote-view.mjs';
+import {createQuoteView} from './quote-view.mjs?v=20261021-indices';
 const $=s=>document.querySelector(s);
 function el(tag,text,className){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;}
 try{
@@ -14,9 +15,12 @@ try{
  try{stored=JSON.parse(sessionStorage.getItem('veloxis-atlas-v2')||sessionStorage.getItem('veloxis-atlas-v1'));}catch{}
  const controller=createAtlasController({data,root:$('#atlas'),memberOrigin:config.memberOrigin,onCompanyResearch:id=>router.navigate({page:'companies',id})});
  for(const n of data.nodes.filter(n=>!n.parentId)){const b=el('button');b.append(createTechIcon(n.id,sectorColors[n.id]),el('span',n.label),el('small','↗'));b.onclick=()=>controller.openContext({sectorId:n.id},{animate:true,trigger:b});$('#sector-shortcuts').append(b);}
- const indices=data.instruments.filter(i=>i.kind==='index'),indexHost=el('div',undefined,'index-quotes');$('#market-strip').insertBefore(indexHost,$('.market-note'));
- const indexQuotes=createQuoteView(indexHost,{apiOrigin:config.quoteApiOrigin,instrumentIds:indices.map(i=>i.id),labels:Object.fromEntries(indices.map(i=>[i.id,i.name]))});
- $('.market-note').textContent=config.quoteApiOrigin?'沪深北市场 · 上海时间':'行情尚未接入';
+ const indices=INDEX_GROUPS.flatMap(group=>group.indices),indexHost=el('div',undefined,'index-quotes');
+ const marketHeading=el('div',undefined,'market-heading');marketHeading.append(el('h2','A 股指数'),el('span','三大指数 · 科创成长 · 市场对照'));
+ $('#market-strip').insertBefore(marketHeading,$('.market-note'));$('#market-strip').insertBefore(indexHost,$('.market-note'));
+ const indexQuotes=createQuoteView(indexHost,{apiOrigin:'https://qt.gtimg.cn',instrumentIds:indices.map(i=>i.id),labels:Object.fromEntries(indices.map(i=>[i.id,i.name])),descriptions:Object.fromEntries(indices.map(i=>[i.id,i.group+' · '+i.code])),pollInterval:15000,fetchImpl:createIndexFetch()});
+ $('.market-note').replaceChildren(document.createTextNode('参考行情 · 每 15 秒刷新 · 数据可能延迟；报价时间为上海时间，休市期间保留最近报价 · '));
+ const sourceLink=el('a','数据来源：腾讯证券 ↗');sourceLink.href='https://gu.qq.com/';sourceLink.target='_blank';sourceLink.rel='noopener noreferrer';$('.market-note').append(sourceLink);
  window.addEventListener('pagehide',()=>indexQuotes.stop());window.addEventListener('pageshow',()=>{if(currentRoute?.page==='home')indexQuotes.start();});
  function persist(){if(currentRoute?.page==='home')try{sessionStorage.setItem('veloxis-atlas-v2',JSON.stringify({...controller.snapshot(),entryKey:currentEntry}));}catch{}}
  router=createPortalRouter({onChange(route,{entryKey}){

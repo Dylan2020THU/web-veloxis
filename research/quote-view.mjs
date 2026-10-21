@@ -1,4 +1,4 @@
-const states={live:'实时',delayed:'延迟',unverified:'时间未核验',unavailable:'暂不可用',closed:'休市 / 休盘',halted:'停牌'};
+const states={reference:'参考行情',live:'实时',delayed:'延迟',unverified:'时间未核验',unavailable:'暂不可用',closed:'休市 / 休盘',halted:'停牌'};
 export function validateQuoteOrigin(origin){if(origin===null||origin===undefined)return null;const u=new URL(origin);if(u.protocol!=='https:'||u.origin!==origin||u.username||u.password)throw Error('Invalid quote API origin');return origin;}
 export function displayQuoteState(q,now){
  if(!q||!Number.isFinite(q.last))return 'unavailable';if(q.state!=='live')return states[q.state]?q.state:'unverified';
@@ -10,13 +10,15 @@ export function trendSegments(trend,now){
  if(!trend||trend.tradeDate!==date(now)||!Number.isInteger(trend.intervalSeconds)||trend.intervalSeconds<60||!Array.isArray(trend.points)||trend.points.length>2000)return [];
  const segments=[];let previous=null;for(const p of trend.points){if(!Number.isFinite(p.atMs)||p.atMs>now+5000||date(p.atMs)!==trend.tradeDate||!Number.isFinite(p.price)||p.price<0||(previous&&p.atMs<=previous.atMs))return [];if(!previous||p.atMs-previous.atMs>trend.intervalSeconds*1000)segments.push([]);segments.at(-1).push(p);previous=p;}return segments;
 }
-export function createQuoteView(host,{apiOrigin,instrumentIds,labels={},intraday=false,fetchImpl=globalThis.fetch,clock={now:Date.now,setTimeout:(fn,ms)=>globalThis.setTimeout(fn,ms),clearTimeout:id=>globalThis.clearTimeout(id)},document=globalThis.document}){
+export function createQuoteView(host,{apiOrigin,instrumentIds,labels={},descriptions={},pollInterval=10000,intraday=false,fetchImpl=globalThis.fetch,clock={now:Date.now,setTimeout:(fn,ms)=>globalThis.setTimeout(fn,ms),clearTimeout:id=>globalThis.clearTimeout(id)},document=globalThis.document}){
  const origin=validateQuoteOrigin(apiOrigin),quotes=new Map();let active=false,generation=0,ageTimer,quotePoll,trendPoll,trend=null;
  const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
  const number=(value,suffix='')=>Number.isFinite(value)?value.toLocaleString('zh-CN',{minimumFractionDigits:2,maximumFractionDigits:2})+suffix:'—';
  function render(){
   host.replaceChildren();for(const id of instrumentIds){const q=quotes.get(id),state=displayQuoteState(q,clock.now()),card=el('div',undefined,'quote-item');card.dataset.instrument=id;card.dataset.state=origin?state:'unconfigured';
-   card.append(el('span',labels[id]||id,'quote-name'),el('strong',number(q?.last),'quote-price'),el('span',number(q?.changePct,'%'),Number.isFinite(q?.changePct)&&q.changePct>0?'quote-up':q?.changePct<0?'quote-down':'quote-flat'),el('small',origin?states[state]:'行情尚未接入','quote-status'));
+   card.append(el('span',labels[id]||id,'quote-name'),el('strong',number(q?.last),'quote-price'),el('span',number(q?.changePct,'%'),Number.isFinite(q?.changePct)&&q.changePct>0?'quote-up':q?.changePct<0?'quote-down':'quote-flat'),el('small',origin?states[state]+(q?.issue?' · 更新失败':''):'行情尚未接入','quote-status'));
+   if(descriptions[id])card.append(el('small',descriptions[id],'quote-description'));
+   if(Number.isFinite(q?.change))card.append(el('small',(q.change>0?'+':'')+number(q.change)+(q.unit==='points'?' 点':q.unit==='CNY'?' 元':''),'quote-change'));
    if(intraday){card.append(el('p','成交额 '+number(q?.amountCny,' 元')+' · 成交量 '+number(q?.volumeShares,' 股'),'quote-volume'));}
    if(q){const time=Number.isFinite(q.sourceAsOfMs)?new Date(q.sourceAsOfMs).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false}):'未提供快照时间';const source=el('small',(q.source?.name||'来源待核验')+' · '+time+' (上海时间)','quote-source');card.append(source);}
    host.append(card);
@@ -35,7 +37,7 @@ export function createQuoteView(host,{apiOrigin,instrumentIds,labels={},intraday
   }return {start(){failures=0;tick();},stop(){run++;clock.clearTimeout(timer);clock.clearTimeout(timeout);controller?.abort();}};
  }
  function resume(){if(!active||!origin||document.hidden)return;
-  quotePoll=poll(async signal=>{const result=await request('/api/research/quotes?ids='+encodeURIComponent(instrumentIds.join(',')),signal);if(!Array.isArray(result.quotes))throw Error('Invalid quotes');return ()=>{for(const id of instrumentIds){const q=result.quotes.find(q=>q.instrumentId===id);if(q&&[q.last,q.changePct,q.amountCny,q.volumeShares].every(n=>n===null||Number.isFinite(n)))quotes.set(id,q);else if(quotes.has(id))quotes.set(id,{...quotes.get(id),state:'delayed',issue:'source-unavailable'});}};},10000,()=>{for(const [id,q]of quotes)quotes.set(id,{...q,state:q.state==='closed'||q.state==='halted'?q.state:'delayed',issue:'source-unavailable'});});quotePoll.start();
+  quotePoll=poll(async signal=>{const result=await request('/api/research/quotes?ids='+encodeURIComponent(instrumentIds.join(',')),signal);if(!Array.isArray(result.quotes))throw Error('Invalid quotes');return ()=>{for(const id of instrumentIds){const q=result.quotes.find(q=>q.instrumentId===id);if(q&&[q.last,q.changePct,q.amountCny,q.volumeShares].every(n=>n===null||Number.isFinite(n)))quotes.set(id,q);else if(quotes.has(id))quotes.set(id,{...quotes.get(id),state:'delayed',issue:'source-unavailable'});}};},pollInterval,()=>{for(const [id,q]of quotes)quotes.set(id,{...q,state:q.state==='closed'||q.state==='halted'?q.state:'delayed',issue:'source-unavailable'});});quotePoll.start();
   if(intraday&&instrumentIds.length===1){trendPoll=poll(async signal=>{const result=await request('/api/research/intraday?instrumentId='+encodeURIComponent(instrumentIds[0]),signal);if(result.instrumentId!==instrumentIds[0])throw Error('Wrong trend');return ()=>{trend=result;};},60000,()=>{if(trend)trend={...trend,issue:'source-unavailable'};});trendPoll.start();}
   function age(){if(!active||document.hidden)return;render();ageTimer=clock.setTimeout(age,1000);}age();
  }
