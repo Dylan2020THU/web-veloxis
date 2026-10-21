@@ -110,3 +110,8 @@ footer{display:flex;gap:20px;justify-content:space-between;color:#889cac;font-si
 @media(max-width:1100px){#market-strip .index-quotes{grid-template-columns:repeat(2,minmax(0,1fr))}#market-strip .quote-item,#market-strip .quote-item:nth-child(-n+3){grid-column:auto;padding:12px}#market-strip .quote-item:first-child{grid-column:1/-1}#market-strip .quote-item:nth-child(-n+3) .quote-price{font-size:26px}.market-heading{flex-wrap:wrap;gap:8px}}
 
 @media(max-width:600px){#market-strip .quote-price{grid-column:1/-1;grid-row:3}#market-strip .quote-up,#market-strip .quote-down,#market-strip .quote-flat{grid-column:1;grid-row:4}#market-strip .quote-status{grid-column:2;grid-row:4}#market-strip .quote-change{grid-column:1/-1;grid-row:5}#market-strip .quote-source{grid-row:6}}
+
+/* A-share convention: rising red, falling green, unchanged neutral. */
+#market-strip .quote-item:has(.quote-up) :is(.quote-price,.quote-change,.quote-up){color:#d93025}
+#market-strip .quote-item:has(.quote-down) :is(.quote-price,.quote-change,.quote-down){color:#16803c}
+#market-strip .quote-item:has(.quote-flat) :is(.quote-price,.quote-change,.quote-flat){color:#64748b}
