@@ -12,3 +12,7 @@ header>a[href="/"]:first-child::after{content:'人工智能学习基地';margin-
 @media(max-width:600px){:root{--topbar-h:112px}.sports-topbar{height:112px;--topbar-h:112px}.sports-topbar .topbar-inner{align-items:flex-start;padding-top:20px;position:relative;flex-wrap:nowrap}.sports-topbar .sports-brand,.topbar .brand,header>a[href="/"]:first-child{flex-wrap:wrap;gap:10px;width:100%}.sports-topbar .sports-brand>span,.topbar .brand>span,header>a[href="/"]:first-child::after{width:100%;border:0;padding:0;margin-left:0}.sports-topbar .sports-menu-toggle{position:absolute;right:20px;bottom:8px}.topbar .header-actions{margin-left:0}.topbar .brand>span{display:block}}
 .topbar .brand{align-self:flex-start}@media(max-width:600px){header:has(>a[href="/"]:first-child){align-items:flex-start;padding-top:20px}}
 @media(max-width:768px){header:has(>a[href="/"]:first-child){padding-left:20px;padding-right:20px}}
+/* Only the logo image accepts pointer interaction; labels remain static. */
+.sports-topbar .sports-brand,.topbar .brand,header>a[href="/"]:first-child{pointer-events:none;cursor:default;transform:none}
+.sports-topbar .sports-brand>img,.topbar .brand>img,header>a[href="/"]:first-child>img{pointer-events:auto;cursor:pointer;transition:transform .4s ease,opacity .4s ease}
+header>a[href="/"]:first-child:hover>img{transform:scale(1.05);opacity:.85}
