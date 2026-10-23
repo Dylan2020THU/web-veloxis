@@ -3,3 +3,7 @@
 @media(max-width:767px){.navbar .nav-links a,header>ul>li>a[href],[class*="top-[var(--topbar-h)]"]>ul>li>a,.sports-topbar .sports-nav button,.sports-topbar .sports-nav a,.topbar nav a{font-size:14px!important}}
 @media(max-width:358px){.navbar .nav-links a,header>ul>li>a[href],[class*="top-[var(--topbar-h)]"]>ul>li>a,.sports-topbar .sports-nav button,.sports-topbar .sports-nav a,.topbar nav a{font-size:12px!important}}
 @media(min-width:768px) and (max-width:1200px){:root{--topbar-h:124px}.sports-topbar{height:124px;--topbar-h:124px}.sports-topbar .topbar-inner{flex-wrap:wrap;align-content:center;row-gap:12px}.sports-topbar .sports-brand{width:100%}.sports-topbar .sports-nav{width:100%;justify-content:flex-end;gap:24px}.sports-topbar .sports-nav button,.sports-topbar .sports-nav a{white-space:nowrap}}
+.topbar nav a[href="/"],header>ul>li>a[href="/"],[class*="top-[var(--topbar-h)]"]>ul>li>a[href="/"]{color:#6e6e73;white-space:nowrap}
+.topbar nav a[href="/"]:hover,header>ul>li>a[href="/"]:hover,[class*="top-[var(--topbar-h)]"]>ul>li>a[href="/"]:hover{color:#067ef9}
+@media(min-width:768px) and (max-width:1100px){body:has(header>ul){--topbar-h:124px}header:has(>ul){flex-wrap:wrap;padding-top:20px;padding-bottom:12px}header>ul{width:100%;justify-content:flex-end;gap:24px!important}header>ul>li>a{white-space:nowrap}}
+@media(min-width:1201px) and (max-width:1400px){.topbar{height:auto;flex-wrap:wrap;padding:20px 60px;gap:12px}.topbar nav{width:100%;justify-content:flex-end}.topbar .header-actions{margin-left:auto}}

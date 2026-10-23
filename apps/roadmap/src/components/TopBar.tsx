@@ -15,6 +15,7 @@ const NAV_LINKS = [
   { label: "业务板块", href: `${HOME_ROOT}#services` },
   { label: "关于我们", href: `${HOME_ROOT}#about` },
   { label: "加入我们", href: `${HOME_ROOT}#contact` },
+  { label: "返回官网 ↗", href: HOME_ROOT },
 ];
 
 export function TopBar() {
