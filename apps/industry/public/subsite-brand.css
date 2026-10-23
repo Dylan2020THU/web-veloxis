@@ -1,11 +1,11 @@
-﻿/* Match the main site's brand position and subsite labels. */
+/* Match the main site's brand position and subsite labels. */
 .sports-topbar{--topbar-h:76px;height:76px}
 :root{--topbar-h:76px}
 .sports-topbar .topbar-inner{max-width:none;padding:0 60px;margin:0}
 .topbar{height:auto;min-height:76px;padding:20px 60px;align-items:center}
 .topbar nav{height:36px}
 .sports-topbar .sports-brand,.topbar .brand{gap:20px}
-.sports-topbar .sports-brand>span,.topbar .brand>span,header>a[href="/"]:first-child::after{display:block;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'PingFang SC','Microsoft YaHei',sans-serif;font-size:14px;font-weight:500;line-height:20px;letter-spacing:0;color:#6c7d91;border-left:1px solid #dae2ec;padding-left:20px;white-space:nowrap}
+.sports-topbar .sports-brand>span,.topbar .brand>span,header>a[href="/"]:first-child::after{display:block;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'PingFang SC','Microsoft YaHei',sans-serif;font-size:36px;font-weight:900;line-height:36px;letter-spacing:-.03em;color:#050c20;font-synthesis:weight style small-caps;border-left:1px solid #dae2ec;padding-left:20px;white-space:nowrap}
 header>a[href="/"]:first-child::after{content:'人工智能学习基地';margin-left:20px}
 @media(max-width:1200px){.topbar{flex-wrap:wrap;gap:12px}.topbar nav{order:3;width:100%;height:48px}.topbar .header-actions{margin-left:auto}}
 @media(max-width:768px){.sports-topbar .topbar-inner{padding:0 20px}.topbar{padding:20px 20px 0}.topbar nav{height:48px}}
@@ -16,3 +16,6 @@ header>a[href="/"]:first-child::after{content:'人工智能学习基地';margin-
 .sports-topbar .sports-brand,.topbar .brand,header>a[href="/"]:first-child{pointer-events:none;cursor:default;transform:none}
 .sports-topbar .sports-brand>img,.topbar .brand>img,header>a[href="/"]:first-child>img{pointer-events:auto;cursor:pointer;transition:transform .4s ease,opacity .4s ease}
 header>a[href="/"]:first-child:hover>img{transform:scale(1.05);opacity:.85}
+@media(min-width:768px) and (max-width:1400px){body:has(header>ul){--topbar-h:124px}header:has(>ul){flex-wrap:wrap;padding-top:20px;padding-bottom:12px}header>ul{width:100%;justify-content:flex-end;gap:24px!important}header>ul>li>a{white-space:nowrap}}
+@media(max-width:600px){body:has(header>ul){--topbar-h:156px}header>a[href="/"]:first-child::after{white-space:normal}.sports-topbar{height:132px;--topbar-h:132px}.sports-page{--topbar-h:132px}.sports-topbar .sports-brand>span,.topbar .brand>span{white-space:normal}}
+@media(max-width:600px){header>a[href="/"]:first-child{flex-shrink:0}header>a[href="/"]:first-child::after{text-wrap:balance}header:has(>a[href="/"]:first-child)>button{position:absolute;right:20px;bottom:12px}}

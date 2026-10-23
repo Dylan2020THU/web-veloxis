@@ -6,7 +6,7 @@
 .careers-page{background:#fff;color:#192c43}
 .careers-page .navbar{position:sticky;top:0;padding:20px 40px;gap:24px}
 .careers-page .logo-img{height:30px}
-.careers-brand{margin-left:20px;padding-left:20px;border-left:1px solid #dae2ec;color:#6c7d91;font-size:13px;white-space:nowrap}
+.careers-brand{margin-left:20px;padding-left:20px;border-left:1px solid #dae2ec;color:#050c20;font-size:36px;font-weight:900;line-height:36px;letter-spacing:-.03em;white-space:nowrap}
 .careers-page .nav-links{display:flex;gap:28px}
 .careers-page [aria-current="page"]{color:var(--primary-blue)}
 .channel-hero{background:linear-gradient(90deg,#061a34ed,#10335375),url('../fig/hero.webp') center/cover;color:#fff}
