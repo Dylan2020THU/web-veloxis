@@ -1,0 +1,11 @@
+﻿/* Align business navigation with the homepage and reuse its hover treatment. */
+.sports-topbar,.topbar{background:rgba(255,255,255,.95);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(0,0,0,.05)}
+.topbar{position:sticky;top:0;z-index:1000}
+.sports-topbar .sports-nav,.topbar nav{gap:40px}
+.sports-topbar .sports-nav button,.sports-topbar .sports-nav a,.topbar nav a,.topbar nav a.active{position:relative;padding:0;border:0;height:auto;min-height:0;line-height:1.6;transition:color .3s ease}
+.sports-topbar .sports-nav button::after,.sports-topbar .sports-nav a::after,.topbar nav a::after{content:'';position:absolute;left:0;bottom:-5px;width:0;height:2px;background:#067ef9;transition:width .3s ease}
+.sports-topbar .sports-nav button:hover,.sports-topbar .sports-nav a:hover,.topbar nav a:hover{color:#067ef9}
+.sports-topbar .sports-nav button:hover::after,.sports-topbar .sports-nav a:hover::after,.topbar nav a:hover::after{width:100%}
+@media(min-width:1201px){.topbar{height:76px;min-height:76px;padding:0 60px;flex-wrap:nowrap}.topbar .brand{align-self:center}.topbar .header-actions{order:1}.topbar nav{order:2;margin-left:auto;height:auto;flex-shrink:0}}
+@media(min-width:769px) and (max-width:1200px){.topbar nav{justify-content:flex-end}}
+@media(max-width:768px){.topbar nav{justify-content:flex-start;gap:24px;overflow-x:auto;padding:0 0 7px}.sports-topbar .sports-nav.is-open{gap:0}.sports-topbar .sports-nav.is-open button,.sports-topbar .sports-nav.is-open a{padding:14px 0}.sports-topbar .sports-nav.is-open button::after,.sports-topbar .sports-nav.is-open a::after{bottom:7px}}
