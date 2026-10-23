@@ -6,7 +6,7 @@
 .careers-page{background:#fff;color:#192c43}
 .careers-page .navbar{position:sticky;top:0;padding:20px 40px;gap:24px}
 .careers-page .logo-img{height:30px}
-.careers-brand{margin-left:20px;padding-left:20px;border-left:1px solid #dae2ec;color:#050c20;font-size:36px;font-weight:900;line-height:36px;letter-spacing:-.03em;white-space:nowrap}
+.careers-brand{margin-left:20px;padding-left:20px;border-left:1px solid #dae2ec;color:#050c20;font-size:28px;font-weight:900;line-height:28px;letter-spacing:-.03em;white-space:nowrap}
 .careers-page .nav-links{display:flex;gap:28px}
 .careers-page [aria-current="page"]{color:var(--primary-blue)}
 .channel-hero{background:linear-gradient(90deg,#061a34ed,#10335375),url('../fig/hero.webp') center/cover;color:#fff}
@@ -71,3 +71,5 @@
 @media(max-width:768px){.careers-cover .nav-links.is-open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:#fff;padding:12px 20px}.careers-cover .nav-links.is-open a{display:block;padding:12px 0}.careers-cover .logo-img{max-width:calc(100vw - 100px);height:auto;max-height:36px}}
 .cover-welcome{position:absolute;z-index:2;left:60px;bottom:32px;max-width:calc(100% - 120px);color:#fff;font-size:clamp(16px,1.5vw,22px);font-weight:500;line-height:1.8;text-align:left}
 @media(max-width:768px){.cover-welcome{left:20px;bottom:24px;max-width:calc(100% - 40px)}}
+
+.careers-page .navbar .logo{align-items:flex-end}
