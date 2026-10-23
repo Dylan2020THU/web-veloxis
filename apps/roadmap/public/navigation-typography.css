@@ -1,0 +1,4 @@
+/* Match the smart-sports hero description's font and responsive size. */
+.navbar .nav-links a,header>ul>li>a[href],[class*="top-[var(--topbar-h)]"]>ul>li>a{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'PingFang SC','Microsoft YaHei',sans-serif;font-size:18px;font-weight:400}
+@media(max-width:767px){.navbar .nav-links a,header>ul>li>a[href],[class*="top-[var(--topbar-h)]"]>ul>li>a{font-size:14px}}
+@media(max-width:358px){.navbar .nav-links a,header>ul>li>a[href],[class*="top-[var(--topbar-h)]"]>ul>li>a{font-size:12px}}
