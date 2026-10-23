@@ -1,0 +1,4 @@
+﻿.sports-brand img{height:36px;width:auto;max-width:none;display:block;flex-shrink:0;transition:transform .4s ease,opacity .4s ease}
+.sports-brand:hover img{transform:scale(1.05);opacity:.85}
+@media(max-width:600px){.sports-brand>span{display:none}.topbar-inner{padding:0 10px}}
+@media(max-width:380px){:root{--topbar-h:108px}.topbar-inner{flex-wrap:wrap;align-content:center;row-gap:4px}.sports-brand{width:100%}.sports-menu-toggle{margin-left:auto}}
