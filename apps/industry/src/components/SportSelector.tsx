@@ -23,10 +23,10 @@ export function SportSelector() {
       <p className="series-note">七大运动方向，共同构建强化系列的运动档案愿景。各产品开放进度，以正式发布为准。</p>
       <dialog ref={dialogRef} className="sport-dialog" aria-labelledby="sport-dialog-title" onClose={() => setSelected(null)} onClick={(event) => { if (event.target === event.currentTarget) dialogRef.current?.close(); }}>
         {selected && <>
-          <form method="dialog"><button className="dialog-close" aria-label="关闭运动详情" autoFocus>×</button></form>
+          <form method="dialog"><button className="dialog-close" aria-label="关闭运动详情" autoFocus><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 4 8 8M12 4l-8 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg></button></form>
           <div className="dialog-layout">
             <div className="dialog-media"><video key={selected.id} src={`${import.meta.env.BASE_URL}${selected.video}`} poster={`${import.meta.env.BASE_URL}${selected.image}`} controls playsInline muted preload="none" aria-label={`${selected.name}运动场景视频`} /></div>
-            <div className="dialog-copy"><p className="eyebrow">强化系列 / {selected.nameEn}</p><h2 id="sport-dialog-title">{selected.name}，<br />每一份热爱都有迹可循。</h2><p>{selected.description}</p><h3>让这些瞬间，成为你的积累。</h3><ul>{selected.archiveItems.map(item => <li key={item}>{item}</li>)}</ul><p className="quiet-note">以上为运动档案方向介绍，实际功能与开放时间以正式发布为准。</p>{selected.id === "billiards" && <BilliardsMiniProgram />}{selected.id === "billiards" && <button className="button-blue" onClick={() => { dialogRef.current?.close(); scrollToSection("product"); }}>查看“强化杆迹”小程序界面 <span aria-hidden="true">↗</span></button>}</div>
+            <div className="dialog-copy"><p className="eyebrow">{selected.appName}</p><h2 id="sport-dialog-title">{selected.name}，<br />每一份热爱都有迹可循。</h2><p>{selected.description}</p><h3>让这些瞬间，成为你的积累。</h3><ul>{selected.archiveItems.map(item => <li key={item}>{item}</li>)}</ul><p className="quiet-note">以上为运动档案方向介绍，实际功能与开放时间以正式发布为准。</p>{selected.id === "billiards" && <BilliardsMiniProgram />}{selected.id === "billiards" && <button className="button-blue" onClick={() => { dialogRef.current?.close(); scrollToSection("product"); }}>查看“强化杆迹”小程序界面 <span aria-hidden="true">↗</span></button>}</div>
           </div>
         </>}
       </dialog>
