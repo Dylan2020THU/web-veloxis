@@ -1,3 +1,4 @@
+import { SPORTS } from "../data/sports";
 import { BilliardsMiniProgram } from "../components/BilliardsMiniProgram";
 import { SportSelector } from "../components/SportSelector";
 import { scrollToSection } from "../lib/navigation";
@@ -17,18 +18,15 @@ export default function Home() {
             <button className="text-link" onClick={() => scrollToSection("archive")}>认识运动大档案 <span aria-hidden="true">›</span></button>
           </div>
         </div>
-        <div className="hero-stage">
-          <img className="hero-swimmer" src={`${import.meta.env.BASE_URL}images/sports-hero.png`} alt="泳者划开蓝色水面，向前游进" fetchPriority="high" width="1536" height="1024" />
-          <div className="hero-image-shade" />
-          <div className="hero-image-copy"><span>EVERY MOVE. PART OF YOU.</span><p>你的每一次向前<br />都值得被看见</p></div>
-          <div className="archive-preview" aria-label="运动档案概念示意">
-            <div className="preview-top"><span className="archive-mark" aria-hidden="true">↗</span><div><strong>我的运动大档案</strong><span>把热爱，积累成自己。</span></div><span className="preview-label">概念示意</span></div>
-            <div className="preview-sports"><span>游泳</span><span>健身</span><span>台球</span><span>更多热爱 +</span></div>
-            <div className="preview-chart" aria-hidden="true"><svg viewBox="0 0 320 82"><defs><linearGradient id="chart-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#067ef9" stopOpacity=".18"/><stop offset="100%" stopColor="#067ef9" stopOpacity="0"/></linearGradient></defs><path d="M0 70C20 70 21 46 45 50S76 64 98 41S125 60 150 35S179 42 201 24S231 39 255 15S292 21 320 5V82H0Z" fill="url(#chart-fill)"/><path d="M0 70C20 70 21 46 45 50S76 64 98 41S125 60 150 35S179 42 201 24S231 39 255 15S292 21 320 5" fill="none" stroke="#067ef9" strokeWidth="3"/></svg></div>
-            <div className="preview-bottom"><span>每一次记录</span><span>都在成为更好的你 <b>↗</b></span></div>
+        <div className="hero-series" role="region" aria-label="强化系列七项运动，窄屏可左右滑动查看" tabIndex={0}>
+          <div className="hero-series-strip">
+            {SPORTS.map(sport => <figure className="hero-series-item" key={sport.id}>
+              <img src={`${import.meta.env.BASE_URL}images/series/${sport.id}.webp`} alt={`${sport.name}运动场景`} width="400" height="640" />
+              <figcaption><p className="hero-series-app">{sport.appName}</p><h3>{sport.name}</h3><p className="hero-series-description">{sport.tag}</p></figcaption>
+            </figure>)}
           </div>
-          <span className="image-caption">运动场景为品牌概念影像</span>
         </div>
+        <p className="hero-series-hint">左右滑动，探索七种运动热爱 →</p>
       </section>
 
       <section id="archive" className="archive-section section-space" aria-labelledby="archive-title">
