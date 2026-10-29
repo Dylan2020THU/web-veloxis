@@ -1,3 +1,4 @@
+import { BilliardsMiniProgram } from "../components/BilliardsMiniProgram";
 import { SportSelector } from "../components/SportSelector";
 import { scrollToSection } from "../lib/navigation";
 
@@ -59,7 +60,7 @@ export default function Home() {
       <SportSelector />
 
       <section id="product" className="product-section section-space" aria-labelledby="product-title">
-        <div className="product-copy"><p className="eyebrow">强化系列 · 产品一瞥</p><h2 id="product-title">让每一次练习，<br />留下你的印记。</h2><p>从「强化印记台球」出发，<br />让记录走进真实的运动日常。</p><div className="product-features"><div><span>01</span><p><strong>记录一次训练</strong>为当下的投入，留下清晰记录。</p></div><div><span>02</span><p><strong>回看训练印记</strong>让日积月累的练习，有迹可循。</p></div></div><p className="quiet-note">展示为现有微信小程序界面。强化系列 App 的功能与开放时间，以正式发布为准。</p></div>
+        <div className="product-copy"><p className="eyebrow">强化系列 · 产品一瞥</p><h2 id="product-title">让每一次练习，<br />留下你的印记。</h2><p>从「强化印记台球」出发，<br />让记录走进真实的运动日常。</p><BilliardsMiniProgram /><div className="product-features"><div><span>01</span><p><strong>记录一次训练</strong>为当下的投入，留下清晰记录。</p></div><div><span>02</span><p><strong>回看训练印记</strong>让日积月累的练习，有迹可循。</p></div></div><p className="quiet-note">展示为现有微信小程序界面。强化系列 App 的功能与开放时间，以正式发布为准。</p></div>
         <div className="product-phones"><figure className="product-phone phone-back"><img src={`${import.meta.env.BASE_URL}images/billiards-record.png`} alt="强化印记台球微信小程序：记录一次训练界面" width="230" height="633" loading="lazy" /><figcaption>记录当下</figcaption></figure><figure className="product-phone phone-front"><img src={`${import.meta.env.BASE_URL}images/billiards-archive.png`} alt="强化印记台球微信小程序：训练印记图界面" width="230" height="633" loading="lazy" /><figcaption>看见积累</figcaption></figure></div>
       </section>
 
