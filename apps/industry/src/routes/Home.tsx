@@ -19,12 +19,7 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-series" role="region" aria-label="强化系列七项运动，窄屏可左右滑动查看" tabIndex={0}>
-          <div className="hero-series-strip">
-            {SPORTS.map(sport => <figure className="hero-series-item" key={sport.id}>
-              <img src={`${import.meta.env.BASE_URL}images/series/${sport.id}.webp`} alt={`${sport.name}运动场景`} width="400" height="640" />
-              <figcaption><p className="hero-series-app">{sport.appName}</p><h3>{sport.name}</h3><p className="hero-series-description">{sport.tag}</p></figcaption>
-            </figure>)}
-          </div>
+          <img className="hero-series-poster" src={`${import.meta.env.BASE_URL}images/strength-series-poster.webp`} alt={`强化系列七项运动海报。${SPORTS.map(sport => `${sport.appName} · ${sport.name}：${sport.tag}`).join(' ')}`} width="2172" height="724" />
         </div>
         <p className="hero-series-hint">左右滑动，探索七种运动热爱 →</p>
       </section>

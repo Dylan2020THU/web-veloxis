@@ -321,15 +321,9 @@ body:has(.sport-dialog[open]) { overflow: hidden; }
 .veloxis-shape { border-radius: 48px 0 48px 0; }
 .veloxis-shape-sm { border-radius: 28px 0 28px 0; }
 
-/* Seven sports form one horizontal hero collage, with captions below each image. */
-.hero-series{max-width:1280px;margin:0 auto;overflow-x:auto;border-radius:24px;background:#f5f5f7;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:#aab5c4 #f5f5f7}
-.hero-series-strip{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:2px}
-.hero-series-item{margin:0;min-width:0;background:#fff;scroll-snap-align:start}
-.hero-series-item>img{display:block;width:100%;height:300px;object-fit:cover;object-position:center}
-.hero-series-item figcaption{padding:22px 16px 24px;text-align:left}
-.hero-series-app{margin:0 0 7px;color:#067ef9;font-size:13px;font-weight:600}
-.hero-series-item h3{margin:0 0 10px;font-size:22px;line-height:1.3;font-weight:600;color:#1d1d1f}
-.hero-series-description{margin:0;font-size:14px;line-height:1.75;color:#6e6e73}
+/* A single campaign poster contains all seven sports and their captions. */
+.hero-series{max-width:1280px;margin:0 auto;overflow-x:auto;border-radius:24px;background:#f5f5f7;scrollbar-width:thin;scrollbar-color:#aab5c4 #f5f5f7}
+.hero-series-poster{display:block;width:100%;height:auto}
 .hero-series-hint{display:none}
-@media(max-width:1100px){.hero-series-strip{grid-template-columns:repeat(7,200px)}.hero-series-item>img{height:300px}.hero-series-hint{display:block;margin:14px 0 0;text-align:center;font-size:12px;color:#6e6e73}}
-@media(max-width:600px){.hero-series{border-radius:18px}.hero-series-strip{grid-template-columns:repeat(7,210px)}.hero-series-item>img{height:280px}}
+@media(max-width:1100px){.hero-series-poster{min-width:1470px}.hero-series-hint{display:block;margin:14px 0 0;text-align:center;font-size:12px;color:#6e6e73}}
+@media(max-width:600px){.hero-series{border-radius:18px}}
