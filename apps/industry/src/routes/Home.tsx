@@ -8,15 +8,11 @@ const heatmap = [1, 0, 2, 3, 1, 0, 2, 2, 1, 3, 0, 1, 2, 3, 1, 2, 0, 3, 2, 1, 3, 
 export default function Home() {
   return (
     <main id="sports-home" className="sports-page">
+      <SportSelector />
       <section className="sports-hero" aria-labelledby="hero-title">
         <div className="hero-intro">
-          <p className="eyebrow">大川激流 · 智能体育</p>
-          <h1 id="hero-title">开创运动者的<br /><span>大档案时代</span></h1>
+          <h1 id="hero-title">开创运动者的<span>大档案时代</span></h1>
           <p className="hero-description">每个运动者，都值得拥有自己的运动大档案。<br />让你的运动数据，承载你、托举你、强化你。</p>
-          <div className="hero-actions">
-            <button className="button-blue" onClick={() => scrollToSection("series")}>探索强化系列 <span aria-hidden="true">↗</span></button>
-            <button className="text-link" onClick={() => scrollToSection("archive")}>认识运动大档案 <span aria-hidden="true">›</span></button>
-          </div>
         </div>
         <div className="hero-series" role="region" aria-label="强化系列七项运动，窄屏可左右滑动查看" tabIndex={0}>
           <img className="hero-series-poster" src={`${import.meta.env.BASE_URL}images/strength-series-poster.webp`} alt={`强化系列七项运动海报。${SPORTS.map(sport => `${sport.appName} · ${sport.name}：${sport.tag}`).join(' ')}`} width="2172" height="724" />
@@ -50,7 +46,6 @@ export default function Home() {
         </div>
       </section>
 
-      <SportSelector />
 
       <section id="product" className="product-section section-space" aria-labelledby="product-title">
         <div className="product-copy"><p className="eyebrow">强化系列 · 产品一瞥</p><h2 id="product-title">让每一次练习，<br />留下你的印记。</h2><p>从“强化杆迹”小程序出发，<br />让记录走进真实的运动日常。</p><BilliardsMiniProgram /><div className="product-features"><div><span>01</span><p><strong>记录一次训练</strong>为当下的投入，留下清晰记录。</p></div><div><span>02</span><p><strong>回看训练印记</strong>让日积月累的练习，有迹可循。</p></div></div><p className="quiet-note">展示为“强化杆迹”小程序界面。强化系列 App 的功能与开放时间，以正式发布为准。</p></div>

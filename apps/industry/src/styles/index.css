@@ -327,3 +327,12 @@ body:has(.sport-dialog[open]) { overflow: hidden; }
 .hero-series-hint{display:none}
 @media(max-width:1100px){.hero-series-poster{min-width:1470px}.hero-series-hint{display:block;margin:14px 0 0;text-align:center;font-size:12px;color:#6e6e73}}
 @media(max-width:600px){.hero-series{border-radius:18px}}
+
+/* Lead with two proportional sports cards and generous viewport gutters. */
+.sports-page > .series-section:first-child { padding: 56px clamp(28px, 4vw, 100px) 72px; }
+.sports-page > .series-section:first-child .sport-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.sports-page .hero-intro h1 { white-space: nowrap; font-size: clamp(20px, 5.6vw, 80px); }
+@media(max-width:600px) {
+  .sports-page > .series-section:first-child { padding: 36px 22px 48px; }
+  .sports-page > .series-section:first-child .sport-grid { grid-template-columns: minmax(0, 1fr); }
+}
