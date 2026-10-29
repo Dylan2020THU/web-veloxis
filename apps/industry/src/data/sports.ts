@@ -47,7 +47,7 @@ export const SPORTS: Sport[] = [
     nameEn: "Billiards",
     tag: "每一次出杆，都有成长的印记。",
     description:
-      "从一杆一杆的练习，到一次次更从容的出手。通过强化印记台球，记录训练，回看自己的训练印记。",
+      "从一杆一杆的练习，到一次次更从容的出手。通过“强化杆迹”小程序，记录训练，回看自己的训练印记。",
     archiveItems: ["每一次练习的训练记录", "日积月累的训练印记", "值得回看的切磋与突破"],
     video: "video/billiards-1.mp4",
     image: "video/billiards-1-cover.png",
