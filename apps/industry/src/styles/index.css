@@ -321,18 +321,17 @@ body:has(.sport-dialog[open]) { overflow: hidden; }
 .veloxis-shape { border-radius: 48px 0 48px 0; }
 .veloxis-shape-sm { border-radius: 28px 0 28px 0; }
 
-/* A single campaign poster contains all seven sports and their captions. */
-.hero-series{max-width:1280px;margin:0 auto;overflow-x:auto;border-radius:24px;background:#f5f5f7;scrollbar-width:thin;scrollbar-color:#aab5c4 #f5f5f7}
-.hero-series-poster{display:block;width:100%;height:auto}
-.hero-series-hint{display:none}
-@media(max-width:1100px){.hero-series-poster{min-width:1470px}.hero-series-hint{display:block;margin:14px 0 0;text-align:center;font-size:12px;color:#6e6e73}}
-@media(max-width:600px){.hero-series{border-radius:18px}}
-
 /* Lead with two proportional sports cards and generous viewport gutters. */
-.sports-page > .series-section:first-child { padding: 56px clamp(28px, 4vw, 100px) 72px; }
-.sports-page > .series-section:first-child .sport-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.sports-page > .series-section { padding: 56px clamp(28px, 4vw, 100px) 72px; }
+.sports-page > .series-section .sport-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .sports-page .hero-intro h1 { white-space: nowrap; font-size: clamp(20px, 5.6vw, 80px); }
 @media(max-width:600px) {
-  .sports-page > .series-section:first-child { padding: 36px 22px 48px; }
-  .sports-page > .series-section:first-child .sport-grid { grid-template-columns: minmax(0, 1fr); }
+  .sports-page > .series-section { padding: 36px 22px 48px; }
+  .sports-page > .series-section .sport-grid { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Reduce card width and height to 80% while preserving their aspect ratio. */
+.sports-page > .series-section .sport-grid { width: calc(80% + 5.6px); margin-inline: auto; }
+@media(max-width:1320px) { .sports-page > .series-section .sport-grid { width: calc(80% + 4.8px); } }
+@media(max-width:1000px) { .sports-page > .series-section .sport-grid { width: calc(80% + 4px); } }
+@media(max-width:600px) { .sports-page > .series-section .sport-grid { width: 80%; } }

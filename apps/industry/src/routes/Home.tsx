@@ -1,4 +1,3 @@
-import { SPORTS } from "../data/sports";
 import { BilliardsMiniProgram } from "../components/BilliardsMiniProgram";
 import { SportSelector } from "../components/SportSelector";
 import { scrollToSection } from "../lib/navigation";
@@ -8,17 +7,13 @@ const heatmap = [1, 0, 2, 3, 1, 0, 2, 2, 1, 3, 0, 1, 2, 3, 1, 2, 0, 3, 2, 1, 3, 
 export default function Home() {
   return (
     <main id="sports-home" className="sports-page">
-      <SportSelector />
       <section className="sports-hero" aria-labelledby="hero-title">
         <div className="hero-intro">
           <h1 id="hero-title">开创运动者的<span>大档案时代</span></h1>
           <p className="hero-description">每个运动者，都值得拥有自己的运动大档案。<br />让你的运动数据，承载你、托举你、强化你。</p>
         </div>
-        <div className="hero-series" role="region" aria-label="强化系列七项运动，窄屏可左右滑动查看" tabIndex={0}>
-          <img className="hero-series-poster" src={`${import.meta.env.BASE_URL}images/strength-series-poster.webp`} alt={`强化系列七项运动海报。${SPORTS.map(sport => `${sport.appName} · ${sport.name}：${sport.tag}`).join(' ')}`} width="2172" height="724" />
-        </div>
-        <p className="hero-series-hint">左右滑动，探索七种运动热爱 →</p>
       </section>
+      <SportSelector />
 
       <section id="archive" className="archive-section section-space" aria-labelledby="archive-title">
         <div className="section-heading"><p className="eyebrow">你的运动，你的大档案</p><h2 id="archive-title">每一次运动<br />都成为你的积累</h2><p>热爱不只发生在场上。<br />我们希望通过「强化系列」App，将散落的运动记录，<br className="desktop-break" />汇成一份属于你、持续生长的运动大档案。</p></div>
