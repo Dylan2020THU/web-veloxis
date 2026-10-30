@@ -73,3 +73,14 @@
 @media(max-width:768px){.cover-welcome{left:20px;bottom:24px;max-width:calc(100% - 40px)}}
 
 .careers-page .navbar .logo{align-items:flex-end}
+
+@media(max-width:767px){
+ .careers-page .navbar { height: auto; min-height: 64px; flex-wrap: wrap; align-items: center; }
+ .careers-page .nav-links { overflow-x: auto; justify-content: flex-start; gap: 16px; padding-bottom: 4px; }
+ .careers-page .nav-links li { flex-shrink: 0; }
+ .careers-page .nav-links a { white-space: nowrap; line-height: 1.5; }
+ .channel-search { height: 31px; padding: 3.5px 4px 3.5px 13px; gap: 5px; }
+ .channel-search input { min-height: 0; height: 24px; padding: 0; }
+ .channel-search button { width: 24px; height: 24px; }
+ .channel-search svg { width: 11.5px; height: 11.5px; }
+}
