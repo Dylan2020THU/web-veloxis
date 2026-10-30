@@ -344,3 +344,7 @@ body:has(.sport-dialog[open]) { overflow: hidden; }
 
 .series-heading h2.eyebrow { font-size: 24px; line-height: 1.4; letter-spacing: .04em; margin: 0; color: var(--blue); }
 @media(max-width:600px) { .series-heading h2.eyebrow { font-size: 20px; } }
+
+@media (max-width: 767px) {
+  .sport-card-button { min-width: 56px; height: 24px; padding: 0 10px; border-radius: 12px; font-size: 8px; }
+}
