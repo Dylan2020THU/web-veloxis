@@ -14,8 +14,7 @@ export function SportSelector() {
   }
 
   return (
-    <section id="series" className="series-section section-space" aria-labelledby="series-title">
-      <div className="series-heading"><h2 id="series-title" className="eyebrow">强化系列 · 让热爱有迹可循</h2></div>
+    <section id="series" className="series-section section-space" aria-label="强化系列">
       <div className="sport-grid">
         {SPORTS.map((sport, index) => <SportPanel key={sport.id} sport={sport} index={index} onSelect={() => openSport(sport)} />)}
         <article className="sport-invitation"><span className="invitation-mark" aria-hidden="true">↗</span><p>不止一种运动，<br />不止一种可能。</p><span>你的下一份热爱，也值得一份档案。</span><a href="mailto:dylanzhang@veloxisai.com">一起探索更多可能 <span aria-hidden="true">↗</span></a></article>
