@@ -339,5 +339,5 @@ body:has(.sport-dialog[open]) { overflow: hidden; }
 
 /* Product name leads the card; the sport is its smaller second line. */
 .sport-card-top > span:first-child { font-size: 10px; font-weight: 400; }
-.sport-card-sport { display: block; margin-top: 4px; font-size: .75em; }
+.sport-card-sport { display: block; margin-top: 4px; font-size: .75em; font-weight: 400; }
 .sport-card-button { width: auto; min-width: 96px; height: 36px; padding: 0 16px; border-radius: 18px; font-size: 14px; line-height: 1; white-space: nowrap; }
