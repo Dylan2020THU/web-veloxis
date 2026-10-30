@@ -348,3 +348,8 @@ body:has(.sport-dialog[open]) { overflow: hidden; }
 @media (max-width: 767px) {
   .sport-card-button { min-width: 56px; height: 24px; padding: 0 10px; border-radius: 12px; font-size: 8px; }
 }
+
+@media (max-width: 767px) {
+  .sport-card h3 { top: 6px; }
+  .sport-card-copy { bottom: 44px; }
+}
