@@ -353,3 +353,8 @@ body:has(.sport-dialog[open]) { overflow: hidden; }
   .sport-card h3 { top: 6px; }
   .sport-card-copy { bottom: 44px; }
 }
+
+@media (max-width: 767px) {
+  .sports-page .hero-intro h1 { font-size: 36px; white-space: normal; }
+  .sports-page .hero-intro h1 > span { display: block; }
+}
