@@ -55,11 +55,11 @@ export function SportPanel({ sport, index, onSelect }: SportPanelProps) {
         />
       )}
       <div className="sport-card-shade" />
-      <div className="sport-card-top"><span>{sport.appName}</span><span>{String(index + 1).padStart(2, "0")}</span></div>
-      <h3 className="sport-card-title">{sport.name}</h3>
+      <div className="sport-card-top"><span>{String(index + 1).padStart(2, "0")}</span></div>
+      <h3 className="sport-card-title">{sport.appName}<span className="sport-card-sport">{sport.name}</span></h3>
       <div className="sport-card-copy"><span>{sport.nameEn.toUpperCase()}</span><p>{sport.tag}</p></div>
-      <button className="sport-card-button" onClick={() => { deactivate(); onSelect(); }} aria-label={`了解${sport.name}档案`}>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>
+      <button className="sport-card-button" onClick={() => { deactivate(); onSelect(); }} aria-label={`打开产品：${sport.appName}`}>
+        打开产品
       </button>
     </article>
   );

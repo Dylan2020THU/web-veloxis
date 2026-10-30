@@ -126,7 +126,7 @@ h1, h2, h3, h4, p { margin: 0; }
 .sport-card.is-active > img, .sport-card.is-active > video { transform: scale(1.04); filter: grayscale(0) brightness(1); }
 .sport-card.is-active > video.is-playing { opacity: 1; }
 .sport-card-shade { position: absolute; inset: 0; background: linear-gradient(#00000030, transparent 30%, #00000035 55%, #000000c9); }
-.sport-card-top { position: absolute; top: 22px; left: 22px; right: 22px; display: flex; justify-content: space-between; font-size: 10px; letter-spacing: .07em; }
+.sport-card-top { position: absolute; top: 22px; left: 22px; right: 22px; display: flex; justify-content: flex-end; font-size: 10px; letter-spacing: .07em; }
 .sport-card-top > span:first-child { font-size: 15px; font-weight: 600; }
 .sport-card-copy { position: absolute; left: 22px; bottom: 69px; right: 22px; }
 .sport-card-copy > span { font-size: 10px; color: #ffffffc9; letter-spacing: .12em; }
@@ -336,3 +336,8 @@ body:has(.sport-dialog[open]) { overflow: hidden; }
 @media(max-width:1320px) { .sports-page > .series-section .sport-grid { width: calc(80% + 4.8px); } }
 @media(max-width:1000px) { .sports-page > .series-section .sport-grid { width: calc(80% + 4px); } }
 @media(max-width:600px) { .sports-page > .series-section .sport-grid { width: 80%; } }
+
+/* Product name leads the card; the sport is its smaller second line. */
+.sport-card-top > span:first-child { font-size: 10px; font-weight: 400; }
+.sport-card-sport { display: block; margin-top: 4px; font-size: .75em; }
+.sport-card-button { width: auto; min-width: 96px; height: 36px; padding: 0 16px; border-radius: 18px; font-size: 14px; line-height: 1; white-space: nowrap; }
