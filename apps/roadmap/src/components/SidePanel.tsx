@@ -138,6 +138,18 @@ function Inner({
           </Section>
         )}
 
+        {layout.flat.some((n) => n.prereqIds.includes(node.id)) && (
+          <Section title="后续关联内容">
+            <div className="flex flex-wrap gap-1.5">
+              {layout.flat.filter((n) => n.prereqIds.includes(node.id)).map((n) => (
+                <button key={n.id} onClick={() => onJumpTo(n.id)}
+                  className="rounded-md border border-black/10 bg-white px-2 py-1 text-xs hover:bg-black/5">
+                  {n.label}
+                </button>
+              ))}
+            </div>
+          </Section>
+        )}
         {node.children.length > 0 && (
           <Section title={`下级内容（${node.children.length}）`}>
             <ul className="space-y-1">

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { pickVisible } from "@/map/lod";
 
 interface Props {
   zoom: number;
@@ -17,9 +16,8 @@ export function ZoomControls({
   onOpenSearch,
 }: Props) {
   const [searchHovered, setSearchHovered] = useState(false);
-  const lod = pickVisible(zoom);
   return (
-    <div className="absolute bottom-6 left-6 z-10 flex flex-col gap-2">
+    <div className="learning-map-controls absolute bottom-6 left-6 z-10 flex flex-col gap-2">
       <div className="flex items-center gap-2 rounded-2xl bg-white/90 p-2 shadow-soft backdrop-blur">
         <button
           aria-label="zoom in"
@@ -54,10 +52,10 @@ export function ZoomControls({
         </button>
       </div>
       <div className="rounded-xl bg-white/85 px-3 py-1.5 text-xs text-ink/70 shadow-soft">
-        {lod.hint}
+        {zoom < 1.25 ? "全景视角 · 四大学院" : "缩放探索 · 章节与知识点"}
         <span className="ml-2 text-ink/40">×{zoom.toFixed(2)}</span>
         <div className="mt-1 text-[11px] text-ink/45">
-          Ctrl / Alt + 拖拽 旋转朝向
+          拖拽旋转 · 右键平移 · 滚轮 / 双指缩放
         </div>
       </div>
     </div>

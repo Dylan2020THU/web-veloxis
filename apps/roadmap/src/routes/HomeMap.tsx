@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRoadmap } from "@/data/useRoadmap";
-import { MapCanvas, type MapCanvasHandle } from "@/map/MapCanvas";
+import { type MapCanvasHandle } from "@/map/MapCanvas";
+import { LearningAtlas } from "@/map/LearningAtlas";
 import { ZOOM } from "@/map/tokens";
 import { ZoomControls } from "@/components/ZoomControls";
 import { SidePanel } from "@/components/SidePanel";
 import { SearchBar } from "@/components/SearchBar";
-import { MiniMap } from "@/components/MiniMap";
 
 export default function HomeMap() {
   const { doc, layout, loading, error } = useRoadmap();
@@ -59,8 +59,8 @@ export default function HomeMap() {
   if (!layout || !doc) return null;
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden">
-      <MapCanvas
+    <div className="learning-map-page relative h-screen w-screen overflow-hidden">
+      <LearningAtlas
         ref={canvasRef}
         layout={layout}
         selectedId={selectedId}
@@ -77,7 +77,6 @@ export default function HomeMap() {
         }}
         onOpenSearch={() => setSearchOpen(true)}
       />
-      <MiniMap layout={layout} onJumpTo={handleJumpTo} />
       <SidePanel
         nodeId={selectedId}
         layout={layout}
