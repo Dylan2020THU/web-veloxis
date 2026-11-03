@@ -13,7 +13,11 @@ export function SportPanel({ sport, index, onSelect }: SportPanelProps) {
   function activate() {
     activeRef.current = true;
     setActive(true);
-    void videoRef.current?.play().catch(() => {
+    const video = videoRef.current;
+    if (video && sport.video && !video.hasAttribute('src')) {
+      video.src = `${import.meta.env.BASE_URL}${sport.video}`;
+    }
+    void video?.play().catch(() => {
       // Keep the highlighted poster visible when autoplay is unavailable.
     });
   }
@@ -37,12 +41,11 @@ export function SportPanel({ sport, index, onSelect }: SportPanelProps) {
       onFocus={activate}
       onBlur={deactivate}
     >
-      <img src={`${import.meta.env.BASE_URL}${sport.image}`} alt={`${sport.name}运动场景`} loading="lazy" width="720" height="1280" />
+      <img src={`${import.meta.env.BASE_URL}${sport.image}`} alt={`${sport.name}运动场景`} loading={index < 2 ? "eager" : "lazy"} decoding="async" width="720" height="1280" />
       {sport.video && (
         <video
           ref={videoRef}
           className={playing ? "is-playing" : ""}
-          src={`${import.meta.env.BASE_URL}${sport.video}`}
           muted
           loop
           playsInline
